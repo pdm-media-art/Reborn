@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reborn - Transform Your Life | Patrick Devosse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #e74c3c;
+            --dark-red: #c0392b;
+            --black: #0a0a0a;
+            --light-gray: #f5f5f5;
+            --gray: #2c2c2c;
+            --medium-gray: #555;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--black);
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray) 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e74c3c" width="1200" height="600" opacity="0.1"/></svg>');
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(231, 76, 60, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            color: var(--light-gray);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            border: 2px solid var(--primary-red);
+        }
+
+        .cta-button:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
+        }
+
+        section .subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary-red);
+        }
+
+        .course-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+        }
+
+        .course-card h3 {
+            color: var(--primary-red);
+            font-size: 1.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card .badge {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-card .badge.premium {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 100%);
+            color: var(--black);
+        }
+
+        .course-card .price {
+            font-size: 2.8rem;
+            color: var(--light-gray);
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+
+        .course-card .original-price {
+            font-size: 1.3rem;
+            color: var(--medium-gray);
+            text-decoration: line-through;
+            margin-right: 1rem;
+        }
+
+        .course-card .savings {
+            display: inline-block;
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--primary-red);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .course-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .course-card ul li {
+            padding: 0.6rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .course-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-red);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: #1a1a1a;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: var(--light-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial .author {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .cta-section .cta-button {
+            background: white;
+            color: var(--primary-red);
+            border-color: white;
+        }
+
+        .cta-section .cta-button:hover {
+            background: var(--black);
+            color: white;
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-red);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            opacity: 0.7;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav.mobile-active ul {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--black);
+                padding: 1rem;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--primary-red);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">REBORN</div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#coaching">Coaching</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Break Free From <span class="highlight">Addiction</span></h1>
+            <p>The 7-Step Method to Crush Pornography Addiction</p>
+            <p class="subtitle">From Trauma and Shame to Freedom and Authentic Masculinity</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="#courses" class="cta-button">View Programs</a>
+                <a href="#about" class="cta-button secondary">Read My Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <h2>Transform Your Life</h2>
+            <p class="subtitle">Choose the path that's right for you</p>
+            
+            <div class="courses-grid">
+                <!-- Audio Course -->
+                <div class="course-card fade-in-up">
+                    <span class="badge">Audio Course</span>
+                    <h3>Reborn Audio Program</h3>
+                    <p>Experience the complete journey through guided audio lessons based on the proven 7-step method</p>
+                    <div class="price">€97</div>
+                    <ul>
+                        <li>Complete audio version of the book</li>
+                        <li>7-step method explained in detail</li>
+                        <li>Understanding addiction & trauma</li>
+                        <li>Fasting & nutrition guidance</li>
+                        <li>Meditation techniques</li>
+                        <li>Rewiring your brain</li>
+                        <li>Building sustainable habits</li>
+                        <li>Lifetime access</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">Get Audio Course</a>
+                </div>
+
+                <!-- Write Your Story -->
+                <div class="course-card fade-in-up" style="animation-delay: 0.1s;">
+                    <span class="badge">Writing Program</span>
+                    <h3>Write Your Story</h3>
+                    <p>Transform your journey into a powerful book and help others through your experience</p>
+                    <div class="price">€3,000</div>
+                    <ul>
+                        <li>6-month comprehensive program</li>
+                        <li>Personal guidance from Patrick</li>
+                        <li>Story structure & development</li>
+                        <li>Writing techniques & coaching</li>
+                        <li>Detailed feedback on your manuscript</li>
+                        <li>Publishing strategy consultation</li>
+                        <li>Marketing & positioning guidance</li>
+                        <li>Weekly accountability sessions</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">Start Writing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaching Section -->
+    <section id="coaching" class="about">
+        <div class="container">
+            <h2>Personal Coaching</h2>
+            <p class="subtitle">Individual support on your journey to freedom</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>1:1 Transformation Coaching</h3>
+                    <p>Work directly with Patrick Devosse, who has walked this path and knows what it takes to break free from addiction.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>What You'll Get:</strong></p>
+                    </div>
+                    
+                    <ul style="margin: 1.5rem 0;">
+                        <li style="padding: 0.5rem 0;">✓ Identify your personal triggers and patterns</li>
+                        <li style="padding: 0.5rem 0;">✓ Develop customized strategies for your situation</li>
+                        <li style="padding: 0.5rem 0;">✓ Process trauma in a safe environment</li>
+                        <li style="padding: 0.5rem 0;">✓ Build new empowering habits</li>
+                        <li style="padding: 0.5rem 0;">✓ Create accountability systems that work</li>
+                        <li style="padding: 0.5rem 0;">✓ Reconnect with authentic masculinity</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Schedule Free Consultation</a>
+                </div>
+                <div>
+                    <div class="course-card">
+                        <h3>6-Month Coaching</h3>
+                        <p style="margin-bottom: 1.5rem;">12 Sessions • 45 Minutes Each • Twice Monthly</p>
+                        <div class="price" style="font-size: 2.5rem;">€2,800</div>
+                        <ul style="margin-top: 1.5rem;">
+                            <li>Personal 1:1 sessions with Patrick</li>
+                            <li>Customized recovery plan</li>
+                            <li>Email support between sessions</li>
+                            <li>Progress tracking & accountability</li>
+                            <li>Resources & tools library</li>
+                            <li>6-month commitment for real change</li>
+                        </ul>
+                        <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1.5rem;">Book Coaching</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mastermind Bundle -->
+    <section style="background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);">
+        <div class="container">
+            <h2>The Complete Transformation</h2>
+            <p class="subtitle">The ultimate package for those committed to total transformation</p>
+            
+            <div class="course-card fade-in-up" style="max-width: 900px; margin: 3rem auto; border: 3px solid #DAA520;">
+                <span class="badge premium">Mastermind Bundle</span>
+                <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem;">Complete Freedom Package</h3>
+                <p style="font-size: 1.15rem; margin-bottom: 2rem;">Everything you need for complete transformation - coaching, education, and community support</p>
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <span class="original-price">€8,697</span>
+                    <div class="price">€7,000</div>
+                </div>
+                <div class="savings" style="font-size: 1rem; padding: 0.5rem 1.2rem; margin-bottom: 2rem;">
+                    Save €1,697 (19.5% Discount)
+                </div>
+                
+                <h4 style="color: var(--primary-red); font-size: 1.3rem; margin: 2rem 0 1rem 0;">Complete Package Includes:</h4>
+                <ul>
+                    <li><strong>12-Month Premium Coaching</strong> - 24 personal sessions (€5,600 value)</li>
+                    <li><strong>Write Your Story Program</strong> - Complete 6-month writing course (€3,000 value)</li>
+                    <li><strong>Reborn Audio Course</strong> - Full audio program (€97 value)</li>
+                    <li><strong>Signed Book</strong> - Personally signed copy of "Reborn"</li>
+                    <li><strong>Priority Support</strong> - Direct access to Patrick between sessions</li>
+                    <li><strong>Mastermind Community</strong> - Exclusive group of committed individuals</li>
+                    <li><strong>Lifetime Updates</strong> - All future course materials and updates</li>
+                    <li><strong>Resource Library</strong> - Complete access to all tools and templates</li>
+                </ul>
+                
+                <div class="highlight-box" style="margin: 2rem 0;">
+                    <p><strong>This is for you if you're ready to:</strong> Commit to complete transformation, invest in your future, write your own story of freedom, and join an elite community of men breaking free from addiction.</p>
+                </div>
+                
+                <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1.5rem; font-size: 1.2rem; padding: 1.2rem;">Join the Mastermind</a>
+                
+                <p style="text-align: center; margin-top: 1.5rem; opacity: 0.8; font-style: italic;">
+                    Limited to 10 participants per year to ensure quality support
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Me -->
+    <section>
+        <div class="container">
+            <h2>Why Work With Me?</h2>
+            <div class="features">
+                <div class="feature fade-in-up">
+                    <div class="feature-icon">💪</div>
+                    <h3>I've Been There</h3>
+                    <p>15+ years battling pornography addiction. I know the darkness and I know the way out.</p>
+                </div>
+                <div class="feature fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Proven System</h3>
+                    <p>The 7-step method that helped me achieve nearly 2 years of sustained freedom</p>
+                </div>
+                <div class="feature fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Holistic Approach</h3>
+                    <p>Address trauma, rewire your brain, transform your body, and reclaim your life</p>
+                </div>
+                <div class="feature fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="feature-icon">🌟</div>
+                    <h3>No BS, Just Truth</h3>
+                    <p>Raw, honest guidance from someone who survived and thrived</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Patrick Devosse</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>From Darkness to Light</h3>
+                    <p>I am a survivor of childhood sexual abuse. For over 15 years, I battled pornography addiction so severe it nearly destroyed my marriage, my mental health, and my will to live.</p>
+                    
+                    <p>I sat on a couch with a weapon in hand, ready to end it all. But I made a different choice. I chose to heal instead of to die.</p>
+                    
+                    <p>This book and these programs aren't based on theory. They're based on lived experience - the darkest nights and the hard-won victories. I'm not a therapist or psychologist. I'm a man who found a way out and now dedicates his life to showing others the path.</p>
+                    
+                    <p><strong>Today, I'm nearly 2 years free from pornography.</strong> My marriage is stronger than ever. I've reconnected with my authentic self and discovered what real masculinity means.</p>
+                    
+                    <p>If I can do it, so can you. Let me show you how.</p>
+                </div>
+                <div style="background: var(--primary-red); padding: 2.5rem; border-radius: 15px; text-align: center;">
+                    <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.8rem;">The Book</h3>
+                    <div style="font-size: 4.5rem; margin: 1.5rem 0;">📖</div>
+                    <h4 style="color: white; font-size: 2rem; margin-bottom: 0.8rem; letter-spacing: 2px;">REBORN</h4>
+                    <p style="color: rgba(255,255,255,0.95); margin-bottom: 1rem; font-size: 1.1rem;">The 7-Step Method to Crush Pornography Addiction</p>
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; font-size: 1.05rem;">From Trauma and Shame to Freedom and Authentic Masculinity</p>
+                    <p style="color: white; font-style: italic; font-size: 1.05rem; line-height: 1.6;">"A raw, honest journey from the depths of addiction to the heights of freedom"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial fade-in-up">
+                    <p>"Patrick's program gave me the tools I needed to finally break free. His honesty and understanding of what we go through is unmatched. 8 months clean and counting."</p>
+                    <div class="author">- Michael R.</div>
+                </div>
+                <div class="testimonial fade-in-up" style="animation-delay: 0.1s;">
+                    <p>"I tried everything - therapy, support groups, willpower alone. Nothing worked until I found Patrick's 7-step method. This is the real deal."</p>
+                    <div class="author">- James K.</div>
+                </div>
+                <div class="testimonial fade-in-up" style="animation-delay: 0.2s;">
+                    <p>"The Write Your Story program helped me process my trauma and turn it into something meaningful. Writing my book was the most healing thing I've ever done."</p>
+                    <div class="author">- David M.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Break Free?</h2>
+            <p>Your journey to freedom starts with a single decision</p>
+            <a href="#contact" class="cta-button">Start Your Transformation Today</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get Started Today</h2>
+            <p class="subtitle">Take the first step toward freedom</p>
+            <div style="max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 2.5rem; border-radius: 15px; border: 2px solid var(--primary-red);">
+                <form id="contactForm" style="display: grid; gap: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-red); font-weight: 500;">Name</label>
+                        <input type="text" required style="width: 100%; padding: 0.8rem; background: var(--black); border: 1px solid #333; color: white; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-red); font-weight: 500;">Email</label>
+                        <input type="email" required style="width: 100%; padding: 0.8rem; background: var(--black); border: 1px solid #333; color: white; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-red); font-weight: 500;">I'm interested in</label>
+                        <select style="width: 100%; padding: 0.8rem; background: var(--black); border: 1px solid #333; color: white; border-radius: 5px; font-size: 1rem;">
+                            <option>Reborn Audio Course (€97)</option>
+                            <option>Write Your Story (€3,000)</option>
+                            <option>6-Month Coaching (€2,800)</option>
+                            <option>Mastermind Bundle (€7,000)</option>
+                            <option>Free Consultation</option>
+                            <option>General Inquiry</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--primary-red); font-weight: 500;">Message</label>
+                        <textarea rows="5" required style="width: 100%; padding: 0.8rem; background: var(--black); border: 1px solid #333; color: white; border-radius: 5px; font-size: 1rem;"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                </form>
+                <p style="text-align: center; margin-top: 1.5rem; opacity: 0.7; font-size: 0.95rem;">
+                    All inquiries are confidential and will be responded to within 24 hours
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Reborn</h3>
+                    <p>Transform your life. Break free from addiction. Reclaim your authentic masculinity.</p>
+                    <p style="margin-top: 1rem; font-style: italic;">— Patrick Devosse</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#courses">Audio Course</a></li>
+                        <li><a href="#courses">Write Your Story</a></li>
+                        <li><a href="#coaching">6-Month Coaching</a></li>
+                        <li><a href="#coaching">Mastermind Bundle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#about">About Patrick</a></li>
+                        <li><a href="#">Book Excerpt</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Reborn by Patrick Devosse. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;"><a href="#" style="color: var(--medium-gray);">Privacy Policy</a> | <a href="#" style="color: var(--medium-gray);">Terms & Conditions</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            document.querySelector('nav').classList.toggle('mobile-active');
+        }
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Patrick will get back to you within 24 hours.');
+            this.reset();
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+
+        // Navigation scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('nav');
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'linear-gradient(135deg, var(--black) 0%, var(--gray) 100%)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
