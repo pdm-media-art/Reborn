@@ -530,6 +530,225 @@
             margin: 0;
             font-size: 1.1rem;
         }
+
+        /* Cookie Consent Banner */
+        #cookieConsent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-top: 3px solid var(--primary-red);
+            padding: 1.5rem 2rem;
+            z-index: 9999;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        #cookieConsent.show {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cookie-text p {
+            color: var(--light-gray);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .cookie-text a {
+            color: var(--primary-red);
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .cookie-btn.accept {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        .cookie-btn.accept:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .cookie-btn.decline {
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        .cookie-btn.decline:hover {
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .cookie-btn.settings {
+            background: transparent;
+            border: 2px solid #555;
+            color: var(--light-gray);
+        }
+
+        .cookie-btn.settings:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        /* Cookie Settings Modal */
+        #cookieSettings {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow-y: auto;
+        }
+
+        #cookieSettings.show {
+            display: block;
+        }
+
+        .cookie-settings-content {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 2px solid var(--primary-red);
+        }
+
+        .cookie-category {
+            background: #0f0f0f;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        .cookie-category h4 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cookie-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .cookie-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #555;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--primary-red);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled + .toggle-slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            #cookieConsent {
+                padding: 1rem;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .cookie-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -554,8 +773,11 @@
             <h1>Break Free From <span class="highlight">Addiction</span></h1>
             <p>The 7-Step Method to Crush Pornography Addiction</p>
             <p class="subtitle">From Trauma and Shame to Freedom and Authentic Masculinity</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--primary-red); font-weight: bold;">
+                ✓ Proven by 5 Years of Personal Freedom
+            </p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                <a href="#courses" class="cta-button">View Programs</a>
+                <a href="mailto:pdm-media@outlook.de?subject=Interested%20in%20Reborn%20Programs" class="cta-button">View Programs</a>
                 <a href="#about" class="cta-button secondary">Read My Story</a>
             </div>
         </div>
@@ -584,7 +806,7 @@
                         <li>Building sustainable habits</li>
                         <li>Lifetime access</li>
                     </ul>
-                    <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">Get Audio Course</a>
+                    <a href="mailto:pdm-media@outlook.de?subject=Audio%20Course%20Purchase%20-%20Reborn%20Program%20(€97)&body=Hi%20Patrick,%0D%0A%0D%0AI'm%20interested%20in%20purchasing%20the%20Reborn%20Audio%20Course%20for%20€97.%0D%0A%0D%0AName:%0D%0AEmail:%0D%0APhone%20(optional):%0D%0A%0D%0APlease%20send%20me%20payment%20and%20access%20details.%0D%0A%0D%0AThank%20you!" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">Get Audio Course</a>
                 </div>
 
                 <!-- Write Your Story -->
@@ -603,7 +825,7 @@
                         <li>Marketing & positioning guidance</li>
                         <li>Weekly accountability sessions</li>
                     </ul>
-                    <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">Start Writing</a>
+                    <a href="mailto:pdm-media@outlook.de?subject=Write%20Your%20Story%20Program%20Inquiry%20(€3,000)&body=Hi%20Patrick,%0D%0A%0D%0AI'm%20interested%20in%20the%20Write%20Your%20Story%20program%20(€3,000).%0D%0A%0D%0AName:%0D%0AEmail:%0D%0APhone%20(optional):%0D%0A%0D%0AI'd%20like%20to%20learn%20more%20about:%0D%0A%0D%0AThank%20you!" class="cta-button" style="width: 100%; text-align: center; margin-top: 1rem;">Start Writing</a>
                 </div>
             </div>
         </div>
@@ -632,7 +854,7 @@
                         <li style="padding: 0.5rem 0;">✓ Create accountability systems that work</li>
                         <li style="padding: 0.5rem 0;">✓ Reconnect with authentic masculinity</li>
                     </ul>
-                    <a href="#contact" class="cta-button">Schedule Free Consultation</a>
+                    <a href="mailto:pdm-media@outlook.de?subject=Free%20Coaching%20Consultation%20Request&body=Hi%20Patrick,%0D%0A%0D%0AI'd%20like%20to%20schedule%20a%20free%20consultation%20to%20discuss%20coaching.%0D%0A%0D%0AName:%0D%0AEmail:%0D%0APhone%20(optional):%0D%0APreferred%20date/time:%0D%0A%0D%0ABrief%20description%20of%20my%20situation:%0D%0A%0D%0AThank%20you!" class="cta-button">Schedule Free Consultation</a>
                 </div>
                 <div>
                     <div class="course-card">
@@ -647,7 +869,7 @@
                             <li>Resources & tools library</li>
                             <li>6-month commitment for real change</li>
                         </ul>
-                        <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1.5rem;">Book Coaching</a>
+                        <a href="mailto:pdm-media@outlook.de?subject=6-Month%20Coaching%20Program%20Inquiry%20(€2,800)&body=Hi%20Patrick,%0D%0A%0D%0AI'm%20interested%20in%20the%206-Month%20Coaching%20Program%20(€2,800).%0D%0A%0D%0AName:%0D%0AEmail:%0D%0APhone%20(optional):%0D%0A%0D%0AI'd%20like%20to%20discuss:%0D%0A%0D%0AThank%20you!" class="cta-button" style="width: 100%; text-align: center; margin-top: 1.5rem;">Book Coaching</a>
                     </div>
                 </div>
             </div>
@@ -689,7 +911,7 @@
                     <p><strong>This is for you if you're ready to:</strong> Commit to complete transformation, invest in your future, write your own story of freedom, and join an elite community of men breaking free from addiction.</p>
                 </div>
                 
-                <a href="#contact" class="cta-button" style="width: 100%; text-align: center; margin-top: 1.5rem; font-size: 1.2rem; padding: 1.2rem;">Join the Mastermind</a>
+                <a href="mailto:pdm-media@outlook.de?subject=Mastermind%20Bundle%20Application%20(€7,000)&body=Hi%20Patrick,%0D%0A%0D%0AI'm%20interested%20in%20joining%20the%20Mastermind%20Bundle%20program%20(€7,000).%0D%0A%0D%0AName:%0D%0AEmail:%0D%0APhone:%0D%0A%0D%0AWhy%20I'm%20ready%20for%20complete%20transformation:%0D%0A%0D%0AMy%20current%20situation:%0D%0A%0D%0AWhat%20I%20hope%20to%20achieve:%0D%0A%0D%0AThank%20you!" class="cta-button" style="width: 100%; text-align: center; margin-top: 1.5rem; font-size: 1.2rem; padding: 1.2rem;">Join the Mastermind</a>
                 
                 <p style="text-align: center; margin-top: 1.5rem; opacity: 0.8; font-style: italic;">
                     Limited to 10 participants per year to ensure quality support
@@ -711,7 +933,7 @@
                 <div class="feature fade-in-up" style="animation-delay: 0.1s;">
                     <div class="feature-icon">🎯</div>
                     <h3>Proven System</h3>
-                    <p>The 7-step method that helped me achieve nearly 2 years of sustained freedom</p>
+                    <p>The 7-step method that helped me achieve 5 years of sustained freedom</p>
                 </div>
                 <div class="feature fade-in-up" style="animation-delay: 0.2s;">
                     <div class="feature-icon">❤️</div>
@@ -740,17 +962,34 @@
                     
                     <p>This book and these programs aren't based on theory. They're based on lived experience - the darkest nights and the hard-won victories. I'm not a therapist or psychologist. I'm a man who found a way out and now dedicates his life to showing others the path.</p>
                     
-                    <p><strong>Today, I'm nearly 2 years free from pornography.</strong> My marriage is stronger than ever. I've reconnected with my authentic self and discovered what real masculinity means.</p>
+                    <p><strong>Today, I'm 5 years free from pornography.</strong> My marriage is stronger than ever. I've reconnected with my authentic self and discovered what real masculinity means.</p>
                     
                     <p>If I can do it, so can you. Let me show you how.</p>
                 </div>
                 <div style="background: var(--primary-red); padding: 2.5rem; border-radius: 15px; text-align: center;">
                     <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.8rem;">The Book</h3>
-                    <div style="font-size: 4.5rem; margin: 1.5rem 0;">📖</div>
+                    
+                    <!-- Book Icon instead of cover image -->
+                    <div style="font-size: 5rem; margin: 1.5rem 0; color: white;">📖</div>
+                    
                     <h4 style="color: white; font-size: 2rem; margin-bottom: 0.8rem; letter-spacing: 2px;">REBORN</h4>
                     <p style="color: rgba(255,255,255,0.95); margin-bottom: 1rem; font-size: 1.1rem;">The 7-Step Method to Crush Pornography Addiction</p>
                     <p style="color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; font-size: 1.05rem;">From Trauma and Shame to Freedom and Authentic Masculinity</p>
-                    <p style="color: white; font-style: italic; font-size: 1.05rem; line-height: 1.6;">"A raw, honest journey from the depths of addiction to the heights of freedom"</p>
+                    
+                    <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                        <p style="color: white; font-style: italic; font-size: 1.05rem; line-height: 1.6;">"A raw, honest journey from the depths of addiction to the heights of freedom"</p>
+                    </div>
+                    
+                    <!-- Amazon Purchase Options -->
+                    <h4 style="color: white; font-size: 1.2rem; margin-bottom: 1rem;">Available Now on Amazon:</h4>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://www.amazon.com/dp/B0GCVPTGYR" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--primary-red); padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s; display: inline-block;">
+                            📱 Kindle eBook
+                        </a>
+                        <a href="https://www.amazon.com/dp/B0GCVPTGYR" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--primary-red); padding: 0.8rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: all 0.3s; display: inline-block;">
+                            📖 Paperback
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -777,12 +1016,119 @@
         </div>
     </section>
 
+    <!-- Social Proof / Stats Section -->
+    <section style="background: var(--black); padding: 3rem 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <h2 style="margin-bottom: 3rem;">Proven Results</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div class="feature" style="border: 2px solid var(--primary-red);">
+                        <div style="font-size: 3rem; color: var(--primary-red); font-weight: bold; margin-bottom: 0.5rem;">5</div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Years</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.8;">Of Personal Freedom</p>
+                    </div>
+                    <div class="feature" style="border: 2px solid var(--primary-red);">
+                        <div style="font-size: 3rem; color: var(--primary-red); font-weight: bold; margin-bottom: 0.5rem;">15+</div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Years</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.8;">Battled Addiction</p>
+                    </div>
+                    <div class="feature" style="border: 2px solid var(--primary-red);">
+                        <div style="font-size: 3rem; color: var(--primary-red); font-weight: bold; margin-bottom: 0.5rem;">100%</div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Real Experience</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.8;">Not Theory, But Truth</p>
+                    </div>
+                    <div class="feature" style="border: 2px solid var(--primary-red);">
+                        <div style="font-size: 3rem; color: var(--primary-red); font-weight: bold; margin-bottom: 0.5rem;">7</div>
+                        <h3 style="font-size: 1.1rem; margin-bottom: 0.3rem;">Steps</h3>
+                        <p style="font-size: 0.95rem; opacity: 0.8;">Proven Method</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 3rem; padding: 2rem; background: #1a1a1a; border-radius: 10px; border-left: 4px solid var(--primary-red);">
+                    <p style="font-size: 1.15rem; font-style: italic; line-height: 1.8;">
+                        "The 7-step method is built on real experience - 15 years of struggle, countless failures, and the proven path that led to 5 years of freedom. This isn't theory. This is survival, transformation, and truth."
+                    </p>
+                    <p style="margin-top: 1rem; color: var(--primary-red); font-weight: bold;">- Patrick Devosse</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Commitment Section -->
+    <section>
+        <div class="container">
+            <h2>My Commitment to You</h2>
+            <div class="features">
+                <div class="feature fade-in-up">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Confidential</h3>
+                    <p>Your journey is private. All sessions and communications are strictly confidential.</p>
+                </div>
+                <div class="feature fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon">💯</div>
+                    <h3>No Judgment Zone</h3>
+                    <p>I've been in the darkest places. You'll find only understanding, support, and real solutions here.</p>
+                </div>
+                <div class="feature fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Lifetime Support</h3>
+                    <p>Once you join any program, you're part of the Reborn community for life. I'm here for the long haul.</p>
+                </div>
+                <div class="feature fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="feature-icon">📧</div>
+                    <h3>Real Accessibility</h3>
+                    <p>I personally respond to every email. When you reach out, you're talking to me, not an assistant.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Break Free?</h2>
             <p>Your journey to freedom starts with a single decision</p>
-            <a href="#contact" class="cta-button">Start Your Transformation Today</a>
+            <a href="mailto:pdm-media@outlook.de?subject=Start%20My%20Transformation%20-%20General%20Inquiry&body=Hi%20Patrick,%0D%0A%0D%0AI'm%20ready%20to%20start%20my%20transformation.%0D%0A%0D%0AName:%0D%0AEmail:%0D%0APhone%20(optional):%0D%0A%0D%0AI'm%20most%20interested%20in:%0D%0A☐%20Audio%20Course%20(€97)%0D%0A☐%20Write%20Your%20Story%20(€3,000)%0D%0A☐%206-Month%20Coaching%20(€2,800)%0D%0A☐%20Mastermind%20Bundle%20(€7,000)%0D%0A%0D%0APlease%20contact%20me%20to%20discuss%20next%20steps.%0D%0A%0D%0AThank%20you!" class="cta-button">Start Your Transformation Today</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="subtitle">Everything you need to know before starting</p>
+            
+            <div style="max-width: 900px; margin: 3rem auto;">
+                <div class="course-card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">How long does it take to see results?</h3>
+                    <p>Every journey is different, but most clients report significant changes within the first 30-60 days when they fully commit to the process. The key is consistency and following the 7-step method.</p>
+                </div>
+                
+                <div class="course-card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Is this program confidential?</h3>
+                    <p>Absolutely. All coaching sessions, communications, and personal information are kept strictly confidential. Your privacy and trust are paramount.</p>
+                </div>
+                
+                <div class="course-card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">What if I've tried everything and failed before?</h3>
+                    <p>I tried everything too - therapy, willpower, support groups. What makes this different is addressing the root cause (trauma) and rewiring your brain at a neurological level. This isn't about willpower; it's about transformation.</p>
+                </div>
+                
+                <div class="course-card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Do you offer payment plans?</h3>
+                    <p>Yes! Payment plans are available for the Write Your Story program, coaching packages, and the Mastermind Bundle. Contact me to discuss options that work for your situation.</p>
+                </div>
+                
+                <div class="course-card" style="margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">What makes your approach different?</h3>
+                    <p>I've lived this. I'm not a therapist who read about addiction in a textbook. I battled 15+ years of pornography addiction stemming from childhood sexual abuse. The 7-step method comes from real experience, real pain, and real freedom.</p>
+                </div>
+                
+                <div class="course-card">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 0.8rem;">Can this work for me if I don't have childhood trauma?</h3>
+                    <p>Yes! While my story includes trauma, the 7-step method works for anyone struggling with pornography addiction, regardless of the root cause. The principles of brain rewiring, habit change, and holistic transformation apply universally.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -791,6 +1137,20 @@
         <div class="container">
             <h2>Get Started Today</h2>
             <p class="subtitle">Take the first step toward freedom</p>
+            
+            <!-- Emergency Resources -->
+            <div class="highlight-box" style="max-width: 900px; margin: 0 auto 3rem; background: rgba(231, 76, 60, 0.15);">
+                <h3 style="color: var(--primary-red); margin-bottom: 1rem;">If You're In Crisis</h3>
+                <p><strong>If you're having thoughts of suicide or self-harm, please reach out for immediate help:</strong></p>
+                <ul style="margin-top: 1rem;">
+                    <li style="padding: 0.3rem 0;">🇺🇸 USA: 988 Suicide & Crisis Lifeline</li>
+                    <li style="padding: 0.3rem 0;">🇩🇪 Germany: 0800 111 0 111 (Telefonseelsorge)</li>
+                    <li style="padding: 0.3rem 0;">🇬🇧 UK: 116 123 (Samaritans)</li>
+                    <li style="padding: 0.3rem 0;">🌍 International: <a href="https://findahelpline.com" style="color: var(--primary-red);">findahelpline.com</a></li>
+                </ul>
+                <p style="margin-top: 1rem; font-style: italic;">You are not alone. Help is available 24/7.</p>
+            </div>
+            
             <div style="max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 2.5rem; border-radius: 15px; border: 2px solid var(--primary-red);">
                 <form id="contactForm" style="display: grid; gap: 1.5rem;">
                     <div>
@@ -824,6 +1184,68 @@
             </div>
         </div>
     </section>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>🍪 Cookie Settings</h4>
+                <p>We use cookies to improve your experience. You can choose which cookies to accept. <a href="javascript:void(0);" onclick="showPrivacy()">Privacy Policy</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn accept" onclick="acceptAllCookies()">Accept All</button>
+                <button class="cookie-btn decline" onclick="declineAllCookies()">Decline All</button>
+                <button class="cookie-btn settings" onclick="showCookieSettings()">Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieSettings">
+        <div class="cookie-settings-content">
+            <h2 style="color: var(--primary-red); margin-bottom: 1.5rem;">Cookie Preferences</h2>
+            
+            <div class="cookie-category">
+                <h4>
+                    Necessary Cookies
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="necessaryCookies" checked disabled>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </h4>
+                <p>These cookies are essential for the website to function properly. They enable basic features like page navigation and access to secure areas. The website cannot function properly without these cookies.</p>
+            </div>
+
+            <div class="cookie-category">
+                <h4>
+                    Analytics Cookies
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="analyticsCookies">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </h4>
+                <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve the website experience.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">Examples: Google Analytics, visitor statistics</p>
+            </div>
+
+            <div class="cookie-category">
+                <h4>
+                    Marketing Cookies
+                    <label class="cookie-toggle">
+                        <input type="checkbox" id="marketingCookies">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </h4>
+                <p>These cookies are used to track visitors across websites to display relevant advertisements and encourage them to engage with our content.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">Examples: Facebook Pixel, Google Ads, retargeting</p>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                <button class="cookie-btn accept" onclick="saveCustomCookieSettings()" style="flex: 1;">Save Preferences</button>
+                <button class="cookie-btn decline" onclick="closeCookieSettings()" style="flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -864,10 +1286,22 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 Reborn by Patrick Devosse. All rights reserved.</p>
-                <p style="margin-top: 0.5rem;"><a href="#" style="color: var(--medium-gray);">Privacy Policy</a> | <a href="#" style="color: var(--medium-gray);">Terms & Conditions</a></p>
+                <p style="margin-top: 0.5rem;">
+                    <a href="javascript:void(0);" onclick="showPrivacy()" style="color: var(--medium-gray); text-decoration: none;">Privacy Policy</a> | 
+                    <a href="javascript:void(0);" onclick="showImprint()" style="color: var(--medium-gray); text-decoration: none;">Imprint</a> | 
+                    <a href="javascript:void(0);" onclick="showTerms()" style="color: var(--medium-gray); text-decoration: none;">Terms & Conditions</a>
+                </p>
             </div>
         </div>
     </footer>
+
+    <!-- Modal for Legal Pages -->
+    <div id="legalModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; overflow-y: auto;">
+        <div style="max-width: 900px; margin: 2rem auto; background: #1a1a1a; border-radius: 15px; padding: 3rem; position: relative;">
+            <button onclick="closeModal()" style="position: absolute; top: 1rem; right: 1rem; background: var(--primary-red); color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">✕</button>
+            <div id="legalContent"></div>
+        </div>
+    </div>
 
     <script>
         // Smooth Scrolling
@@ -933,6 +1367,286 @@
             
             lastScroll = currentScroll;
         });
+
+        // Legal Pages Modal Functions
+        function showPrivacy() {
+            document.getElementById('legalContent').innerHTML = `
+                <h2 style="color: var(--primary-red); margin-bottom: 2rem;">Privacy Policy</h2>
+                
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">1. Information We Collect</h3>
+                <p>When you contact us through our website, we collect:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Name and email address (provided voluntarily)</li>
+                    <li>Any information you choose to share in your message</li>
+                    <li>Basic website analytics (anonymized)</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">2. How We Use Your Information</h3>
+                <p>We use your information solely to:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Respond to your inquiries</li>
+                    <li>Provide the services you request</li>
+                    <li>Send program updates (only if you've enrolled)</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">3. Data Protection & Confidentiality</h3>
+                <p>Your privacy is paramount. All personal information and coaching conversations are:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li><strong>Strictly confidential</strong> - Never shared with third parties</li>
+                    <li><strong>Securely stored</strong> - Protected with industry-standard encryption</li>
+                    <li><strong>Kept minimal</strong> - We only collect what's necessary</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">4. Your Rights</h3>
+                <p>You have the right to:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Access your personal data</li>
+                    <li>Request correction or deletion</li>
+                    <li>Opt-out of communications at any time</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">5. Cookies & Analytics</h3>
+                <p>We use minimal analytics to understand how visitors use our site. No personal data is tracked. You can disable cookies in your browser settings.</p>
+                <p style="margin-top: 0.5rem;">You can manage your cookie preferences at any time by clicking <a href="javascript:void(0);" onclick="closeModal(); reopenCookieSettings();" style="color: var(--primary-red); text-decoration: underline;">here</a>.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">6. Third-Party Services</h3>
+                <p>We may use trusted services like email providers, but they are contractually obligated to protect your data.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">7. Updates to This Policy</h3>
+                <p>We may update this policy occasionally. Changes will be posted on this page.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Contact</h3>
+                <p>Questions about privacy? Email: <a href="mailto:pdm-media@outlook.de" style="color: var(--primary-red);">pdm-media@outlook.de</a></p>
+                
+                <p style="margin-top: 2rem; font-style: italic; opacity: 0.8;">Last updated: December 2024</p>
+            `;
+            document.getElementById('legalModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showImprint() {
+            document.getElementById('legalContent').innerHTML = `
+                <h2 style="color: var(--primary-red); margin-bottom: 2rem;">Imprint / Impressum</h2>
+                
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Information according to § 5 TMG</h3>
+                <p><strong>Reborn - Transformation Coaching</strong></p>
+                <p>Patrick Devosse</p>
+                <p>[Your Street Address]<br>
+                [Your Postal Code, City]<br>
+                [Country]</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Contact</h3>
+                <p>Email: <a href="mailto:pdm-media@outlook.de" style="color: var(--primary-red);">pdm-media@outlook.de</a></p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Responsible for Content</h3>
+                <p>Patrick Devosse</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Disclaimer</h3>
+                <p><strong>Liability for Content:</strong> The contents of our pages were created with great care. However, we cannot guarantee that the content is accurate, complete, or up-to-date.</p>
+                
+                <p style="margin-top: 1rem;"><strong>Liability for Links:</strong> Our website contains links to external websites. We have no influence on the content of these websites and therefore cannot accept any liability.</p>
+
+                <p style="margin-top: 1rem;"><strong>Copyright:</strong> The content and works on these pages are subject to copyright. Reproduction requires written permission from the author.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Medical Disclaimer</h3>
+                <p>The programs and information provided are not a substitute for professional medical or psychological treatment. If you're experiencing mental health issues, suicidal thoughts, or medical concerns, please consult with qualified healthcare professionals.</p>
+                
+                <p style="margin-top: 2rem; font-style: italic; opacity: 0.8;">Note: Please update the address fields with your actual business address.</p>
+            `;
+            document.getElementById('legalModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showTerms() {
+            document.getElementById('legalContent').innerHTML = `
+                <h2 style="color: var(--primary-red); margin-bottom: 2rem;">Terms & Conditions</h2>
+                
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">1. Services Provided</h3>
+                <p>Patrick Devosse ("Reborn") provides:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Online audio courses on overcoming pornography addiction</li>
+                    <li>Writing coaching programs</li>
+                    <li>Personal 1:1 coaching sessions</li>
+                    <li>Group mastermind programs</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">2. Not Medical Advice</h3>
+                <p><strong>IMPORTANT:</strong> Patrick Devosse is not a licensed therapist, psychologist, or medical professional. All programs are based on personal experience and should complement, not replace, professional medical or psychological treatment.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">3. Payment Terms</h3>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Payment is required before access to courses or coaching sessions</li>
+                    <li>Payment plans may be available upon request</li>
+                    <li>All prices are in Euros (€) and subject to applicable taxes</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">4. Refund Policy</h3>
+                <p><strong>Audio Course:</strong> 14-day money-back guarantee if you're not satisfied.</p>
+                <p><strong>Coaching Programs:</strong> Due to the personalized nature of coaching, refunds are handled on a case-by-case basis. Contact us within 7 days if you're unsatisfied.</p>
+                <p><strong>Mastermind Bundle:</strong> Partial refunds available within 30 days, minus any sessions completed.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">5. Cancellation Policy</h3>
+                <p>Coaching sessions can be rescheduled with 24 hours notice. Late cancellations may forfeit the session.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">6. Confidentiality</h3>
+                <p>All coaching conversations and personal information shared are strictly confidential, except where required by law.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">7. Client Responsibilities</h3>
+                <p>Clients are responsible for:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>Attending scheduled sessions on time</li>
+                    <li>Completing assigned exercises and homework</li>
+                    <li>Seeking emergency help if experiencing crisis</li>
+                    <li>Being honest about their situation and progress</li>
+                </ul>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">8. Limitation of Liability</h3>
+                <p>Patrick Devosse provides guidance based on personal experience. Results vary by individual. We are not liable for outcomes or decisions made based on program content.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">9. Intellectual Property</h3>
+                <p>All course materials, book content, and program resources are copyrighted. Sharing or reproducing without permission is prohibited.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">10. Changes to Terms</h3>
+                <p>We reserve the right to modify these terms. Clients will be notified of significant changes.</p>
+
+                <h3 style="color: var(--primary-red); margin-top: 2rem; margin-bottom: 1rem;">Contact</h3>
+                <p>Questions about these terms? Email: <a href="mailto:pdm-media@outlook.de" style="color: var(--primary-red);">pdm-media@outlook.de</a></p>
+                
+                <p style="margin-top: 2rem; font-style: italic; opacity: 0.8;">Last updated: December 2024</p>
+            `;
+            document.getElementById('legalModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('legalModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('legalModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ========================================
+        // COOKIE CONSENT MANAGEMENT
+        // ========================================
+
+        // Check if user has already made a cookie choice
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                // Show banner after 1 second delay
+                setTimeout(() => {
+                    document.getElementById('cookieConsent').classList.add('show');
+                }, 1000);
+            } else {
+                // Apply saved preferences
+                const preferences = JSON.parse(consent);
+                if (preferences.analytics) {
+                    enableAnalytics();
+                }
+                if (preferences.marketing) {
+                    enableMarketing();
+                }
+            }
+        }
+
+        // Accept all cookies
+        function acceptAllCookies() {
+            const consent = {
+                necessary: true,
+                analytics: true,
+                marketing: true,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('cookieConsent', JSON.stringify(consent));
+            document.getElementById('cookieConsent').classList.remove('show');
+            
+            // Enable all tracking
+            enableAnalytics();
+            enableMarketing();
+        }
+
+        // Decline all non-necessary cookies
+        function declineAllCookies() {
+            const consent = {
+                necessary: true,
+                analytics: false,
+                marketing: false,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('cookieConsent', JSON.stringify(consent));
+            document.getElementById('cookieConsent').classList.remove('show');
+        }
+
+        // Show cookie settings modal
+        function showCookieSettings() {
+            document.getElementById('cookieSettings').classList.add('show');
+            
+            // Load current preferences if they exist
+            const consent = localStorage.getItem('cookieConsent');
+            if (consent) {
+                const preferences = JSON.parse(consent);
+                document.getElementById('analyticsCookies').checked = preferences.analytics || false;
+                document.getElementById('marketingCookies').checked = preferences.marketing || false;
+            }
+        }
+
+        // Close cookie settings modal
+        function closeCookieSettings() {
+            document.getElementById('cookieSettings').classList.remove('show');
+        }
+
+        // Save custom cookie preferences
+        function saveCustomCookieSettings() {
+            const consent = {
+                necessary: true,
+                analytics: document.getElementById('analyticsCookies').checked,
+                marketing: document.getElementById('marketingCookies').checked,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('cookieConsent', JSON.stringify(consent));
+            
+            // Enable tracking based on preferences
+            if (consent.analytics) {
+                enableAnalytics();
+            }
+            if (consent.marketing) {
+                enableMarketing();
+            }
+            
+            document.getElementById('cookieSettings').classList.remove('show');
+            document.getElementById('cookieConsent').classList.remove('show');
+        }
+
+        // Enable Google Analytics (placeholder - add your GA code here)
+        function enableAnalytics() {
+            console.log('Analytics enabled');
+            // Add your Google Analytics code here when ready
+            // Example:
+            // window.dataLayer = window.dataLayer || [];
+            // function gtag(){dataLayer.push(arguments);}
+            // gtag('js', new Date());
+            // gtag('config', 'YOUR-GA-ID');
+        }
+
+        // Enable Marketing cookies (placeholder - add your pixels here)
+        function enableMarketing() {
+            console.log('Marketing cookies enabled');
+            // Add your Facebook Pixel, Google Ads, etc. here when ready
+        }
+
+        // Initialize cookie consent check on page load
+        window.addEventListener('load', checkCookieConsent);
+
+        // Allow users to change cookie preferences from privacy policy
+        function reopenCookieSettings() {
+            document.getElementById('cookieConsent').classList.add('show');
+        }
     </script>
 </body>
 </html>
