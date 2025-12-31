@@ -93,6 +93,7 @@
             padding: 30px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
+            min-height: 80px;
         }
         
         .download-button {
@@ -120,6 +121,19 @@
             color: #ffffff;
             margin-top: 20px;
             opacity: 0.9;
+        }
+        
+        .loading {
+            font-size: 18px;
+            color: #ffffff;
+            padding: 20px;
+        }
+        
+        .email-fallback {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
         }
         
         /* Content Sections */
@@ -375,8 +389,8 @@
             <h2>📥 YOUR FILES ARE READY!</h2>
             <p style="font-size: 18px; margin-bottom: 20px;">Click the button below to download all 21 files:</p>
             
-            <div class="download-links">
-                {{DS_DOWNLOAD_LINKS}}
+            <div class="download-links" id="download-container">
+                <div class="loading">⏳ Loading your download link...</div>
             </div>
             
             <div class="download-note">
@@ -393,7 +407,8 @@
                 ✓ Your download link (same as above)<br>
                 ✓ Your invoice<br>
                 ✓ Product information<br><br>
-                <strong>Can't find it?</strong> Check your <strong>SPAM folder</strong>!
+                <strong>Can't find it?</strong> Check your <strong>SPAM folder</strong>!<br><br>
+                If the download button above doesn't appear, you can find your download link in the email from Digistore24.
             </div>
         </div>
         
@@ -504,7 +519,7 @@
                     <strong style="color: #cc0000;">Privacy:</strong> All downloads are confidential. Your bank statement will only show "Digistore24.com".
                 </p>
                 <p style="margin-bottom: 15px;">
-                    <strong style="color: #cc0000;">Technical Issues?</strong> If the download doesn't work, contact us immediately (see below).
+                    <strong style="color: #cc0000;">Technical Issues?</strong> If the download doesn't work, check your email from Digistore24 or contact us immediately (see below).
                 </p>
                 <p>
                     <strong style="color: #cc0000;">Medical Disclaimer:</strong> This program is educational and motivational. It is not a substitute for professional medical or psychological treatment.
@@ -534,5 +549,71 @@
         </div>
         
     </div>
+
+    <!-- JavaScript to extract and display download links -->
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to display download link
+        function displayDownloadLink() {
+            const container = document.getElementById('download-container');
+            
+            // Try different parameter names that Digistore24 might use
+            let downloadLink = getUrlParameter('ds_download_link') || 
+                              getUrlParameter('download') || 
+                              getUrlParameter('download_url') ||
+                              getUrlParameter('file_url');
+            
+            // Get order ID for tracking
+            const orderId = getUrlParameter('order_id') || getUrlParameter('transaction_id');
+            
+            if (downloadLink) {
+                // Download link found - display button
+                container.innerHTML = `
+                    <a href="${downloadLink}" class="download-button" target="_blank">
+                        ⬇️ DOWNLOAD ALL FILES NOW
+                    </a>
+                    <p style="font-size: 14px; margin-top: 15px; color: #ffffff;">
+                        Order ID: ${orderId || 'N/A'}<br>
+                        175 MB total • 21 files
+                    </p>
+                `;
+            } else {
+                // No download link in URL - show email fallback
+                container.innerHTML = `
+                    <div class="email-fallback">
+                        <p style="font-size: 18px; margin-bottom: 15px;">
+                            <strong>📧 Your download link has been sent to your email!</strong>
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.8;">
+                            Check your inbox for an email from <strong>Digistore24</strong>.<br>
+                            The email contains your personal download link.<br><br>
+                            <strong>⚠️ Don't see it?</strong> Check your SPAM folder!
+                        </p>
+                    </div>
+                    <p style="font-size: 14px; margin-top: 20px; color: #ffffff; opacity: 0.8;">
+                        If you can't find the email, contact support: 
+                        <a href="mailto:pdm-media@outlook.de" style="color: #ffffff; text-decoration: underline;">
+                            pdm-media@outlook.de
+                        </a>
+                    </p>
+                `;
+            }
+        }
+
+        // Run on page load
+        window.addEventListener('load', displayDownloadLink);
+        
+        // Also run immediately in case load event already fired
+        if (document.readyState === 'complete') {
+            displayDownloadLink();
+        }
+    </script>
 </body>
 </html>
