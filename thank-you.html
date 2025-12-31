@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to REBORN - Your Journey Starts Now</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(20, 20, 20, 0.95);
+            border: 2px solid #cc0000;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(204, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #cc0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #cc0000;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            color: #cccccc;
+            font-weight: 300;
+        }
+
+        .info-box {
+            background: rgba(204, 0, 0, 0.1);
+            border: 2px solid #cc0000;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .info-box h2 {
+            color: #cc0000;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .info-box strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .bundle-contents {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .bundle-contents li {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: rgba(204, 0, 0, 0.15);
+            border-left: 4px solid #cc0000;
+            border-radius: 5px;
+        }
+
+        .cta-section {
+            margin: 40px 0;
+        }
+
+        .cta-section h3 {
+            color: #cc0000;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: 2px solid #cc0000;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+        }
+
+        .social-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-color: #25D366;
+        }
+
+        .social-btn.whatsapp:hover {
+            background: linear-gradient(135deg, #2EE876 0%, #25D366 100%);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        .upsell-box {
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.2) 0%, rgba(153, 0, 0, 0.2) 100%);
+            border: 3px solid #cc0000;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .upsell-box h3 {
+            color: #cc0000;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .upsell-box p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            color: #e0e0e0;
+        }
+
+        .upsell-features {
+            text-align: left;
+            margin: 25px 0;
+            padding-left: 20px;
+        }
+
+        .upsell-features li {
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            color: #e0e0e0;
+            list-style: none;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .upsell-features li:before {
+            content: "✓";
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 1.3em;
+            position: absolute;
+            left: 0;
+        }
+
+        .upgrade-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 3px solid #ff0000;
+            margin-top: 20px;
+        }
+
+        .upgrade-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(204, 0, 0, 0.5);
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(204, 0, 0, 0.3);
+            font-size: 0.9em;
+            color: #888888;
+        }
+
+        .footer a {
+            color: #cc0000;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+            }
+
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        
+        <h1>Welcome to REBORN!</h1>
+        <p class="subtitle">Your journey to freedom starts right now.</p>
+
+        <div class="info-box">
+            <h2>✅ Your STARTER Bundle is Ready</h2>
+            <p><strong>Check your email inbox NOW.</strong></p>
+            <p>We've sent your download link to the email address you provided. If you don't see it within 5 minutes, check your spam folder.</p>
+            <p><strong>What you received:</strong></p>
+            <ul class="bundle-contents">
+                <li><strong>🎧 15 Audio Episodes</strong> - Complete 7-Step Method (175 minutes / ~3 hours total)</li>
+                <li><strong>📘 Complete Workbook</strong> - All 15 episodes combined (65 pages)</li>
+                <li><strong>🧠 Brain Science Infographic</strong> - Visual guide to addiction neurology (HTML format - printable via Ctrl+P)</li>
+                <li><strong>📋 START HERE Welcome Guide</strong> - Your complete roadmap</li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <h3>🚀 Next Steps - Join the Community</h3>
+            <p style="margin-bottom: 25px; color: #cccccc;">Stay motivated with daily content and connect with others on the same journey.</p>
+            
+            <div class="social-buttons">
+                <a href="https://linktr.ee/rebornmethod" class="social-btn" target="_blank" style="background: linear-gradient(135deg, #43E55E 0%, #38B349 100%); border-color: #43E55E;">
+                    🔗 All Links (Linktree)
+                </a>
+                <a href="https://whatsapp.com/channel/0029VbBvKXg1SWsxDAezIW0M" class="social-btn whatsapp" target="_blank">
+                    📱 Join WhatsApp Channel
+                </a>
+                <a href="https://www.instagram.com/rebornmethod.official" class="social-btn" target="_blank">
+                    📸 Follow on Instagram
+                </a>
+            </div>
+        </div>
+
+        <div class="upsell-box">
+            <h3>💪 Ready to Go Deeper?</h3>
+            <p>The STARTER Bundle gives you the foundation. But if you're serious about crushing this addiction for good, the <strong>BASIC Bundle</strong> gives you everything you need to stay on track.</p>
+            
+            <ul class="upsell-features">
+                <li>Everything from STARTER Bundle</li>
+                <li>90-Day Clean Tracker (Excel + PDF)</li>
+                <li>Daily Journal Templates</li>
+                <li>Emergency Urge Action Cards</li>
+                <li>Milestone Certificates</li>
+                <li>Weekly Check-In Sheets</li>
+                <li>Bonus: Success Stories Collection</li>
+            </ul>
+
+            <p style="margin-top: 25px;"><strong>Special Upgrade Price: Only €200 more</strong><br>
+            <span style="font-size: 0.9em; color: #cccccc;">(Normal price: €297 - You already paid €97)</span></p>
+
+            <a href="https://rebornmethod.com" class="upgrade-btn">Upgrade to BASIC Bundle</a>
+        </div>
+
+        <div class="footer">
+            <p><strong>Important:</strong> The charge on your statement will appear as "Digistore24.com"</p>
+            <p style="margin-top: 15px;">Questions? Email us: <a href="mailto:pdm-media@outlook.de">pdm-media@outlook.de</a></p>
+            <p style="margin-top: 20px;">
+                <a href="https://rebornmethod.com/impressum.html">Legal Notice</a> | 
+                <a href="https://rebornmethod.com/datenschutz.html">Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
