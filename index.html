@@ -448,7 +448,7 @@
         <div class="cookie-content">
             <div class="cookie-text">
                 <h4>🍪 Cookie Settings</h4>
-                <p>We use cookies to improve your experience. <a href="javascript:void(0);" onclick="showPrivacy()" style="color:var(--primary-red);">Privacy Policy</a></p>
+                <p>We use cookies to improve your experience. <a href="datenschutz.html" style="color:var(--primary-red);">Privacy Policy</a></p>
             </div>
             <div class="cookie-buttons">
                 <button class="cookie-btn accept" onclick="acceptCookies()">Accept All</button>
@@ -492,8 +492,8 @@
             <div class="footer-bottom">
                 <p>© 2025 Reborn by Patrick Devosse. All rights reserved.</p>
                 <p style="margin-top:0.5rem;">
-                    <a href="javascript:void(0);" onclick="showPrivacy()" style="color:var(--medium-gray);">Privacy Policy</a> | 
-                   <a href="impressum.html" style="color:var(--medium-gray);">Impressum</a> 
+                    <a href="datenschutz.html" style="color:var(--medium-gray);">Privacy Policy</a> | 
+                    <a href="impressum.html" style="color:var(--medium-gray);">Impressum</a> | 
                     <a href="javascript:void(0);" onclick="showTerms()" style="color:var(--medium-gray);">Terms</a>
                 </p>
             </div>
@@ -541,8 +541,6 @@
         window.addEventListener('load',checkCookies);
         
         // Legal modals
-        function showPrivacy(){document.getElementById('legalContent').innerHTML='<h2 style="color:var(--primary-red);margin-bottom:2rem;">Privacy Policy</h2><p>We collect minimal data: name and email (voluntarily provided). All information is strictly confidential and never shared. You can request deletion anytime.</p><p style="margin-top:1rem;"><strong>Contact:</strong> pdm-media@outlook.de</p><p style="margin-top:2rem;opacity:0.8;">Last updated: January 2025</p>';document.getElementById('legalModal').style.display='block'}
-        function showImprint(){document.getElementById('legalContent').innerHTML='<h2 style="color:var(--primary-red);margin-bottom:2rem;">Imprint</h2><p><strong>Reborn - Transformation Coaching</strong><br>Patrick Devosse<br>Germany</p><p style="margin-top:1rem;"><strong>Email:</strong> pdm-media@outlook.de</p><p style="margin-top:2rem;"><strong>Medical Disclaimer:</strong> These programs are not a substitute for professional medical or psychological treatment.</p>';document.getElementById('legalModal').style.display='block'}
         function showTerms(){document.getElementById('legalContent').innerHTML='<h2 style="color:var(--primary-red);margin-bottom:2rem;">Terms & Conditions</h2><p>Patrick Devosse is not a licensed therapist. All programs are based on personal experience. Payment required before access. Audio Course: 14-day money-back guarantee. All content is copyrighted.</p><p style="margin-top:1rem;"><strong>Contact:</strong> pdm-media@outlook.de</p>';document.getElementById('legalModal').style.display='block'}
         function closeModal(){document.getElementById('legalModal').style.display='none'}
         document.addEventListener('click',function(e){if(e.target===document.getElementById('legalModal'))closeModal()});
