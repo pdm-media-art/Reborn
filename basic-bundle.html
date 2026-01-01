@@ -744,25 +744,19 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Digistore24 Checkout URL for BASIC Bundle (Product ID: 658365)
         const DIGISTORE_CHECKOUT_URL = 'https://www.checkout-ds24.com/product/658365';
         
         // Update all CTA buttons with checkout URL
         document.addEventListener('DOMContentLoaded', function() {
-            const ctaButtons = [
-                document.getElementById('mainCTA'),
-                document.getElementById('footerCTA'),
-                document.getElementById('stickyCTABtn'),
-                ...document.querySelectorAll('.cta-button:not(#mainCTA):not(#footerCTA):not(#stickyCTABtn)')
-            ];
+            // Get all buttons with href="#" that should link to checkout
+            const ctaButtons = document.querySelectorAll('a.cta-button[href="#"]');
             
             ctaButtons.forEach(btn => {
-                if (btn && btn.getAttribute('href') === '#') {
-                    btn.setAttribute('href', DIGISTORE_CHECKOUT_URL);
-                    btn.setAttribute('target', '_blank');
-                    btn.setAttribute('rel', 'noopener noreferrer');
-                }
+                btn.setAttribute('href', DIGISTORE_CHECKOUT_URL);
+                btn.setAttribute('target', '_blank');
+                btn.setAttribute('rel', 'noopener noreferrer');
             });
         });
         
@@ -779,4 +773,14 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
