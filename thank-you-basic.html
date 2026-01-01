@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - REBORN BASIC Bundle Purchase Successful!</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-red: #e74c3c;
+            --dark-red: #c0392b;
+            --black: #0a0a0a;
+            --light-gray: #f5f5f5;
+            --gray: #2c2c2c;
+            --gold: #FFD700;
+            --dark-gold: #DAA520;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--black);
+            color: var(--light-gray);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #1a0000 0%, var(--black) 100%);
+            border: 4px solid var(--primary-red);
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+        .header .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+        }
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: var(--light-gray);
+            margin-bottom: 1rem;
+        }
+        .bundle-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--dark-gold) 0%, var(--gold) 100%);
+            color: var(--black);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+        .bundle-info {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .bundle-info .bundle-name {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .bundle-info .file-count {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        .download-section {
+            background: var(--primary-red);
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(231, 76, 60, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(231, 76, 60, 0.4); }
+            50% { box-shadow: 0 15px 50px rgba(231, 76, 60, 0.6); }
+        }
+        .download-section h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .download-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-red);
+            padding: 1.5rem 4rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .download-button:hover {
+            background: var(--black);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .email-fallback {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            display: none;
+        }
+        .email-fallback.show {
+            display: block;
+        }
+        .info-section {
+            background: #1a1a1a;
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-red);
+            margin: 2rem 0;
+        }
+        .info-section h3 {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .info-section ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        .info-section ul li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .info-section ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .next-steps {
+            counter-reset: step-counter;
+        }
+        .step {
+            background: #0f0f0f;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 4rem;
+        }
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gold);
+            color: var(--black);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .step h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .step p {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+        .files-included {
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 3px solid var(--gold);
+            margin: 3rem 0;
+        }
+        .files-included h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .file-category {
+            background: #0f0f0f;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+        }
+        .file-category h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .file-category ul {
+            list-style: none;
+        }
+        .file-category ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        .file-category ul li::before {
+            content: '📄';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+        .upsell-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, var(--black) 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 3px solid var(--primary-red);
+            margin: 3rem 0;
+        }
+        .upsell-section h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .upsell-card {
+            background: #0f0f0f;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid var(--primary-red);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .upsell-card h4 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .upsell-card .price {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        .upsell-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        .upsell-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .upsell-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .upsell-button {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+        .upsell-button:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+        .support-section {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--primary-red);
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .support-section h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+        .important-note {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--primary-red);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        .important-note h4 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 2px solid var(--primary-red);
+            opacity: 0.7;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .download-button { padding: 1.2rem 2.5rem; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="header">
+            <div class="logo">REBORN</div>
+            <div class="success-icon">🎉</div>
+            <h1>Welcome to REBORN BASIC!</h1>
+            <div class="bundle-badge">⭐ COMPLETE RECOVERY SYSTEM</div>
+            <p style="font-size:1.2rem;margin-top:1.5rem;">Your transformation journey begins now</p>
+        </div>
+
+        <div class="bundle-info">
+            <div class="bundle-name">BASIC Bundle - €297</div>
+            <div class="file-count">42 Files Ready for Download</div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2>📥 Download Your Complete System</h2>
+            <p style="color:white;font-size:1.1rem;margin-bottom:2rem;">All 42 files are ready. Click below to download everything.</p>
+            <div id="downloadButtonContainer">
+                <a href="#" id="downloadButton" class="download-button" style="display:none;">
+                    DOWNLOAD ALL 42 FILES
+                </a>
+            </div>
+        </div>
+
+        <!-- Email Fallback -->
+        <div class="email-fallback" id="emailFallback">
+            <h3 style="color:#856404;margin-bottom:1rem;">📧 Check Your Email</h3>
+            <p><strong>Your download link has been sent to your email address.</strong></p>
+            <p style="margin-top:1rem;">If you don't see it within 5 minutes, please check your spam folder or contact support at <strong>pdm-media@outlook.de</strong></p>
+        </div>
+
+        <!-- Important Download Info -->
+        <div class="info-section">
+            <h3>📋 Important Download Information</h3>
+            <ul>
+                <li><strong>Download Validity:</strong> 90 days from purchase date</li>
+                <li><strong>Download Limit:</strong> 5 attempts (save files to your device!)</li>
+                <li><strong>File Format:</strong> MP3 (audio), PDF & HTML (documents)</li>
+                <li><strong>Payment Receipt:</strong> Check email for invoice from Digistore24</li>
+                <li><strong>Privacy:</strong> Bank statement shows "Digistore24.com" only</li>
+            </ul>
+        </div>
+
+        <!-- What You Got -->
+        <div class="files-included">
+            <h3>📦 What's Included in Your BASIC Bundle</h3>
+            
+            <div class="file-category">
+                <h4>🎧 Complete Audio Course (17 Files)</h4>
+                <ul>
+                    <li>Note to the Hearer (Introduction)</li>
+                    <li>Episode 01-15: The Complete 7-Step Method</li>
+                    <li>BONUS: Urge Destroyer Emergency Track</li>
+                </ul>
+            </div>
+
+            <div class="file-category">
+                <h4>📚 Workbook & Resources (3 Files)</h4>
+                <ul>
+                    <li>Complete Workbook - PDF Version (66 pages, printable)</li>
+                    <li>Complete Workbook - HTML Version (digital viewing)</li>
+                    <li>Brain Science Infographic - HTML (print with Ctrl+P)</li>
+                </ul>
+            </div>
+
+            <div class="file-category">
+                <h4>⭐ Accountability Tools - PDF (6 Files)</h4>
+                <ul>
+                    <li>90-Day Clean Tracker (print & hang on wall)</li>
+                    <li>Daily Journal Template (for daily reflection)</li>
+                    <li>Weekly Check-In Sheet (review every Sunday)</li>
+                    <li>Emergency Urge Card (wallet-size, critical moments)</li>
+                    <li>Emergency Contact Card (accountability partners)</li>
+                    <li>Why I Started Card (your personal motivation)</li>
+                </ul>
+            </div>
+
+            <div class="file-category">
+                <h4>⭐ Accountability Tools - HTML (6 Files)</h4>
+                <ul>
+                    <li>Digital versions of all accountability tools</li>
+                    <li>View on computer, tablet, or phone</li>
+                    <li>Print when needed (Ctrl+P)</li>
+                </ul>
+            </div>
+
+            <div class="file-category">
+                <h4>🏆 Milestone Certificates (6 Files)</h4>
+                <ul>
+                    <li>30-Day Certificate - PDF & HTML</li>
+                    <li>60-Day Certificate - PDF & HTML</li>
+                    <li>90-Day Certificate - PDF & HTML</li>
+                    <li>Print, sign, frame when you achieve milestones!</li>
+                </ul>
+            </div>
+
+            <div class="file-category">
+                <h4>📄 Welcome Guide (1 File)</h4>
+                <ul>
+                    <li>START_HERE_WELCOME_BASIC.html</li>
+                    <li>Complete setup guide for all tools</li>
+                </ul>
+            </div>
+
+            <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:rgba(255,215,0,0.1);border-radius:10px;">
+                <p style="font-size:1.2rem;color:var(--gold);"><strong>TOTAL: 42 Files | Value: €318 | You Paid: €297</strong></p>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="info-section">
+            <h3>🚀 Your Next Steps - How to Use BASIC Bundle</h3>
+            <div class="next-steps">
+                <div class="step">
+                    <h4>Open "START_HERE_WELCOME_BASIC.html"</h4>
+                    <p>This complete guide explains how to use every tool in your system effectively.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Print Your Core Accountability Tools</h4>
+                    <p>Print the 90-Day Clean Tracker (hang on wall), Emergency Urge Card (carry in wallet), Emergency Contact Card, and Why I Started Card. Physical = powerful!</p>
+                </div>
+
+                <div class="step">
+                    <h4>Set Up Your Daily Tracking System</h4>
+                    <p>Start using the 90-Day Tracker immediately. Mark Day 1 today! Print several copies of the Daily Journal Template for ongoing use.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Listen to Episode 01</h4>
+                    <p>Begin with the Introduction while you set up your tracking system. Listen on any device.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Complete Workbook Exercises</h4>
+                    <p>Open the PDF or HTML workbook. Complete exercises as you progress through episodes. Writing = transformation.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Daily Practice: Track & Journal</h4>
+                    <p>Every evening: Mark your 90-Day Tracker (✓ for clean day) and fill out your Daily Journal (10-15 minutes).</p>
+                </div>
+
+                <div class="step">
+                    <h4>Weekly Check-Ins Every Sunday</h4>
+                    <p>Complete the Weekly Check-In Sheet to review progress, identify patterns, and plan ahead.</p>
+                </div>
+
+                <div class="step">
+                    <h4>Celebrate Your Milestones!</h4>
+                    <p>At 30, 60, and 90 days clean - print your certificate, sign it, date it, frame it. You earned it!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important Tips -->
+        <div class="important-note">
+            <h4>💡 Pro Tips for Maximum Success</h4>
+            <ul style="margin-top:1rem;">
+                <li style="margin:0.5rem 0;"><strong>Tracker Visibility:</strong> Hang your 90-Day Tracker somewhere you see it multiple times daily</li>
+                <li style="margin:0.5rem 0;"><strong>Emergency Cards:</strong> Keep in your wallet at ALL times - they save you in critical moments</li>
+                <li style="margin:0.5rem 0;"><strong>Be Consistent:</strong> Daily tracking + weekly check-ins = success. Don't skip them.</li>
+                <li style="margin:0.5rem 0;"><strong>Celebrate Progress:</strong> Every clean day counts. Mark that tracker with pride!</li>
+            </ul>
+        </div>
+
+        <!-- Medical Disclaimer -->
+        <div class="important-note">
+            <h4>⚠️ Medical Disclaimer</h4>
+            <p>This program is for educational and motivational purposes. It is not a substitute for professional medical or psychological treatment. If you're experiencing severe mental health issues, please consult a qualified healthcare provider.</p>
+        </div>
+
+        <!-- Upsell to PRO -->
+        <div class="upsell-section">
+            <h3>⭐ Want the Ultimate Recovery System?</h3>
+            <p style="text-align:center;margin-bottom:2rem;">Upgrade to PRO Bundle for complete mastery</p>
+            
+            <div class="upsell-card">
+                <h4>PRO Bundle</h4>
+                <div class="price">€497</div>
+                <p style="margin:1rem 0;">Everything in BASIC +</p>
+                <ul>
+                    <li>Complete Resource Library</li>
+                    <li>Advanced Nutrition Guides</li>
+                    <li>Meditation & Breathwork Programs</li>
+                    <li>Vision Board Templates</li>
+                    <li>Comprehensive Assessment Tools</li>
+                    <li>Relationship Rebuilding Guides</li>
+                    <li>Career & Purpose Worksheets</li>
+                    <li>And much more...</li>
+                </ul>
+                <a href="index.html#courses" class="upsell-button">UPGRADE TO PRO →</a>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div class="support-section">
+            <h3>📧 Need Help?</h3>
+            <p style="margin:1rem 0;">For technical issues, content questions, or upgrade inquiries:</p>
+            <p><strong>Email:</strong> pdm-media@outlook.de</p>
+            <p><strong>Website:</strong> www.rebornmethod.com</p>
+            <p style="margin-top:1.5rem;font-size:0.95rem;">We typically respond within 24 hours on business days.</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>© 2025 REBORN by Patrick Devosse</strong></p>
+            <p style="margin-top:0.5rem;">www.rebornmethod.com | pdm-media@outlook.de</p>
+            <p style="margin-top:1rem;font-size:0.9rem;">You have everything you need. Now go use it. 💪</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Initialize download button
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for download link in URL parameters
+            const downloadLink = getUrlParameter('download') || 
+                               getUrlParameter('ds_download_link') || 
+                               getUrlParameter('download_url');
+            
+            if (downloadLink) {
+                const downloadBtn = document.getElementById('downloadButton');
+                downloadBtn.href = downloadLink;
+                downloadBtn.style.display = 'inline-block';
+            } else {
+                // Show email fallback if no download link
+                document.getElementById('emailFallback').classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
