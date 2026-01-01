@@ -93,7 +93,6 @@
             padding: 30px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            min-height: 80px;
         }
         
         .download-button {
@@ -121,19 +120,6 @@
             color: #ffffff;
             margin-top: 20px;
             opacity: 0.9;
-        }
-        
-        .loading {
-            font-size: 18px;
-            color: #ffffff;
-            padding: 20px;
-        }
-        
-        .email-fallback {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 8px;
-            margin: 20px 0;
         }
         
         /* Content Sections */
@@ -384,32 +370,50 @@
             <p>Your Transformation Starts NOW</p>
         </div>
         
-        <!-- DOWNLOAD SECTION - MOST PROMINENT -->
+        <!-- DOWNLOAD INSTRUCTIONS -->
         <div class="download-box">
-            <h2>📥 YOUR FILES ARE READY!</h2>
-            <p style="font-size: 18px; margin-bottom: 20px;">Click the button below to download all 21 files:</p>
+            <h2>📧 CHECK YOUR EMAIL FOR DOWNLOAD LINK</h2>
+            <p style="font-size: 22px; margin-bottom: 15px; font-weight: bold;">
+                Your download link has been sent to your email!
+            </p>
+            <p style="font-size: 18px; margin-bottom: 25px;">
+                Look for an email from <strong>Digistore24</strong> with your download link for all 21 files.
+            </p>
             
-            <div class="download-links" id="download-container">
-                <div class="loading">⏳ Loading your download link...</div>
+            <div style="background: rgba(204, 0, 0, 0.2); padding: 25px; border-radius: 10px; border-left: 4px solid #cc0000;">
+                <p style="font-size: 16px; margin-bottom: 10px;">
+                    ✓ Check your inbox
+                </p>
+                <p style="font-size: 16px; margin-bottom: 10px;">
+                    ✓ Check your spam/junk folder
+                </p>
+                <p style="font-size: 16px; margin-bottom: 10px;">
+                    ✓ Email subject: "Your Order Confirmation" or similar
+                </p>
+                <p style="font-size: 16px; margin-top: 20px;">
+                    <strong style="color: #cc0000;">Don't see it?</strong> Contact support: <strong>pdm-media@outlook.de</strong>
+                </p>
             </div>
             
-            <div class="download-note">
+            <div class="download-note" style="margin-top: 25px;">
                 <strong>⚠️ IMPORTANT:</strong> Your download link is valid for 90 days and can be used 5 times.<br>
-                Download all files NOW and save them to your computer!
+                Download all files as soon as you receive the email and save them to your computer!
             </div>
         </div>
         
-        <!-- Email Check Alert -->
-        <div class="alert-box">
-            <div class="alert-title">📧 CHECK YOUR EMAIL!</div>
-            <div class="alert-content">
-                You've received a <strong>confirmation email from Digistore24</strong> with:<br>
-                ✓ Your download link (same as above)<br>
-                ✓ Your invoice<br>
-                ✓ Product information<br><br>
-                <strong>Can't find it?</strong> Check your <strong>SPAM folder</strong>!<br><br>
-                If the download button above doesn't appear, you can find your download link in the email from Digistore24.
+        <!-- Payment & Privacy Notice -->
+        <div style="background: linear-gradient(135deg, #2a2000 0%, #1a1400 100%); border: 3px solid #FFD700; padding: 25px; border-radius: 10px; margin: 30px 0; text-align: center;">
+            <div style="font-size: 28px; color: #FFD700; margin-bottom: 15px;">💳</div>
+            <div style="font-size: 22px; font-weight: bold; color: #FFD700; margin-bottom: 15px;">
+                Payment & Privacy Information
             </div>
+            <p style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">
+                Die Abbuchung erfolgt durch Digistore24
+            </p>
+            <p style="font-size: 16px; line-height: 1.8;">
+                Your bank statement will show "<strong>Digistore24.com</strong>" - NOT "REBORN" or "Patrick Devosse".<br>
+                This protects your privacy. Your purchase is completely confidential.
+            </p>
         </div>
         
         <!-- What's Inside -->
@@ -519,7 +523,7 @@
                     <strong style="color: #cc0000;">Privacy:</strong> All downloads are confidential. Your bank statement will only show "Digistore24.com".
                 </p>
                 <p style="margin-bottom: 15px;">
-                    <strong style="color: #cc0000;">Technical Issues?</strong> If the download doesn't work, check your email from Digistore24 or contact us immediately (see below).
+                    <strong style="color: #cc0000;">Technical Issues?</strong> If the download doesn't work, contact us immediately (see below).
                 </p>
                 <p>
                     <strong style="color: #cc0000;">Medical Disclaimer:</strong> This program is educational and motivational. It is not a substitute for professional medical or psychological treatment.
@@ -532,7 +536,7 @@
             <div class="support-title">🆘 NEED HELP?</div>
             <div class="support-info">
                 <strong>Website:</strong> <a href="https://rebornmethod.com" style="color: #cc0000; text-decoration: none;">www.rebornmethod.com</a><br>
-                <strong>Email Support:</strong> <a href="mailto:pdm-media@outlook.de" class="support-email">pdm-media@outlook.de</a><br>
+                <strong>Email Support:</strong> <a href="/cdn-cgi/l/email-protection#e191858ccc8c84858880a18e94958d8e8e8acf8584" class="support-email"><span class="__cf_email__" data-cfemail="fc8c9891d1919998959dbc93898890939397d29899">[email&#160;protected]</span></a><br>
                 <strong>Response Time:</strong> 24-48 hours<br><br>
                 For technical issues, program questions, or upgrade inquiries!
             </div>
@@ -544,76 +548,4 @@
             <p>© 2025 Patrick | www.rebornmethod.com | Payment processed by Digistore24 GmbH</p>
             <p style="margin-top: 15px;">
                 <a href="https://rebornmethod.com/impressum.html" style="color: #666666; text-decoration: none;">Imprint</a> | 
-                <a href="https://rebornmethod.com/datenschutz.html" style="color: #666666; text-decoration: none;">Privacy Policy</a>
-            </p>
-        </div>
-        
-    </div>
-
-    <!-- JavaScript to extract and display download links -->
-    <script>
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // Function to display download link
-        function displayDownloadLink() {
-            const container = document.getElementById('download-container');
-            
-            // Try different parameter names that Digistore24 might use
-            let downloadLink = getUrlParameter('ds_download_link') || 
-                              getUrlParameter('download') || 
-                              getUrlParameter('download_url') ||
-                              getUrlParameter('file_url');
-            
-            // Get order ID for tracking
-            const orderId = getUrlParameter('order_id') || getUrlParameter('transaction_id');
-            
-            if (downloadLink) {
-                // Download link found - display button
-                container.innerHTML = `
-                    <a href="${downloadLink}" class="download-button" target="_blank">
-                        ⬇️ DOWNLOAD ALL FILES NOW
-                    </a>
-                    <p style="font-size: 14px; margin-top: 15px; color: #ffffff;">
-                        Order ID: ${orderId || 'N/A'}<br>
-                        175 MB total • 21 files
-                    </p>
-                `;
-            } else {
-                // No download link in URL - show email fallback
-                container.innerHTML = `
-                    <div class="email-fallback">
-                        <p style="font-size: 18px; margin-bottom: 15px;">
-                            <strong>📧 Your download link has been sent to your email!</strong>
-                        </p>
-                        <p style="font-size: 16px; line-height: 1.8;">
-                            Check your inbox for an email from <strong>Digistore24</strong>.<br>
-                            The email contains your personal download link.<br><br>
-                            <strong>⚠️ Don't see it?</strong> Check your SPAM folder!
-                        </p>
-                    </div>
-                    <p style="font-size: 14px; margin-top: 20px; color: #ffffff; opacity: 0.8;">
-                        If you can't find the email, contact support: 
-                        <a href="mailto:pdm-media@outlook.de" style="color: #ffffff; text-decoration: underline;">
-                            pdm-media@outlook.de
-                        </a>
-                    </p>
-                `;
-            }
-        }
-
-        // Run on page load
-        window.addEventListener('load', displayDownloadLink);
-        
-        // Also run immediately in case load event already fired
-        if (document.readyState === 'complete') {
-            displayDownloadLink();
-        }
-    </script>
-</body>
-</html>
+                <a href="https://rebornmethod.com/datenschutz.htm
