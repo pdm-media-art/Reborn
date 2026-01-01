@@ -374,7 +374,19 @@
         <div class="email-fallback" id="emailFallback">
             <h3 style="color:#856404;margin-bottom:1rem;">📧 Check Your Email</h3>
             <p><strong>Your download link has been sent to your email address.</strong></p>
-            <p style="margin-top:1rem;">If you don't see it within 5 minutes, please check your spam folder or contact support at <strong>pdm-media@outlook.de</strong></p>
+            <p style="margin-top:1rem;">If you don't see it within 5 minutes, please check your spam folder or contact support at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99e9fdf4b4f4fcfdf0f8d9f6ecedf5f6f6f2b7fdfc">[email&#160;protected]</a></strong></p>
+        </div>
+
+        <!-- Payment & Privacy Notice -->
+        <div class="important-note" style="background: rgba(255, 215, 0, 0.1); border: 2px solid var(--gold); padding: 1.5rem; border-radius: 10px; margin: 2rem 0;">
+            <h4 style="color: var(--gold); margin-bottom: 1rem;">💳 Payment & Privacy Information</h4>
+            <p style="font-size: 1.05rem; margin-bottom: 0.5rem;">
+                <strong>Die Abbuchung erfolgt durch Digistore24</strong>
+            </p>
+            <p style="font-size: 0.95rem;">
+                Your bank statement will show "<strong>Digistore24.com</strong>" - NOT "REBORN" or "Patrick Devosse". 
+                This protects your privacy. Your purchase is completely confidential.
+            </p>
         </div>
 
         <!-- Important Download Info -->
@@ -385,7 +397,6 @@
                 <li><strong>Download Limit:</strong> 5 attempts (save files to your device!)</li>
                 <li><strong>File Format:</strong> MP3 (audio), PDF & HTML (documents)</li>
                 <li><strong>Payment Receipt:</strong> Check email for invoice from Digistore24</li>
-                <li><strong>Privacy:</strong> Bank statement shows "Digistore24.com" only</li>
             </ul>
         </div>
 
@@ -545,20 +556,20 @@
         <div class="support-section">
             <h3>📧 Need Help?</h3>
             <p style="margin:1rem 0;">For technical issues, content questions, or upgrade inquiries:</p>
-            <p><strong>Email:</strong> pdm-media@outlook.de</p>
+            <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f8889c95d5959d9c9199b8978d8c94979793d69c9d">[email&#160;protected]</a></p>
             <p><strong>Website:</strong> www.rebornmethod.com</p>
             <p style="margin-top:1.5rem;font-size:0.95rem;">We typically respond within 24 hours on business days.</p>
         </div>
 
         <div class="footer">
             <p><strong>© 2025 REBORN by Patrick Devosse</strong></p>
-            <p style="margin-top:0.5rem;">www.rebornmethod.com | pdm-media@outlook.de</p>
+            <p style="margin-top:0.5rem;">www.rebornmethod.com | <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7606121b5b1b13121f17361903021a19191d581213">[email&#160;protected]</a></p>
             <p style="margin-top:1rem;font-size:0.9rem;">You have everything you need. Now go use it. 💪</p>
         </div>
 
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Get URL parameters
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -572,17 +583,4 @@
             // Check for download link in URL parameters
             const downloadLink = getUrlParameter('download') || 
                                getUrlParameter('ds_download_link') || 
-                               getUrlParameter('download_url');
-            
-            if (downloadLink) {
-                const downloadBtn = document.getElementById('downloadButton');
-                downloadBtn.href = downloadLink;
-                downloadBtn.style.display = 'inline-block';
-            } else {
-                // Show email fallback if no download link
-                document.getElementById('emailFallback').classList.add('show');
-            }
-        });
-    </script>
-</body>
-</html>
+                               getUr
