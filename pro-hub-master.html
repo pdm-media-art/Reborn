@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REBORN PRO Hub - Your Recovery Platform</title>
+    <meta name="robots" content="noindex, nofollow">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-red: #e74c3c;
+            --dark-red: #c0392b;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --gray: #2c2c2c;
+            --light-gray: #f5f5f5;
+            --gold: #FFD700;
+            --platinum: #E5E4E2;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--black);
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        .hub-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #1a0000 0%, var(--black) 100%);
+            border-bottom: 3px solid var(--primary-red);
+        }
+        
+        .hub-header h1 {
+            font-size: 3rem;
+            color: var(--platinum);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .hub-header .tagline {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            opacity: 0.8;
+        }
+        
+        /* Privacy Info Box */
+        .privacy-info {
+            background: rgba(52, 152, 219, 0.1);
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .privacy-info h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        /* Quick Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: var(--dark-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--gray);
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .label {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Blocks Grid */
+        .blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .block-card {
+            background: var(--dark-gray);
+            border: 3px solid var(--gray);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .block-card:hover {
+            border-color: var(--platinum);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(229, 228, 226, 0.2);
+        }
+        
+        .block-card .block-number {
+            display: inline-block;
+            background: var(--platinum);
+            color: var(--black);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .block-card h3 {
+            color: var(--platinum);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .block-card p {
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .block-card .resources {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+        
+        /* Modal/Banner Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: var(--dark-gray);
+            border: 3px solid var(--primary-red);
+            border-radius: 15px;
+            padding: 3rem;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal h2 {
+            color: var(--platinum);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .modal p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .modal ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .modal ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary-red);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-primary:hover {
+            background: var(--dark-red);
+        }
+        
+        .btn-secondary {
+            background: var(--gray);
+            color: var(--light-gray);
+        }
+        
+        .btn-secondary:hover {
+            background: #3a3a3a;
+        }
+        
+        /* Warning Box */
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid var(--primary-red);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .warning-box h4 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer Actions */
+        .footer-actions {
+            background: var(--dark-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .footer-actions h3 {
+            color: var(--platinum);
+            margin-bottom: 1.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hub-header h1 {
+                font-size: 2rem;
+            }
+            .blocks-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Privacy Notice Modal -->
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <h2>🔒 Privacy & Data Information</h2>
+            <p>Welcome to your REBORN PRO Hub. Your privacy is our priority.</p>
+            
+            <p><strong>This platform is completely private:</strong></p>
+            <ul>
+                <li>✓ No registration required</li>
+                <li>✓ No personal data collected</li>
+                <li>✓ No cookies for tracking</li>
+                <li>✓ All data stays in YOUR browser only</li>
+            </ul>
+            
+            <p><strong>How we store your progress:</strong></p>
+            <p>We use browser storage (localStorage) to save your progress, tracker data, and notes. This data:</p>
+            <ul>
+                <li>✓ Stays ONLY in your browser</li>
+                <li>✓ Is NEVER sent to our servers</li>
+                <li>✓ Can be deleted by you anytime</li>
+                <li>✓ Can be exported as PDF</li>
+            </ul>
+            
+            <p style="font-size:0.9rem;opacity:0.8;margin-top:1.5rem;">
+                By continuing, you acknowledge that you understand how your data is stored locally.
+            </p>
+            
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="showPrivacyPolicy()">Read Full Policy</button>
+                <button class="btn btn-primary" onclick="acceptPrivacy()">I Understand</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Medical Disclaimer Modal -->
+    <div class="modal-overlay" id="medicalModal">
+        <div class="modal">
+            <h2>⚕️ Important Medical Disclaimer</h2>
+            
+            <p><strong>This program is for EDUCATIONAL purposes only.</strong></p>
+            
+            <div class="warning-box">
+                <h4>⚠️ This is NOT:</h4>
+                <ul>
+                    <li>Medical advice or treatment</li>
+                    <li>Therapy or professional counseling</li>
+                    <li>A substitute for healthcare services</li>
+                    <li>Suitable for mental health emergencies</li>
+                </ul>
+            </div>
+            
+            <p><strong>Important:</strong></p>
+            <ul>
+                <li>If you have mental health concerns, please consult a qualified healthcare professional</li>
+                <li>If you're experiencing a crisis, contact emergency services or a crisis hotline</li>
+                <li>This content does not create a therapist-patient relationship</li>
+            </ul>
+            
+            <p style="margin-top:1.5rem;">
+                <strong>By continuing, you acknowledge:</strong><br>
+                This is educational content only and you will seek professional help if needed.
+            </p>
+            
+            <div class="modal-buttons">
+                <button class="btn btn-primary" onclick="acceptMedical()">I Understand & Accept</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nutrition/Fasting Warning Modal -->
+    <div class="modal-overlay" id="nutritionModal">
+        <div class="modal">
+            <h2>🥗 Nutrition & Fasting Warning</h2>
+            
+            <div class="warning-box">
+                <h4>⚠️ IMPORTANT HEALTH NOTICE</h4>
+                <p>Fasting and dietary changes can significantly affect your health.</p>
+            </div>
+            
+            <p><strong>DO NOT attempt fasting if you:</strong></p>
+            <ul>
+                <li>Are under 18 years old</li>
+                <li>Have diabetes or blood sugar issues</li>
+                <li>Are pregnant or breastfeeding</li>
+                <li>Have a history of eating disorders</li>
+                <li>Take medication (consult your doctor first)</li>
+                <li>Have any chronic health conditions</li>
+            </ul>
+            
+            <p style="margin-top:1.5rem;"><strong>Always consult your healthcare provider before:</strong></p>
+            <ul>
+                <li>Starting any fasting protocol</li>
+                <li>Making significant dietary changes</li>
+                <li>Taking new supplements</li>
+            </ul>
+            
+            <p style="font-size:0.95rem;margin-top:1.5rem;opacity:0.9;">
+                This is educational information only. Individual results vary. Listen to your body and seek professional guidance.
+            </p>
+            
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeNutritionWarning()">Back to Hub</button>
+                <button class="btn btn-primary" onclick="acceptNutrition()">I Understand</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="hub-header">
+        <h1>🔥 REBORN PRO HUB</h1>
+        <p class="tagline">Your Complete Recovery Platform</p>
+    </div>
+    
+    <div class="container">
+        <!-- Privacy Info Box -->
+        <div class="privacy-info">
+            <h3>🔒 Your Privacy is Protected</h3>
+            <p>No login required. Your data stays on your device. <a href="#" onclick="showPrivacyPolicy(); return false;" style="color:#3498db;text-decoration:underline;">Learn more</a></p>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number" id="cleanDays">0</div>
+                <div class="label">Clean Days</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">6</div>
+                <div class="label">Training Blocks</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">89+</div>
+                <div class="label">Resources</div>
+            </div>
+            <div class="stat-card">
+                <div class="number" id="progressPercent">0%</div>
+                <div class="label">Progress</div>
+            </div>
+        </div>
+        
+        <!-- Quick Access Section -->
+        <section style="margin:3rem 0;">
+            <h2 style="color:var(--platinum);margin-bottom:1.5rem;">⚡ Quick Access</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;">
+                <div style="background:var(--dark-gray);padding:1.5rem;border-radius:10px;border:2px solid var(--gray);">
+                    <h3 style="color:var(--primary-red);margin-bottom:1rem;">🚨 Emergency Tools</h3>
+                    <p>Urge Surfing Meditation, Emergency Cards, Crisis Support</p>
+                    <a href="#block3" style="color:var(--platinum);text-decoration:underline;">Access Now →</a>
+                </div>
+                <div style="background:var(--dark-gray);padding:1.5rem;border-radius:10px;border:2px solid var(--gray);">
+                    <h3 style="color:var(--primary-red);margin-bottom:1rem;">📅 Daily Tracker</h3>
+                    <p>Mark your clean days, build your streak, track progress</p>
+                    <a href="#tracker" style="color:var(--platinum);text-decoration:underline;">Track Today →</a>
+                </div>
+                <div style="background:var(--dark-gray);padding:1.5rem;border-radius:10px;border:2px solid var(--gray);">
+                    <h3 style="color:var(--primary-red);margin-bottom:1rem;">📝 Journal</h3>
+                    <p>Daily reflection, mood tracking, trigger analysis</p>
+                    <a href="#journal" style="color:var(--platinum);text-decoration:underline;">Write Today →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- The 6 Blocks -->
+        <section style="margin:4rem 0;">
+            <h2 style="color:var(--platinum);margin-bottom:2rem;font-size:2rem;">📚 Your 6 Training Blocks</h2>
+            
+            <div class="blocks-grid">
+                <!-- Block 1 -->
+                <div class="block-card" onclick="openBlock(1)">
+                    <div class="block-number">BLOCK 1</div>
+                    <h3>🛡️ Advanced Recovery</h3>
+                    <p>Relapse prevention, relationship repair, trigger analysis, and advanced strategies.</p>
+                    <div class="resources">8 Resources Available →</div>
+                </div>
+                
+                <!-- Block 2 -->
+                <div class="block-card" onclick="openBlock(2)">
+                    <div class="block-number">BLOCK 2</div>
+                    <h3>🥗 Nutrition & Health</h3>
+                    <p>Brain health nutrition, meal plans, fasting protocols, supplement guides.</p>
+                    <div class="resources">8 Resources Available →</div>
+                </div>
+                
+                <!-- Block 3 -->
+                <div class="block-card" onclick="openBlock(3)" id="block3">
+                    <div class="block-number">BLOCK 3</div>
+                    <h3>🧘 Meditation & Mindfulness</h3>
+                    <p>Guided meditations, breathing techniques, morning routines, mindfulness practices.</p>
+                    <div class="resources">8 Resources (4 Audios) →</div>
+                </div>
+                
+                <!-- Block 4 -->
+                <div class="block-card" onclick="openBlock(4)">
+                    <div class="block-number">BLOCK 4</div>
+                    <h3>🎯 Vision & Goal Setting</h3>
+                    <p>Vision boards, identity transformation, goal planning, values clarification.</p>
+                    <div class="resources">8 Resources Available →</div>
+                </div>
+                
+                <!-- Block 5 -->
+                <div class="block-card" onclick="openBlock(5)">
+                    <div class="block-number">BLOCK 5</div>
+                    <h3>📊 Assessment & Tracking</h3>
+                    <p>Progress assessments, advanced trackers, habit monitoring, accountability tools.</p>
+                    <div class="resources">8 Resources Available →</div>
+                </div>
+                
+                <!-- Block 6 -->
+                <div class="block-card" onclick="openBlock(6)">
+                    <div class="block-number">BLOCK 6</div>
+                    <h3>🎁 Bonus & Premium</h3>
+                    <p>Success stories, partner guide, reading list, long-term maintenance strategies.</p>
+                    <div class="resources">7 Resources Available →</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BASIC Content Access -->
+        <section style="margin:4rem 0;">
+            <h2 style="color:var(--gold);margin-bottom:2rem;font-size:2rem;">⭐ BASIC Bundle Content (Also Included)</h2>
+            <div style="background:var(--dark-gray);padding:2rem;border-radius:15px;border:3px solid var(--gold);">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+                    <div>
+                        <h4 style="color:var(--gold);margin-bottom:0.5rem;">🎧 Audio Course</h4>
+                        <p>15 Episodes + Bonus</p>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--gold);margin-bottom:0.5rem;">📝 Workbook</h4>
+                        <p>Complete 66-page guide</p>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--gold);margin-bottom:0.5rem;">📅 90-Day Tracker</h4>
+                        <p>Visual progress calendar</p>
+                    </div>
+                    <div>
+                        <h4 style="color:var(--gold);margin-bottom:0.5rem;">🏆 Certificates</h4>
+                        <p>30/60/90 Day Milestones</p>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:2rem;">
+                    <button class="btn btn-primary" onclick="alert('BASIC content will be accessible via download link from Digistore24 email')">Access BASIC Files</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+            <h3>🔧 Hub Actions</h3>
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="exportAllData()">📄 Export All Data as PDF</button>
+                <button class="btn btn-secondary" onclick="viewPrivacy()">🔒 Privacy Policy</button>
+                <button class="btn btn-secondary" onclick="clearAllData()" style="background:#e74c3c;">🗑️ Clear All Data</button>
+            </div>
+            <p style="margin-top:1.5rem;opacity:0.7;font-size:0.9rem;">
+                Need help? Contact: <strong>pdm-media@outlook.de</strong>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // DSGVO Compliance: localStorage keys
+        const STORAGE_KEYS = {
+            privacyAccepted: 'reborn_privacy_accepted',
+            medicalAccepted: 'reborn_medical_accepted',
+            nutritionAccepted: 'reborn_nutrition_accepted',
+            cleanDays: 'reborn_clean_days',
+            progress: 'reborn_progress'
+        };
+        
+        // Check and show modals on first visit
+        window.addEventListener('DOMContentLoaded', function() {
+            // Privacy Notice
+            if(!localStorage.getItem(STORAGE_KEYS.privacyAccepted)) {
+                document.getElementById('privacyModal').classList.add('active');
+            }
+            // Medical Disclaimer (after privacy)
+            else if(!localStorage.getItem(STORAGE_KEYS.medicalAccepted)) {
+                document.getElementById('medicalModal').classList.add('active');
+            }
+            
+            // Load stats
+            updateStats();
+        });
+        
+        function acceptPrivacy() {
+            localStorage.setItem(STORAGE_KEYS.privacyAccepted, 'true');
+            document.getElementById('privacyModal').classList.remove('active');
+            
+            // Show medical disclaimer next
+            if(!localStorage.getItem(STORAGE_KEYS.medicalAccepted)) {
+                document.getElementById('medicalModal').classList.add('active');
+            }
+        }
+        
+        function acceptMedical() {
+            localStorage.setItem(STORAGE_KEYS.medicalAccepted, 'true');
+            document.getElementById('medicalModal').classList.remove('active');
+        }
+        
+        function acceptNutrition() {
+            localStorage.setItem(STORAGE_KEYS.nutritionAccepted, 'true');
+            document.getElementById('nutritionModal').classList.remove('active');
+            // Actually open Block 2 content here
+            alert('Opening Nutrition & Health Block...');
+        }
+        
+        function closeNutritionWarning() {
+            document.getElementById('nutritionModal').classList.remove('active');
+        }
+        
+        function showPrivacyPolicy() {
+            alert('Full Privacy Policy:\n\nPRIVACY POLICY - REBORN PRO Hub\n\n1. DATA COLLECTION\nWe do NOT collect personal data.\n\n2. LOCAL STORAGE\nWe use browser localStorage to save your progress. This data stays ONLY in your browser and is NEVER sent to our servers.\n\n3. YOUR RIGHTS\nYou can delete all data anytime using the "Clear All Data" button.\n\nContact: pdm-media@outlook.de');
+        }
+        
+        function openBlock(blockNumber) {
+            // Block 2 requires nutrition disclaimer
+            if(blockNumber === 2 && !localStorage.getItem(STORAGE_KEYS.nutritionAccepted)) {
+                document.getElementById('nutritionModal').classList.add('active');
+                return;
+            }
+            
+            // TODO: Navigate to block page
+            alert('Opening Block ' + blockNumber + '...\n\n(Block pages will be created next)');
+        }
+        
+        function updateStats() {
+            // Load from localStorage
+            const cleanDays = parseInt(localStorage.getItem(STORAGE_KEYS.cleanDays) || '0');
+            const progress = parseInt(localStorage.getItem(STORAGE_KEYS.progress) || '0');
+            
+            document.getElementById('cleanDays').textContent = cleanDays;
+            document.getElementById('progressPercent').textContent = progress + '%';
+        }
+        
+        function exportAllData() {
+            alert('PDF Export feature coming soon!\n\nThis will export:\n- Your tracker data\n- Your journal entries\n- Your progress stats\n\nAll generated locally in your browser.');
+        }
+        
+        function viewPrivacy() {
+            showPrivacyPolicy();
+        }
+        
+        function clearAllData() {
+            if(confirm('⚠️ WARNING!\n\nThis will delete ALL your data:\n- Progress tracking\n- Journal entries\n- Notes\n\nThis CANNOT be undone!\n\nAre you sure?')) {
+                // Clear all REBORN data
+                Object.values(STORAGE_KEYS).forEach(key => {
+                    localStorage.removeItem(key);
+                });
+                
+                alert('✓ All data cleared!\n\nReloading hub...');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
