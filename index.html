@@ -1,3 +1,6 @@
+Hier ist dein kompletter Code, einmal korrigiert und mit dem Klaviyo-Timer richtig eingefügt – inhaltlich habe ich nichts „umgebaut“, nur den kaputten Teil am Ende repariert und das neue Script korrekt platziert:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -532,13 +535,24 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{
+            a.addEventListener('click',function(e){
+                e.preventDefault();
+                const t=document.querySelector(this.getAttribute('href'));
+                if(t)t.scrollIntoView({behavior:'smooth'})
+            })
+        });
         
         // Mobile menu
         function toggleMobileMenu(){document.querySelector('nav').classList.toggle('mobile-active')}
-        document.querySelectorAll('nav ul a').forEach(a=>{a.addEventListener('click',()=>{document.querySelector('nav').classList.remove('mobile-active')})});
+        document.querySelectorAll('nav ul a').forEach(a=>{
+            a.addEventListener('click',()=>{
+                document.querySelector('nav').classList.remove('mobile-active')
+            })
+        });
         
         // Contact form
         document.getElementById('contactForm').addEventListener('submit',function(e){
@@ -553,29 +567,68 @@
         });
         
         // Fade in animation
-        const observer=new IntersectionObserver(function(e){e.forEach(t=>{if(t.isIntersecting){t.target.style.opacity='1';t.target.style.transform='translateY(0)'}})},{threshold:0.1});
-        document.querySelectorAll('.fade-in-up').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.8s ease-out, transform 0.8s ease-out';observer.observe(el)});
+        const observer=new IntersectionObserver(function(entries){
+            entries.forEach(t=>{
+                if(t.isIntersecting){
+                    t.target.style.opacity='1';
+                    t.target.style.transform='translateY(0)'
+                }
+            })
+        },{threshold:0.1});
+        document.querySelectorAll('.fade-in-up').forEach(el=>{
+            el.style.opacity='0';
+            el.style.transform='translateY(30px)';
+            el.style.transition='opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el)
+        });
         
         // Nav scroll effect
-        window.addEventListener('scroll',()=>{const nav=document.querySelector('nav');if(window.pageYOffset>100){nav.style.background='rgba(10,10,10,0.95)';nav.style.backdropFilter='blur(10px)'}else{nav.style.background='linear-gradient(135deg,var(--black) 0%,var(--gray) 100%)'}});
+        window.addEventListener('scroll',()=>{
+            const nav=document.querySelector('nav');
+            if(window.pageYOffset>100){
+                nav.style.background='rgba(10,10,10,0.95)';
+                nav.style.backdropFilter='blur(10px)'
+            }else{
+                nav.style.background='linear-gradient(135deg,var(--black) 0%,var(--gray) 100%)'
+            }
+        });
         
         // Cookie consent
-        function checkCookies(){if(!localStorage.getItem('cookieConsent'))setTimeout(()=>document.getElementById('cookieConsent').classList.add('show'),1000)}
-        function acceptCookies(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookieConsent').classList.remove('show')}
-        function declineCookies(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookieConsent').classList.remove('show')}
+        function checkCookies(){
+            if(!localStorage.getItem('cookieConsent'))
+                setTimeout(()=>document.getElementById('cookieConsent').classList.add('show'),1000)
+        }
+        function acceptCookies(){
+            localStorage.setItem('cookieConsent','accepted');
+            document.getElementById('cookieConsent').classList.remove('show')
+        }
+        function declineCookies(){
+            localStorage.setItem('cookieConsent','declined');
+            document.getElementById('cookieConsent').classList.remove('show')
+        }
         window.addEventListener('load',checkCookies);
         
         // Legal modals
-        function showTerms(){document.getElementById('legalContent').innerHTML='<h2 style="color:var(--primary-red);margin-bottom:2rem;">Terms & C
-            <script>
-  // Klaviyo-Formular nach 5 Sekunden anzeigen
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      window._klOnsite = window._klOnsite || [];
-      window._klOnsite.push(['openForm', 'Ve5zVr']); // deine Formular-ID
-    }, 5000); // 5 Sekunden
-  });
-</script>
+        function showTerms(){
+            document.getElementById('legalContent').innerHTML =
+                '<h2 style="color:var(--primary-red);margin-bottom:2rem;">Terms & Conditions</h2>' +
+                '<p style="margin-bottom:1rem;">Here you can add your terms and conditions content.</p>';
+            document.getElementById('legalModal').style.display='block';
+        }
+        function closeModal(){
+            document.getElementById('legalModal').style.display='none';
+        }
+    </script>
+
+    <!-- KLAVIYO: Formular nach 5 Sekunden anzeigen -->
+    <script>
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          window._klOnsite = window._klOnsite || [];
+          window._klOnsite.push(['openForm', 'Ve5zVr']); // deine Formular-ID
+        }, 5000); // 5 Sekunden
+      });
+    </script>
 
 </body>
 </html>
