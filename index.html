@@ -517,22 +517,14 @@
             <div class="footer-bottom">
                 <p>© 2026 Reborn by Patrick Devosse. All rights reserved.</p>
                 <p style="margin-top:0.5rem;">
-                    <a href="datenschutz.html" style="color:var(--medium-gray);">Privacy Policy</a> | 
-                    <a href="impressum.html" style="color:var(--medium-gray);">Impressum</a> | 
-                    <a href="javascript:void(0);" onclick="showTerms()" style="color:var(--medium-gray);">Terms</a>
+                    <a href="datenschutz.html" style="color:var(--medium-gray);">Datenschutz</a> | 
+                    <a href="privacy-policy.html" style="color:var(--medium-gray);">Privacy Policy</a> | 
+                    <a href="impressum.html" style="color:var(--medium-gray);">Impressum</a>
                 </p>
             </div>
         </div>
     </footer>
 
-    <div id="legalModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:10000;overflow-y:auto;">
-        <div style="max-width:900px;margin:2rem auto;background:#1a1a1a;border-radius:15px;padding:3rem;position:relative;">
-            <button onclick="closeModal()" style="position:absolute;top:1rem;right:1rem;background:var(--primary-red);color:white;border:none;padding:0.5rem 1rem;border-radius:5px;cursor:pointer;font-weight:bold;">✕</button>
-            <div id="legalContent"></div>
-        </div>
-    </div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -604,17 +596,6 @@
             document.getElementById('cookieConsent').classList.remove('show')
         }
         window.addEventListener('load',checkCookies);
-        
-        // Legal modals
-        function showTerms(){
-            document.getElementById('legalContent').innerHTML =
-                '<h2 style="color:var(--primary-red);margin-bottom:2rem;">Terms & Conditions</h2>' +
-                '<p style="margin-bottom:1rem;">Here you can add your terms and conditions content.</p>';
-            document.getElementById('legalModal').style.display='block';
-        }
-        function closeModal(){
-            document.getElementById('legalModal').style.display='none';
-        }
     </script>
 
     <!-- KLAVIYO: Formular nach 5 Sekunden anzeigen -->
