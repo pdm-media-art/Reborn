@@ -3,191 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Welcome to BASIC Bundle! | REBORN</title>
+    <title>🎉 UPGRADE to BASIC - Special Offer | REBORN</title>
     <meta name="robots" content="noindex, nofollow">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary-red:#e74c3c;--dark-red:#c0392b;--black:#0a0a0a;--light-gray:#f5f5f5;--green:#2ecc71}
+        :root{--primary-red:#e74c3c;--dark-red:#c0392b;--black:#0a0a0a;--light-gray:#f5f5f5;--gold:#FFD700}
         body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--black);color:var(--light-gray);line-height:1.6}
-        .container{max-width:900px;margin:0 auto;padding:2rem}
-        .hero{text-align:center;padding:4rem 2rem;background:linear-gradient(135deg,var(--dark-red),var(--primary-red));color:white;border-radius:15px;margin-bottom:3rem}
-        .hero .checkmark{font-size:5rem;margin-bottom:1rem;animation:scale 0.5s ease-out}
-        @keyframes scale{from{transform:scale(0)}to{transform:scale(1)}}
+        .container{max-width:1000px;margin:0 auto;padding:2rem}
+        .hero{text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,#1a1a1a,var(--black));border-bottom:3px solid var(--primary-red)}
         .hero h1{font-size:3rem;margin-bottom:1rem}
-        .success-box{background:var(--green);color:white;padding:2rem;border-radius:10px;text-align:center;margin:2rem 0;box-shadow:0 4px 20px rgba(46,204,113,0.3)}
-        .success-box h2{font-size:1.8rem;margin-bottom:1rem}
-        .info-box{background:#1a1a1a;padding:2.5rem;border-radius:15px;margin:2rem 0;border-left:5px solid var(--primary-red)}
-        .info-box h2{color:var(--primary-red);font-size:2rem;margin-bottom:1.5rem}
-        .info-box p{font-size:1.1rem;line-height:1.8;margin-bottom:1rem}
-        .info-box ul{margin:1.5rem 0;padding-left:2rem}
-        .info-box ul li{margin:0.8rem 0;font-size:1.1rem}
-        .warning-box{background:rgba(231,76,60,0.1);border:2px solid var(--primary-red);padding:2rem;border-radius:10px;margin:2rem 0}
-        .warning-box h4{color:var(--primary-red);margin-bottom:1rem;font-size:1.3rem}
-        .steps{margin:3rem 0}
-        .steps h2{text-align:center;color:var(--primary-red);font-size:2.2rem;margin-bottom:3rem}
-        .step{background:#1a1a1a;padding:2rem;border-radius:10px;margin:1.5rem 0;border-left:5px solid var(--primary-red);display:flex;gap:2rem}
-        .step-number{background:var(--primary-red);color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:bold;flex-shrink:0}
-        .step-content h3{color:var(--primary-red);font-size:1.5rem;margin-bottom:0.5rem}
-        .whatsapp-box{background:linear-gradient(135deg,#25D366,#128C7E);padding:2.5rem;border-radius:15px;text-align:center;color:white;margin:3rem 0}
-        .whatsapp-box h3{font-size:2rem;margin-bottom:1rem}
-        .whatsapp-btn{display:inline-block;background:white;color:#25D366;padding:1rem 2rem;text-decoration:none;border-radius:50px;font-weight:bold;font-size:1.2rem;transition:all 0.3s}
-        .whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.3)}
-        .support-box{background:#1a1a1a;padding:2.5rem;border-radius:10px;text-align:center;margin:3rem 0;border:2px solid var(--primary-red)}
-        .support-box h3{color:var(--primary-red);font-size:1.8rem;margin-bottom:1rem}
-        .support-box a{color:var(--primary-red);text-decoration:none;font-weight:bold;font-size:1.2rem}
-        .support-box a:hover{text-decoration:underline}
-        .digistore-notice{background:#2c2c2c;border:2px solid #FFD700;padding:1.5rem;border-radius:10px;margin:2rem 0;text-align:center}
-        .digistore-notice p{font-size:1rem;color:#FFD700;font-weight:bold}
+        .hero .highlight{color:var(--primary-red)}
+        .progress-bar-container{max-width:600px;margin:2rem auto;background:#333;border-radius:50px;height:40px;position:relative;overflow:hidden}
+        .progress-bar{background:linear-gradient(90deg,var(--primary-red),#ff6b6b);height:100%;width:30%;transition:width 2s ease}
+        .progress-bar.full{width:100%}
+        .progress-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:bold;z-index:10;font-size:1.1rem}
+        .countdown{background:linear-gradient(135deg,var(--dark-red),var(--primary-red));padding:2rem;border-radius:15px;margin:2rem 0;text-align:center;color:white;box-shadow:0 8px 25px rgba(231,76,60,0.4)}
+        .countdown h3{font-size:1.5rem;margin-bottom:1rem}
+        .timer{display:flex;justify-content:center;gap:1.5rem;font-size:2.5rem;font-weight:bold}
+        .timer span{background:rgba(0,0,0,0.3);padding:1rem 1.5rem;border-radius:10px;min-width:80px}
+        .missing{background:#1a1a1a;padding:3rem 2rem;border-radius:15px;margin:3rem 0;border-left:5px solid var(--primary-red)}
+        .missing h2{color:var(--primary-red);font-size:2.2rem;margin-bottom:2rem}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+        .feature-card{background:var(--black);padding:2rem;border-radius:10px;border:2px solid #333;transition:all 0.3s}
+        .feature-card:hover{border-color:var(--primary-red);transform:translateY(-5px)}
+        .feature-card .icon{font-size:3rem;margin-bottom:1rem}
+        .feature-card h3{color:var(--primary-red);margin-bottom:1rem;font-size:1.4rem}
+        .comparison{background:#1a1a1a;padding:3rem 2rem;border-radius:15px;margin:3rem 0}
+        .comparison h2{text-align:center;color:var(--primary-red);font-size:2.2rem;margin-bottom:3rem}
+        .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+        .plan{background:var(--black);padding:2rem;border-radius:10px;border:2px solid #333;position:relative}
+        .plan.highlight{border-color:var(--gold);box-shadow:0 0 30px rgba(255,215,0,0.3)}
+        .plan-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);padding:0.5rem 1.5rem;border-radius:20px;font-weight:bold}
+        .plan h3{text-align:center;font-size:1.8rem;margin-bottom:1rem;color:var(--primary-red)}
+        .plan .price{text-align:center;font-size:2.5rem;font-weight:bold;margin:1.5rem 0}
+        .plan ul{list-style:none;margin-top:1.5rem}
+        .plan ul li{padding:0.8rem 0;padding-left:2rem;position:relative}
+        .plan ul li::before{content:'✓';position:absolute;left:0;color:#2ecc71;font-weight:bold;font-size:1.3rem}
+        .plan ul li.no::before{content:'✗';color:#999}
+        .plan ul li.no{opacity:0.4}
+        .upgrade-box{background:linear-gradient(135deg,var(--dark-red),var(--primary-red));padding:3rem;border-radius:15px;text-align:center;margin:3rem 0;color:white;box-shadow:0 10px 40px rgba(231,76,60,0.5)}
+        .upgrade-box h2{font-size:2.5rem;margin-bottom:1rem}
+        .upgrade-box .savings{font-size:1.5rem;color:var(--gold);font-weight:bold;margin-bottom:2rem}
+        .price-breakdown{background:rgba(0,0,0,0.3);padding:2rem;border-radius:10px;max-width:500px;margin:2rem auto}
+        .price-row{display:flex;justify-content:space-between;padding:0.8rem 0;font-size:1.2rem;border-bottom:1px solid rgba(255,255,255,0.2)}
+        .price-row.total{border-top:3px solid white;border-bottom:none;font-size:1.8rem;font-weight:bold;color:var(--gold);margin-top:1rem;padding-top:1.5rem}
+        .cta-button{display:inline-block;background:var(--gold);color:var(--black);padding:1.5rem 3rem;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;margin:1rem;transition:all 0.3s;box-shadow:0 6px 20px rgba(255,215,0,0.4)}
+        .cta-button:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,215,0,0.6)}
+        .cta-button.secondary{background:transparent;border:3px solid white;color:white}
+        .cta-button.secondary:hover{background:white;color:var(--black)}
+        .guarantee{background:#1a1a1a;padding:2rem;border-radius:10px;border:2px solid #2ecc71;margin:3rem 0;text-align:center}
+        .guarantee h3{color:#2ecc71;font-size:1.8rem;margin-bottom:1rem}
+        .testimonial{background:#1a1a1a;padding:2rem;border-radius:10px;border-left:4px solid var(--primary-red);margin:1.5rem 0}
+        .testimonial p{font-style:italic;margin-bottom:1rem;line-height:1.8}
+        .testimonial .author{color:var(--primary-red);font-weight:bold}
         @media(max-width:768px){
             .hero h1{font-size:2rem}
-            .hero .checkmark{font-size:3.5rem}
-            .step{flex-direction:column}
+            .comparison-grid{grid-template-columns:1fr}
+            .timer{font-size:1.8rem;gap:1rem}
+            .features-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="container">
-            <div class="checkmark">✓</div>
-            <h1>🎉 CONGRATULATIONS!</h1>
-            <p>You've Successfully Upgraded to BASIC Bundle</p>
-            <p style="font-size:1.1rem;margin-top:1rem;opacity:0.9;">Order completed - Welcome to the complete recovery system!</p>
+    <div class="hero">
+        <h1>🎉 <span class="highlight">Congratulations!</span> You're 30% There...</h1>
+        <p style="font-size:1.3rem;margin-bottom:2rem;">Don't Stop Now - Complete Your Recovery System</p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <span class="progress-text">30% → 100%</span>
         </div>
-    </section>
+    </div>
 
     <div class="container">
-        
-        <div class="success-box">
-            <h2>✅ Payment Confirmed</h2>
-            <p style="font-size:1.1rem;">Your €200 upgrade payment has been processed successfully</p>
+        <div class="countdown">
+            <h3>⏰ This EXCLUSIVE Upgrade Offer Expires In:</h3>
+            <div class="timer">
+                <span id="minutes">14</span>
+                <span>:</span>
+                <span id="seconds">59</span>
+            </div>
+            <p style="margin-top:1rem;opacity:0.9;">After this, you'll pay the full €297 price</p>
         </div>
 
-        <div class="digistore-notice">
-            <p>Payment processed by Digistore24.com</p>
+        <div class="missing">
+            <h2>🚨 What You're Missing Without BASIC Bundle</h2>
+            <p style="font-size:1.2rem;margin-bottom:2rem;">The STARTER Bundle gave you knowledge. But knowledge alone isn't enough...</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>90-Day Clean Tracker</h3>
+                    <p>Visual progress tracking keeps you accountable through the critical first 90 days.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📝</div>
+                    <h3>Daily Journal System</h3>
+                    <p>Process emotions, identify triggers, and track patterns for lasting change.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🆘</div>
+                    <h3>Emergency Urge Cards</h3>
+                    <p>Immediate action steps when cravings hit - your pocket-sized lifeline.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h3>Weekly Check-Ins</h3>
+                    <p>Structured accountability to measure progress week by week.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💪</div>
+                    <h3>Why I Started Cards</h3>
+                    <p>Keep your deepest motivation visible when temptation strikes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🏆</div>
+                    <h3>Milestone Certificates</h3>
+                    <p>Celebrate victories at 30, 60, 90 days - tangible proof of transformation.</p>
+                </div>
+            </div>
+            <p style="font-size:1.3rem;margin-top:2rem;color:var(--primary-red);font-weight:bold;text-align:center;">Without these tools, most men relapse within 30 days...</p>
         </div>
 
-        <div class="info-box">
-            <h2>📧 Check Your Email Inbox</h2>
-            <p><strong>Within the next 5-10 minutes</strong>, you'll receive an email from Digistore24 with:</p>
-            <ul>
-                <li>✓ Order confirmation and receipt</li>
-                <li>✓ Download links for all BASIC Bundle materials</li>
-                <li>✓ Access instructions for your accountability tools</li>
-                <li>✓ Welcome guide to get started immediately</li>
-            </ul>
-            <div class="warning-box">
-                <h4>⚠️ Don't See the Email?</h4>
-                <p>Check your spam/junk folder. Add <strong>helpdesk@digistore24.com</strong> to your contacts to ensure delivery.</p>
+        <div class="comparison">
+            <h2>STARTER vs BASIC - Side by Side</h2>
+            <div class="comparison-grid">
+                <div class="plan">
+                    <h3>STARTER Bundle</h3>
+                    <div class="price">€97</div>
+                    <p style="text-align:center;opacity:0.8;margin-bottom:1rem;">What you have ✓</p>
+                    <ul>
+                        <li>15 Audio Episodes</li>
+                        <li>Complete Workbook (66 pages)</li>
+                        <li>Brain Science Infographic</li>
+                        <li>7-Step Method</li>
+                        <li>Trauma Understanding</li>
+                        <li>Fasting Guide</li>
+                        <li>Meditation Techniques</li>
+                        <li class="no">90-Day Tracker</li>
+                        <li class="no">Daily Journal</li>
+                        <li class="no">Emergency Cards</li>
+                        <li class="no">Check-In Sheets</li>
+                        <li class="no">Milestone Certificates</li>
+                    </ul>
+                </div>
+                <div class="plan highlight">
+                    <div class="plan-badge">BEST VALUE</div>
+                    <h3 style="color:var(--gold);">BASIC Bundle ⭐</h3>
+                    <div class="price" style="color:var(--gold);">€297</div>
+                    <p style="text-align:center;color:var(--gold);font-weight:bold;margin-bottom:1rem;">Complete System ✓</p>
+                    <ul>
+                        <li>15 Audio Episodes</li>
+                        <li>Complete Workbook (66 pages)</li>
+                        <li>Brain Science Infographic</li>
+                        <li>7-Step Method</li>
+                        <li>Trauma Understanding</li>
+                        <li>Fasting Guide</li>
+                        <li>Meditation Techniques</li>
+                        <li><strong>90-Day Tracker</strong></li>
+                        <li><strong>Daily Journal</strong></li>
+                        <li><strong>Emergency Cards</strong></li>
+                        <li><strong>Check-In Sheets</strong></li>
+                        <li><strong>Milestone Certificates</strong></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="steps">
-            <h2>🚀 Your Next Steps</h2>
+        <div class="upgrade-box">
+            <h2>🎁 EXCLUSIVE UPGRADE OFFER</h2>
+            <p style="font-size:1.2rem;margin-bottom:1rem;">For STARTER buyers only - Never offered again!</p>
+            <div class="savings">💰 Save €97 Today!</div>
             
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Check Your Email</h3>
-                    <p>Open the email from Digistore24 and save your download links. You'll have lifetime access to all materials.</p>
+            <div class="price-breakdown">
+                <div class="price-row">
+                    <span>BASIC Bundle (Regular)</span>
+                    <span style="text-decoration:line-through;opacity:0.7;">€297</span>
+                </div>
+                <div class="price-row">
+                    <span>STARTER (Already Paid)</span>
+                    <span style="color:var(--gold);">-€97</span>
+                </div>
+                <div class="price-row total">
+                    <span>Upgrade Price TODAY</span>
+                    <span>€200</span>
                 </div>
             </div>
-
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Download Your Materials</h3>
-                    <p>Download all accountability tools: 90-Day Tracker, Journal Templates, Emergency Cards, and Milestone Certificates.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Print Your Tracker</h3>
-                    <p>Print the 90-Day Clean Tracker and put it somewhere visible. Daily tracking is crucial for success.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Set Up Emergency Cards</h3>
-                    <p>Cut out the Emergency Urge Cards and keep them in your wallet, car, and desk. You'll need them when temptation hits.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h3>Join the Community</h3>
-                    <p>Connect with other men on the same journey. Daily motivation and accountability in the WhatsApp channel.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="whatsapp-box">
-            <h3>💬 Join the WhatsApp Channel</h3>
-            <p>Get daily motivation, tips, and exclusive content directly to your phone</p>
-            <a href="https://whatsapp.com/channel/0029VbBvKXg1SWsxDAezIW0M" target="_blank" class="whatsapp-btn">
-                📱 Join Channel Now
+            
+            <p style="font-size:1.1rem;margin:2rem 0;">Get the complete accountability system for just €200 more<br>(Regular buyers pay €297)</p>
+            
+            <a href="https://www.digistore24.com/product/YOUR-UPGRADE-PRODUCT-ID" class="cta-button">
+                ✓ YES! Upgrade to BASIC Now - €200
             </a>
-            <p style="font-size:0.95rem;margin-top:1.5rem;opacity:0.9;">
-                Free daily support from Patrick + connect with other men on the same journey
-            </p>
+            
+            <a href="https://rebornmethod.com/" class="cta-button secondary">
+                ✗ No Thanks, I'll Stick With STARTER
+            </a>
         </div>
 
-        <div class="info-box">
-            <h2>✅ What's Included in Your BASIC Bundle</h2>
-            <p><strong>Everything from STARTER Bundle:</strong></p>
-            <ul>
-                <li>15 audio episodes covering the complete 7-step method</li>
-                <li>66-page comprehensive workbook</li>
-                <li>Brain science infographic explaining addiction</li>
-                <li>Fasting & nutrition protocols</li>
-                <li>Meditation techniques for recovery</li>
-            </ul>
-            <p style="margin-top:1.5rem;"><strong>PLUS Your New Accountability Tools:</strong></p>
-            <ul>
-                <li><strong>90-Day Clean Tracker</strong> - Visual progress system</li>
-                <li><strong>Daily Journal Template</strong> - Process emotions & identify triggers</li>
-                <li><strong>Weekly Check-In Sheets</strong> - Structured accountability</li>
-                <li><strong>Emergency Urge Cards</strong> - Pocket-sized action steps</li>
-                <li><strong>Emergency Contact Cards</strong> - Call for help system</li>
-                <li><strong>Why I Started Cards</strong> - Keep motivation visible</li>
-                <li><strong>Milestone Certificates</strong> - Celebrate 30, 60, 90 days</li>
-            </ul>
+        <div style="margin:3rem 0;">
+            <h2 style="text-align:center;color:var(--primary-red);margin-bottom:2rem;">What Others Say...</h2>
+            <div class="testimonial">
+                <p>"I bought STARTER first. When I upgraded to BASIC, everything changed. The tracker kept me accountable like nothing else. Wish I'd upgraded sooner!"</p>
+                <div class="author">- David M., 4 months clean</div>
+            </div>
+            <div class="testimonial">
+                <p>"The emergency cards literally saved me multiple times in my first 60 days. Having those action steps in my pocket was a game-changer."</p>
+                <div class="author">- Michael R., 8 months clean</div>
+            </div>
+            <div class="testimonial">
+                <p>"The milestone certificates might seem small, but celebrating 30 days with that certificate on my wall was HUGE for my confidence."</p>
+                <div class="author">- James K., 90 days clean</div>
+            </div>
         </div>
 
-        <div class="support-box">
-            <div style="font-size:3rem;margin-bottom:1rem;">💬</div>
-            <h3>Need Help?</h3>
-            <p style="font-size:1.1rem;margin:1rem 0;">
-                Questions about your order, downloads, or getting started?
-            </p>
-            <p>
-                <strong>Email Patrick:</strong><br>
-                <a href="mailto:pdm-media@outlook.de" style="color:var(--primary-red);text-decoration:none;font-weight:bold;font-size:1.2rem;">pdm-media@outlook.de</a>
-            </p>
-            <p style="margin-top:1.5rem;font-size:0.95rem;opacity:0.8;">
-                I personally respond to every email within 24 hours.
-            </p>
+        <div class="guarantee">
+            <div style="font-size:4rem;margin-bottom:1rem;">🛡️</div>
+            <h3>60-Day Money-Back Guarantee</h3>
+            <p style="font-size:1.1rem;line-height:1.8;margin-top:1rem;">Try BASIC Bundle for 60 days. If you don't see the value, email me for a full refund - no questions asked.</p>
         </div>
 
-        <div class="info-box" style="text-align:center;">
-            <h2>🛡️ Remember: 60-Day Money-Back Guarantee</h2>
-            <p>
-                Try the BASIC Bundle risk-free for 60 days. If you don't see the value, 
-                email me for a full refund - no questions asked.
-            </p>
+        <div style="text-align:center;padding:3rem 2rem;background:#1a1a1a;border-radius:15px;border:3px solid var(--primary-red);">
+            <h2 style="color:var(--primary-red);font-size:2.5rem;margin-bottom:1.5rem;">The Choice Is Yours</h2>
+            <p style="font-size:1.3rem;margin-bottom:2rem;line-height:1.8;">Knowledge got you started. But tools keep you free.<br>Complete your recovery system today.</p>
+            <a href="https://www.digistore24.com/product/YOUR-UPGRADE-PRODUCT-ID" class="cta-button">
+                ✓ Complete My Recovery System - €200
+            </a>
+            <p style="margin-top:2rem;opacity:0.7;">Offer expires in <span id="finalMin">14</span>:<span id="finalSec">59</span></p>
         </div>
+    </div>
 
-        <div style="text-align:center;padding:3rem 2rem;background:#1a1a1a;border-radius:15px;border:3px solid var(--primary-red);margin-top:3rem;">
-            <h2 style="color:var(--primary-red);font-size:2.5rem;margin-bottom:1.5rem;">You Made the Right Choice</h2>
-            <p style="font-size:1.3rem;line-height:1.8;margin-bottom:2rem;">
-                Most men who upgrade say it's the best decision they made.<br>
-                These accountability tools will keep you on track when willpower fails.
-            </p>
-            <p style="font-size:1.5rem;font-weight:bold;color:var(--primary-red);">
-                Welcome to complete freedom. 🚀
-            </p>
-            <p style="margin-top:2rem;font-style:italic;
+    <script>
+        let time=900;
+        function tick(){
+            const m=Math.floor(time/60),s=time%60;
+            document.getElementById('minutes').textContent=m;
+            document.getElementById('seconds').textContent=s<10?'0'+s:s;
+            document.getElementById('finalMin').textContent=m;
+            document.getElementById('finalSec').textContent=s<10?'0'+s:s;
+            if(time>0)time--;
+            else document.querySelector('.countdown h3').textContent='⏰ Offer Expired';
+        }
+        setInterval(tick,1000);
+        tick();
+        setTimeout(()=>document.getElementById('progressBar').classList.add('full'),500);
+    </script>
+</body>
+</html>
