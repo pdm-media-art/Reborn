@@ -5,372 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to REBORN - Your Access</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: 'Arial', 'Helvetica', sans-serif;background: #000000;color: #ffffff;line-height: 1.6;}
+        .container {max-width: 900px;margin: 0 auto;padding: 20px;}
+        .header {text-align: center;padding: 40px 20px;background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);border: 4px solid #cc0000;border-radius: 12px;margin-bottom: 40px;}
+        .logo {font-size: 56px;font-weight: bold;color: #cc0000;letter-spacing: 15px;margin-bottom: 20px;text-shadow: 0 0 20px rgba(204, 0, 0, 0.5);}
+        .success-icon {font-size: 80px;margin-bottom: 20px;animation: bounceIn 1s ease;}
+        @keyframes bounceIn {0% { transform: scale(0); opacity: 0; }50% { transform: scale(1.1); }100% { transform: scale(1); opacity: 1; }}
+        .header h1 {font-size: 36px;color: #ffffff;margin-bottom: 15px;}
+        .header p {font-size: 18px;color: #cccccc;}
         
-        body {
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            background: #000000;
-            color: #ffffff;
-            line-height: 1.6;
-        }
+        /* UPGRADE CTA - PROMINENT */
+        .upgrade-cta {background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);padding: 40px;border-radius: 15px;text-align: center;margin: 40px 0;box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);animation: pulse 2s infinite;}
+        @keyframes pulse {0%, 100% { transform: scale(1); }50% { transform: scale(1.02); }}
+        .upgrade-cta h2 {font-size: 32px;color: #000;margin-bottom: 15px;font-weight: bold;}
+        .upgrade-cta p {font-size: 18px;color: #000;margin-bottom: 25px;}
+        .upgrade-cta .big-button {display: inline-block;background: #cc0000;color: #fff;padding: 20px 60px;font-size: 24px;font-weight: bold;text-decoration: none;border-radius: 50px;transition: all 0.3s;box-shadow: 0 6px 20px rgba(0,0,0,0.3);}
+        .upgrade-cta .big-button:hover {background: #ff0000;transform: translateY(-3px);box-shadow: 0 8px 30px rgba(0,0,0,0.4);}
         
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header Section */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 100%);
-            border: 4px solid #cc0000;
-            border-radius: 12px;
-            margin-bottom: 40px;
-        }
-        
-        .logo {
-            font-size: 56px;
-            font-weight: bold;
-            color: #cc0000;
-            letter-spacing: 15px;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
-        }
-        
-        .success-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: bounceIn 1s ease;
-        }
-        
-        @keyframes bounceIn {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
-        .header h1 {
-            font-size: 36px;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-        
-        .header p {
-            font-size: 18px;
-            color: #cccccc;
-        }
-        
-        /* Download Section - PROMINENT */
-        .download-box {
-            background: #cc0000;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 8px 32px rgba(204, 0, 0, 0.4);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 8px 32px rgba(204, 0, 0, 0.4); }
-            50% { box-shadow: 0 8px 48px rgba(204, 0, 0, 0.7); }
-        }
-        
-        .download-box h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-        
-        .download-links {
-            margin: 30px 0;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-        
-        .download-button {
-            display: inline-block;
-            background: #ffffff;
-            color: #cc0000;
-            padding: 20px 50px;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 8px;
-            margin: 15px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .download-button:hover {
-            background: #ffcccc;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .download-note {
-            font-size: 14px;
-            color: #ffffff;
-            margin-top: 20px;
-            opacity: 0.9;
-        }
-        
-        /* Content Sections */
-        .section {
-            background: #0a0a0a;
-            border: 3px solid #cc0000;
-            border-radius: 8px;
-            padding: 35px;
-            margin-bottom: 30px;
-        }
-        
-        .section-title {
-            font-size: 28px;
-            color: #cc0000;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            border-bottom: 2px solid #cc0000;
-            padding-bottom: 10px;
-        }
-        
-        .section-content {
-            font-size: 16px;
-            line-height: 1.8;
-        }
-        
-        /* Steps List */
-        .steps {
-            counter-reset: step;
-        }
-        
-        .step-item {
-            margin: 20px 0;
-            padding: 20px;
-            background: #1a1a1a;
-            border-left: 5px solid #cc0000;
-            position: relative;
-            padding-left: 80px;
-        }
-        
-        .step-item::before {
-            counter-increment: step;
-            content: counter(step);
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #cc0000;
-            color: #ffffff;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
-        
-        .step-title {
-            font-size: 18px;
-            color: #cc0000;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        
-        /* Bundle Cards */
-        .bundle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 25px 0;
-        }
-        
-        .bundle-card {
-            background: #1a1a1a;
-            border: 3px solid #cc0000;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .bundle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.3);
-            border-color: #ff0000;
-        }
-        
-        .bundle-name {
-            font-size: 28px;
-            color: #cc0000;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .bundle-price {
-            font-size: 42px;
-            color: #ffffff;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        
-        .bundle-features {
-            text-align: left;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-        
-        .bundle-features li {
-            margin: 10px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .bundle-features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #cc0000;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .bundle-button {
-            display: inline-block;
-            background: #cc0000;
-            color: #ffffff;
-            padding: 15px 35px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .bundle-button:hover {
-            background: #ff0000;
-            transform: scale(1.05);
-        }
-        
-        /* Alert Box */
-        .alert-box {
-            background: #1a0000;
-            border: 3px solid #cc0000;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-        
-        .alert-title {
-            font-size: 20px;
-            color: #cc0000;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .alert-content {
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        
-        .alert-content strong {
-            color: #cc0000;
-        }
-        
-        /* Support Section */
-        .support-box {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            border: 3px solid #cc0000;
-            border-radius: 8px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .support-title {
-            font-size: 24px;
-            color: #cc0000;
-            margin-bottom: 20px;
-        }
-        
-        .support-info {
-            font-size: 16px;
-            line-height: 2;
-        }
-        
-        .support-email {
-            color: #cc0000;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .support-email:hover {
-            color: #ff0000;
-            text-decoration: underline;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-            border-top: 2px solid #cc0000;
-            color: #666666;
-            font-size: 14px;
-        }
-        
-        /* Responsive */
+        .download-box {background: #cc0000;padding: 40px;border-radius: 12px;text-align: center;margin-bottom: 40px;box-shadow: 0 8px 32px rgba(204, 0, 0, 0.4);}
+        .download-box h2 {font-size: 32px;margin-bottom: 20px;color: #ffffff;}
+        .section {background: #0a0a0a;border: 3px solid #cc0000;border-radius: 8px;padding: 35px;margin-bottom: 30px;}
+        .section-title {font-size: 28px;color: #cc0000;margin-bottom: 20px;text-transform: uppercase;border-bottom: 2px solid #cc0000;padding-bottom: 10px;}
+        .steps {counter-reset: step;}
+        .step-item {margin: 20px 0;padding: 20px;background: #1a1a1a;border-left: 5px solid #cc0000;position: relative;padding-left: 80px;}
+        .step-item::before {counter-increment: step;content: counter(step);position: absolute;left: 20px;top: 50%;transform: translateY(-50%);background: #cc0000;color: #ffffff;width: 45px;height: 45px;border-radius: 50%;display: flex;align-items: center;justify-content: center;font-size: 22px;font-weight: bold;}
+        .step-title {font-size: 18px;color: #cc0000;font-weight: bold;margin-bottom: 8px;}
+        .bundle-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));gap: 25px;margin: 25px 0;}
+        .bundle-card {background: #1a1a1a;border: 3px solid #cc0000;border-radius: 8px;padding: 30px;text-align: center;transition: all 0.3s ease;}
+        .bundle-card:hover {transform: translateY(-5px);box-shadow: 0 8px 25px rgba(204, 0, 0, 0.3);border-color: #ff0000;}
+        .bundle-name {font-size: 28px;color: #cc0000;font-weight: bold;margin-bottom: 15px;}
+        .bundle-price {font-size: 42px;color: #ffffff;font-weight: bold;margin: 20px 0;}
+        .bundle-features {text-align: left;margin: 20px 0;font-size: 14px;}
+        .bundle-features li {margin: 10px 0;padding-left: 25px;position: relative;}
+        .bundle-features li::before {content: "✓";position: absolute;left: 0;color: #cc0000;font-weight: bold;font-size: 18px;}
+        .bundle-button {display: inline-block;background: #cc0000;color: #ffffff;padding: 15px 35px;font-size: 18px;font-weight: bold;text-decoration: none;border-radius: 6px;margin-top: 20px;transition: all 0.3s ease;}
+        .bundle-button:hover {background: #ff0000;transform: scale(1.05);}
+        .support-box {background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);border: 3px solid #cc0000;border-radius: 8px;padding: 30px;text-align: center;margin-top: 40px;}
+        .support-title {font-size: 24px;color: #cc0000;margin-bottom: 20px;}
+        .support-email {color: #cc0000;text-decoration: none;font-weight: bold;font-size: 18px;}
+        .support-email:hover {color: #ff0000;text-decoration: underline;}
+        .footer {text-align: center;padding: 30px 20px;margin-top: 50px;border-top: 2px solid #cc0000;color: #666666;font-size: 14px;}
         @media (max-width: 768px) {
-            .logo {
-                font-size: 40px;
-                letter-spacing: 8px;
-            }
-            
-            .header h1 {
-                font-size: 28px;
-            }
-            
-            .download-box h2 {
-                font-size: 24px;
-            }
-            
-            .download-button {
-                font-size: 18px;
-                padding: 15px 30px;
-            }
-            
-            .bundle-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .step-item {
-                padding-left: 70px;
-            }
+            .logo {font-size: 40px;letter-spacing: 8px;}
+            .header h1 {font-size: 28px;}
+            .bundle-grid {grid-template-columns: 1fr;}
+            .upgrade-cta h2 {font-size: 24px;}
+            .upgrade-cta .big-button {font-size: 18px;padding: 15px 40px;}
         }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <!-- Header -->
         <div class="header">
             <div class="success-icon">🎉</div>
             <div class="logo">REBORN</div>
             <h1>WELCOME TO YOUR NEW LIFE!</h1>
             <p>Your Transformation Starts NOW</p>
         </div>
+
+        <!-- PROMINENT UPGRADE CTA -->
+        <div class="upgrade-cta">
+            <h2>🎁 SPECIAL UPGRADE OFFER - SAVE €97!</h2>
+            <p style="font-size: 20px; margin-bottom: 10px;">You're 30% there... Don't stop now!</p>
+            <p>Complete your recovery system with the BASIC Bundle accountability tools</p>
+            <a href="https://rebornmethod.com/upgrade-basic.html" class="big-button">
+                ✓ SEE UPGRADE OFFER - Save €97
+            </a>
+            <p style="font-size: 14px; margin-top: 20px; color: #000;">Limited time offer for STARTER buyers only</p>
+        </div>
         
-        <!-- DOWNLOAD INSTRUCTIONS -->
         <div class="download-box">
             <h2>📧 CHECK YOUR EMAIL FOR DOWNLOAD LINK</h2>
             <p style="font-size: 22px; margin-bottom: 15px; font-weight: bold;">
@@ -381,103 +86,84 @@
             </p>
             
             <div style="background: rgba(204, 0, 0, 0.2); padding: 25px; border-radius: 10px; border-left: 4px solid #cc0000;">
-                <p style="font-size: 16px; margin-bottom: 10px;">
-                    ✓ Check your inbox
-                </p>
-                <p style="font-size: 16px; margin-bottom: 10px;">
-                    ✓ Check your spam/junk folder
-                </p>
-                <p style="font-size: 16px; margin-bottom: 10px;">
-                    ✓ Email subject: "Your Order Confirmation" or similar
-                </p>
+                <p style="font-size: 16px; margin-bottom: 10px;">✓ Check your inbox</p>
+                <p style="font-size: 16px; margin-bottom: 10px;">✓ Check your spam/junk folder</p>
+                <p style="font-size: 16px; margin-bottom: 10px;">✓ Email subject: "Your Order Confirmation"</p>
                 <p style="font-size: 16px; margin-top: 20px;">
                     <strong style="color: #cc0000;">Don't see it?</strong> Contact support: <strong>pdm-media@outlook.de</strong>
                 </p>
             </div>
             
-            <div class="download-note" style="margin-top: 25px;">
+            <div style="margin-top: 25px;">
                 <strong>⚠️ IMPORTANT:</strong> Your download link is valid for 90 days and can be used 5 times.<br>
-                Download all files as soon as you receive the email and save them to your computer!
+                Download all files as soon as you receive the email!
             </div>
         </div>
         
-        <!-- Payment & Privacy Notice -->
         <div style="background: linear-gradient(135deg, #2a2000 0%, #1a1400 100%); border: 3px solid #FFD700; padding: 25px; border-radius: 10px; margin: 30px 0; text-align: center;">
             <div style="font-size: 28px; color: #FFD700; margin-bottom: 15px;">💳</div>
-            <div style="font-size: 22px; font-weight: bold; color: #FFD700; margin-bottom: 15px;">
-                Payment & Privacy Information
-            </div>
-            <p style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">
-                Die Abbuchung erfolgt durch Digistore24
-            </p>
+            <div style="font-size: 22px; font-weight: bold; color: #FFD700; margin-bottom: 15px;">Payment & Privacy Information</div>
+            <p style="font-size: 18px; margin-bottom: 10px; font-weight: bold;">Die Abbuchung erfolgt durch Digistore24</p>
             <p style="font-size: 16px; line-height: 1.8;">
-                Your bank statement will show "<strong>Digistore24.com</strong>" - NOT "REBORN" or "Patrick Devosse".<br>
+                Your bank statement will show "<strong>Digistore24.com</strong>" - NOT "REBORN".<br>
                 This protects your privacy. Your purchase is completely confidential.
             </p>
         </div>
         
-        <!-- What's Inside -->
         <div class="section">
             <div class="section-title">📦 What's in Your STARTER Bundle</div>
-            <div class="section-content">
+            <div style="padding: 0;">
                 <ul style="list-style: none; padding: 0;">
                     <li style="padding: 15px; background: #1a1a1a; margin: 10px 0; border-left: 4px solid #cc0000;">
                         <strong style="color: #cc0000;">🎧 15 Audio Episodes</strong><br>
-                        Complete 7-Step Course (6-7 hours) + Bonus "Urge Destroyer"
+                        Complete 7-Step Course + Bonus "Urge Destroyer"
                     </li>
                     <li style="padding: 15px; background: #1a1a1a; margin: 10px 0; border-left: 4px solid #cc0000;">
                         <strong style="color: #cc0000;">📝 Complete Workbook</strong><br>
-                        66-page PDF + HTML version - printable & fillable
+                        66-page PDF + HTML version
                     </li>
                     <li style="padding: 15px; background: #1a1a1a; margin: 10px 0; border-left: 4px solid #cc0000;">
                         <strong style="color: #cc0000;">🧠 Brain Science Infographic</strong><br>
-                        Visual guide to addiction science & recovery timeline
-                    </li>
-                    <li style="padding: 15px; background: #1a1a1a; margin: 10px 0; border-left: 4px solid #cc0000;">
-                        <strong style="color: #cc0000;">🚀 Welcome Guide</strong><br>
-                        Step-by-step instructions to get started
+                        Visual guide to addiction & recovery
                     </li>
                 </ul>
             </div>
         </div>
         
-        <!-- Next Steps -->
         <div class="section">
             <div class="section-title">🎯 Your Next Steps</div>
             <div class="steps">
                 <div class="step-item">
                     <div class="step-title">Download All Files</div>
-                    Click the download button above and save all 21 files to your computer.
+                    Save all 21 files to your computer from the email link.
                 </div>
                 <div class="step-item">
-                    <div class="step-title">Start with "START_HERE_WELCOME"</div>
-                    Open this file first - it explains exactly how to use the program.
+                    <div class="step-title">Start with Welcome Guide</div>
+                    Open "START_HERE_WELCOME" first.
                 </div>
                 <div class="step-item">
                     <div class="step-title">Print Your Workbook</div>
-                    Use the PDF file "02_Reborn_Complete_Workbook_Print.pdf" for printing.
+                    Use the PDF file for printing.
                 </div>
                 <div class="step-item">
                     <div class="step-title">Listen to Episode 01</div>
-                    Start with the introduction and work through the program.
+                    Start with the introduction.
                 </div>
                 <div class="step-item">
                     <div class="step-title">Do ALL Exercises</div>
-                    The workbook exercises are CRUCIAL for your success. Don't skip ANYTHING!
+                    Don't skip anything!
                 </div>
             </div>
         </div>
         
-        <!-- Upgrade Options -->
         <div class="section">
-            <div class="section-title">🚀 Upgrade for Maximum Success</div>
-            <div class="section-content">
+            <div class="section-title">🚀 Want More Support?</div>
+            <div style="padding: 0;">
                 <p style="margin-bottom: 30px; font-size: 18px;">
-                    You've taken the first step! For even more support and tools:
+                    Knowledge got you started. But tools keep you free.
                 </p>
                 
                 <div class="bundle-grid">
-                    <!-- BASIC Bundle -->
                     <div class="bundle-card">
                         <div class="bundle-name">BASIC Bundle</div>
                         <div class="bundle-price">€297</div>
@@ -488,64 +174,27 @@
                             <li>Emergency Urge Cards</li>
                             <li>Milestone Certificates</li>
                             <li>Weekly Check-In Sheets</li>
-                            <li>Accountability Tools</li>
                         </ul>
-                        <a href="https://rebornmethod.com" class="bundle-button">Upgrade Now</a>
-                    </div>
-                    
-                    <!-- PRO Bundle -->
-                    <div class="bundle-card">
-                        <div class="bundle-name">PRO Bundle</div>
-                        <div class="bundle-price">€497</div>
-                        <ul class="bundle-features">
-                            <li>Everything in BASIC +</li>
-                            <li>Complete Resource Library</li>
-                            <li>Nutrition & Meditation Guides</li>
-                            <li>Vision Board Templates</li>
-                            <li>Assessment Tools</li>
-                            <li>Digital Resources</li>
-                            <li>Premium Support</li>
-                        </ul>
-                        <a href="https://rebornmethod.com" class="bundle-button">Upgrade Now</a>
+                        <a href="https://rebornmethod.com/upgrade-basic.html" class="bundle-button">See Upgrade Offer</a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Important Notes -->
-        <div class="section">
-            <div class="section-title">⚠️ Important Notes</div>
-            <div class="section-content">
-                <p style="margin-bottom: 15px;">
-                    <strong style="color: #cc0000;">Download Limit:</strong> Your link works for 90 days and can be used 5 times. Save the files NOW!
-                </p>
-                <p style="margin-bottom: 15px;">
-                    <strong style="color: #cc0000;">Privacy:</strong> All downloads are confidential. Your bank statement will only show "Digistore24.com".
-                </p>
-                <p style="margin-bottom: 15px;">
-                    <strong style="color: #cc0000;">Technical Issues?</strong> If the download doesn't work, contact us immediately (see below).
-                </p>
-                <p>
-                    <strong style="color: #cc0000;">Medical Disclaimer:</strong> This program is educational and motivational. It is not a substitute for professional medical or psychological treatment.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Support Section -->
         <div class="support-box">
             <div class="support-title">🆘 NEED HELP?</div>
-            <div class="support-info">
-                <strong>Website:</strong> <a href="https://rebornmethod.com" style="color: #cc0000; text-decoration: none;">www.rebornmethod.com</a><br>
-                <strong>Email Support:</strong> <a href="/cdn-cgi/l/email-protection#e191858ccc8c84858880a18e94958d8e8e8acf8584" class="support-email"><span class="__cf_email__" data-cfemail="fc8c9891d1919998959dbc93898890939397d29899">[email&#160;protected]</span></a><br>
-                <strong>Response Time:</strong> 24-48 hours<br><br>
-                For technical issues, program questions, or upgrade inquiries!
+            <div style="font-size: 16px; line-height: 2;">
+                <strong>Email:</strong> <a href="mailto:pdm-media@outlook.de" class="support-email">pdm-media@outlook.de</a><br>
+                <strong>Response Time:</strong> 24-48 hours<br>
+                <strong>Website:</strong> <a href="https://rebornmethod.com" style="color: #cc0000;">www.rebornmethod.com</a>
             </div>
         </div>
         
-        <!-- Footer -->
         <div class="footer">
-            <p><strong>REBORN - The 7-Step Method to Crush Pornography Addiction</strong></p>
-            <p>© 2025 Patrick | www.rebornmethod.com | Payment processed by Digistore24 GmbH</p>
-            <p style="margin-top: 15px;">
-                <a href="https://rebornmethod.com/impressum.html" style="color: #666666; text-decoration: none;">Imprint</a> | 
-                <a href="https://rebornmethod.com/datenschutz.htm
+            <p><strong>REBORN - The 7-Step Method</strong></p>
+            <p>© 2025 Patrick Devosse | www.rebornmethod.com | Payment processed by Digistore24</p>
+        </div>
+
+    </div>
+</body>
+</html>
