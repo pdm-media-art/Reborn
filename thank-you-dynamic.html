@@ -40,7 +40,7 @@
                 Click the button below to download all your files:
             </p>
             
-            <a href="%%DOWNLOAD_URL%%" class="download-button">
+            <a href="#" id="downloadLink" class="download-button">
                 📥 DOWNLOAD ALL FILES NOW
             </a>
             
@@ -53,7 +53,7 @@
                 <p style="font-size:16px;margin-bottom:10px;color:#fff">✓ Save all files to your computer</p>
                 <p style="font-size:16px;margin-bottom:10px;color:#fff">✓ Check your email for backup link</p>
                 <p style="font-size:16px;margin-top:20px;color:#fff">
-                    <strong>Don't see it?</strong> Contact: <strong>pdm-media@outlook.de</strong>
+                    <strong>Don't see it?</strong> Contact: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0a7a6e6727676f6e636b4a657f7e66656561246e6f">[email&#160;protected]</a></strong>
                 </p>
             </div>
         </div>
@@ -72,7 +72,7 @@
         <div class="support-box">
             <h3 style="font-size:24px;color:#cc0000;margin-bottom:20px">🆘 NEED HELP?</h3>
             <div style="font-size:16px;line-height:2">
-                <strong>Email:</strong> <a href="mailto:pdm-media@outlook.de" class="support-email">pdm-media@outlook.de</a><br>
+                <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#cebeaaa3e3a3abaaa7af8ea1bbbaa2a1a1a5e0aaab" class="support-email"><span class="__cf_email__" data-cfemail="d8a8bcb5f5b5bdbcb1b998b7adacb4b7b7b3f6bcbd">[email&#160;protected]</span></a><br>
                 <strong>Response Time:</strong> 24-48 hours<br>
                 <strong>Website:</strong> <a href="https://rebornmethod.com" style="color:#cc0000;text-decoration:none">www.rebornmethod.com</a>
             </div>
@@ -80,10 +80,16 @@
 
     </div>
 
-    <script>
-        // Read GET parameter
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Read GET parameters
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('product_id');
+        const downloadUrl = urlParams.get('download_url');
+        
+        // Set download link if provided
+        if(downloadUrl) {
+            document.getElementById('downloadLink').href = decodeURIComponent(downloadUrl);
+        }
         
         // Content for each product
         const content = {
@@ -166,13 +172,4 @@
             document.getElementById('headerTitle').textContent = content[productId].title;
             document.getElementById('headerSubtitle').textContent = content[productId].subtitle;
             document.getElementById('contentSection').innerHTML = content[productId].sections;
-        } else {
-            // Default content if no/wrong product_id
-            document.getElementById('contentSection').innerHTML = `
-                <div class="section-title">📦 YOUR PURCHASE</div>
-                <p style="font-size:18px">Thank you for your purchase! Download your files using the button above.</p>
-            `;
-        }
-    </script>
-</body>
-</html>
+        } els
