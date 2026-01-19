@@ -3,262 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 UPGRADE to BASIC - Special Offer | REBORN</title>
-    <meta name="robots" content="noindex, nofollow">
+    <title>ONE FINAL OFFER - Personal Mentoring | REBORN</title>
     <style>
+        :root{
+            --primary-red:#e74c3c;
+            --black:#0a0a0a;
+            --white:#ffffff;
+            --gold:#FFD700;
+            --dark-red:#8b0000;
+        }
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary-red:#e74c3c;--dark-red:#c0392b;--black:#0a0a0a;--light-gray:#f5f5f5;--gold:#FFD700}
-        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--black);color:var(--light-gray);line-height:1.6}
-        .container{max-width:1000px;margin:0 auto;padding:2rem}
-        .hero{text-align:center;padding:3rem 2rem;background:linear-gradient(135deg,#1a1a1a,var(--black));border-bottom:3px solid var(--primary-red)}
-        .hero h1{font-size:3rem;margin-bottom:1rem}
-        .hero .highlight{color:var(--primary-red)}
-        .progress-bar-container{max-width:600px;margin:2rem auto;background:#333;border-radius:50px;height:40px;position:relative;overflow:hidden}
-        .progress-bar{background:linear-gradient(90deg,var(--primary-red),#ff6b6b);height:100%;width:30%;transition:width 2s ease}
-        .progress-bar.full{width:100%}
-        .progress-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:bold;z-index:10;font-size:1.1rem}
-        .countdown{background:linear-gradient(135deg,var(--dark-red),var(--primary-red));padding:2rem;border-radius:15px;margin:2rem 0;text-align:center;color:white;box-shadow:0 8px 25px rgba(231,76,60,0.4)}
-        .countdown h3{font-size:1.5rem;margin-bottom:1rem}
-        .timer{display:flex;justify-content:center;gap:1.5rem;font-size:2.5rem;font-weight:bold}
-        .timer span{background:rgba(0,0,0,0.3);padding:1rem 1.5rem;border-radius:10px;min-width:80px}
-        .missing{background:#1a1a1a;padding:3rem 2rem;border-radius:15px;margin:3rem 0;border-left:5px solid var(--primary-red)}
-        .missing h2{color:var(--primary-red);font-size:2.2rem;margin-bottom:2rem}
-        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-        .feature-card{background:var(--black);padding:2rem;border-radius:10px;border:2px solid #333;transition:all 0.3s}
-        .feature-card:hover{border-color:var(--primary-red);transform:translateY(-5px)}
-        .feature-card .icon{font-size:3rem;margin-bottom:1rem}
-        .feature-card h3{color:var(--primary-red);margin-bottom:1rem;font-size:1.4rem}
-        .comparison{background:#1a1a1a;padding:3rem 2rem;border-radius:15px;margin:3rem 0}
-        .comparison h2{text-align:center;color:var(--primary-red);font-size:2.2rem;margin-bottom:3rem}
-        .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-        .plan{background:var(--black);padding:2rem;border-radius:10px;border:2px solid #333;position:relative}
-        .plan.highlight{border-color:var(--gold);box-shadow:0 0 30px rgba(255,215,0,0.3)}
-        .plan-badge{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);padding:0.5rem 1.5rem;border-radius:20px;font-weight:bold}
-        .plan h3{text-align:center;font-size:1.8rem;margin-bottom:1rem;color:var(--primary-red)}
-        .plan .price{text-align:center;font-size:2.5rem;font-weight:bold;margin:1.5rem 0}
-        .plan ul{list-style:none;margin-top:1.5rem}
-        .plan ul li{padding:0.8rem 0;padding-left:2rem;position:relative}
-        .plan ul li::before{content:'✓';position:absolute;left:0;color:#2ecc71;font-weight:bold;font-size:1.3rem}
-        .plan ul li.no::before{content:'✗';color:#999}
-        .plan ul li.no{opacity:0.4}
-        .upgrade-box{background:linear-gradient(135deg,var(--dark-red),var(--primary-red));padding:3rem;border-radius:15px;text-align:center;margin:3rem 0;color:white;box-shadow:0 10px 40px rgba(231,76,60,0.5)}
-        .upgrade-box h2{font-size:2.5rem;margin-bottom:1rem}
-        .upgrade-box .savings{font-size:1.5rem;color:var(--gold);font-weight:bold;margin-bottom:2rem}
-        .price-breakdown{background:rgba(0,0,0,0.3);padding:2rem;border-radius:10px;max-width:500px;margin:2rem auto}
-        .price-row{display:flex;justify-content:space-between;padding:0.8rem 0;font-size:1.2rem;border-bottom:1px solid rgba(255,255,255,0.2)}
-        .price-row.total{border-top:3px solid white;border-bottom:none;font-size:1.8rem;font-weight:bold;color:var(--gold);margin-top:1rem;padding-top:1.5rem}
-        .cta-button{display:inline-block;background:var(--gold);color:var(--black);padding:1.5rem 3rem;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;margin:1rem;transition:all 0.3s;box-shadow:0 6px 20px rgba(255,215,0,0.4)}
-        .cta-button:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(255,215,0,0.6)}
-        .cta-button.secondary{background:transparent;border:3px solid white;color:white}
-        .cta-button.secondary:hover{background:white;color:var(--black)}
-        .guarantee{background:#1a1a1a;padding:2rem;border-radius:10px;border:2px solid #2ecc71;margin:3rem 0;text-align:center}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#000;color:#fff;line-height:1.6}
+        .container{max-width:900px;margin:0 auto;padding:20px}
+        .hero{background:linear-gradient(135deg,#0a0a0a 0%,#1a0000 100%);padding:3rem 2rem;border-radius:15px;border:4px solid var(--primary-red);text-align:center;margin-bottom:3rem;box-shadow:0 10px 50px rgba(231,76,60,0.3)}
+        .hero h1{font-size:2.8rem;margin-bottom:1rem;color:var(--gold)}
+        .hero .subtitle{font-size:1.5rem;color:var(--primary-red);font-weight:bold;margin-bottom:1rem}
+        .highlight{color:var(--gold)}
+        .countdown{background:var(--primary-red);padding:2rem;border-radius:10px;margin:2rem 0;text-align:center}
+        .countdown h3{font-size:1.5rem;margin-bottom:1rem;color:#fff}
+        .timer{display:flex;gap:2rem;justify-content:center;font-size:3rem;font-weight:bold;color:#fff}
+        .timer-block{display:flex;flex-direction:column;align-items:center}
+        .timer-block span:first-child{font-size:4rem;line-height:1}
+        .timer-block span:last-child{font-size:0.9rem;text-transform:uppercase;margin-top:0.5rem;opacity:0.9}
+        .progress-bar-container{background:rgba(255,255,255,0.1);height:20px;border-radius:10px;margin:2rem 0;position:relative;overflow:hidden}
+        .progress-bar{background:linear-gradient(90deg,var(--primary-red),var(--gold));height:100%;width:0%;transition:width 2s ease;border-radius:10px}
+        .progress-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:bold;font-size:0.9rem;color:#fff;text-shadow:0 0 10px rgba(0,0,0,0.8)}
+        .price-box{background:linear-gradient(135deg,#1a0000 0%,#0a0a0a 100%);border:3px solid var(--gold);border-radius:15px;padding:2.5rem;margin:2rem 0;text-align:center}
+        .price-row{display:flex;justify-content:space-between;padding:1rem 0;border-bottom:2px solid rgba(255,255,255,0.1);font-size:1.2rem}
+        .price-row:last-child{border-bottom:none}
+        .price-row.old{text-decoration:line-through;color:#888;font-size:1.1rem}
+        .price-row.total{border-top:3px solid var(--gold);margin-top:1rem;font-size:2rem;font-weight:bold;color:var(--gold)}
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin:3rem 0}
+        .feature-card{background:#1a1a1a;border:3px solid var(--primary-red);border-radius:12px;padding:2rem;transition:transform 0.3s,box-shadow 0.3s}
+        .feature-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(231,76,60,0.4)}
+        .feature-icon{font-size:3rem;margin-bottom:1rem}
+        .feature-title{font-size:1.4rem;color:var(--primary-red);margin-bottom:1rem;font-weight:bold}
+        .feature-desc{color:#ccc;line-height:1.8}
+        .comparison-section{background:#1a1a1a;border:3px solid var(--primary-red);border-radius:15px;padding:3rem;margin:3rem 0}
+        .comparison-section h2{text-align:center;color:var(--gold);margin-bottom:2rem;font-size:2rem}
+        .comparison-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+        .comparison-item{padding:1.5rem;background:rgba(0,0,0,0.3);border-radius:10px}
+        .comparison-item h3{color:var(--primary-red);margin-bottom:1rem;font-size:1.3rem}
+        .comparison-item ul{list-style:none}
+        .comparison-item li{padding:0.5rem 0;padding-left:2rem;position:relative}
+        .comparison-item li::before{content:"✓";position:absolute;left:0;color:var(--primary-red);font-weight:bold;font-size:1.2rem}
+        .comparison-item.highlight{border:3px solid var(--gold)}
+        .comparison-item.highlight h3{color:var(--gold)}
+        .cta-button{display:inline-block;background:var(--gold);color:#000;padding:1.5rem 3rem;font-size:1.5rem;font-weight:bold;text-decoration:none;border-radius:50px;margin:1rem;transition:all 0.3s;box-shadow:0 8px 25px rgba(255,215,0,0.4);cursor:pointer;border:none}
+        .cta-button:hover{background:#ffd700;transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,215,0,0.6)}
+        .cta-button.secondary{background:transparent;color:#fff;border:3px solid #fff}
+        .cta-button.secondary:hover{background:rgba(255,255,255,0.1)}
+        .guarantee{background:linear-gradient(135deg,#0a3d0a 0%,#0a1a0a 100%);border:3px solid #2ecc71;border-radius:12px;padding:2rem;margin:3rem 0;text-align:center}
         .guarantee h3{color:#2ecc71;font-size:1.8rem;margin-bottom:1rem}
         .testimonial{background:#1a1a1a;padding:2rem;border-radius:10px;border-left:4px solid var(--primary-red);margin:1.5rem 0}
         .testimonial p{font-style:italic;margin-bottom:1rem;line-height:1.8}
         .testimonial .author{color:var(--primary-red);font-weight:bold}
+        .urgency-box{background:linear-gradient(135deg,#3d0a0a 0%,#1a0a0a 100%);border:3px solid var(--primary-red);border-radius:12px;padding:2rem;margin:2rem 0;text-align:center}
+        .urgency-box h3{color:var(--primary-red);font-size:1.8rem;margin-bottom:1rem}
+        .urgency-box p{font-size:1.2rem;line-height:1.8}
         @media(max-width:768px){
             .hero h1{font-size:2rem}
             .comparison-grid{grid-template-columns:1fr}
             .timer{font-size:1.8rem;gap:1rem}
             .features-grid{grid-template-columns:1fr}
+            .timer-block span:first-child{font-size:2.5rem}
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>🎉 <span class="highlight">Congratulations!</span> You're 30% There...</h1>
-        <p style="font-size:1.3rem;margin-bottom:2rem;">Don't Stop Now - Complete Your Recovery System</p>
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progressBar"></div>
-            <span class="progress-text">30% → 100%</span>
-        </div>
-    </div>
-
     <div class="container">
+        
+        <div class="hero">
+            <h1>🚀 <span class="highlight">ONE FINAL OFFER</span></h1>
+            <p class="subtitle">Get Personal 1-on-1 Mentoring with Patrick</p>
+            <p style="font-size:1.2rem;margin-bottom:2rem;">You've invested in the tools. Now get direct access to the man who created them.</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <span class="progress-text">Complete Your Transformation</span>
+            </div>
+        </div>
+
         <div class="countdown">
-            <h3>⏰ This EXCLUSIVE Upgrade Offer Expires In:</h3>
+            <h3>⏰ This Offer Expires In:</h3>
             <div class="timer">
-                <span id="minutes">14</span>
-                <span>:</span>
-                <span id="seconds">59</span>
-            </div>
-            <p style="margin-top:1rem;opacity:0.9;">After this, you'll pay the full €297 price</p>
-        </div>
-
-        <div class="missing">
-            <h2>🚨 What You're Missing Without BASIC Bundle</h2>
-            <p style="font-size:1.2rem;margin-bottom:2rem;">The STARTER Bundle gave you knowledge. But knowledge alone isn't enough...</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon">📊</div>
-                    <h3>90-Day Clean Tracker</h3>
-                    <p>Visual progress tracking keeps you accountable through the critical first 90 days.</p>
+                <div class="timer-block">
+                    <span id="minutes">04</span>
+                    <span>Minutes</span>
                 </div>
-                <div class="feature-card">
-                    <div class="icon">📝</div>
-                    <h3>Daily Journal System</h3>
-                    <p>Process emotions, identify triggers, and track patterns for lasting change.</p>
+                <div class="timer-block">
+                    <span>:</span>
                 </div>
-                <div class="feature-card">
-                    <div class="icon">🆘</div>
-                    <h3>Emergency Urge Cards</h3>
-                    <p>Immediate action steps when cravings hit - your pocket-sized lifeline.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🎯</div>
-                    <h3>Weekly Check-Ins</h3>
-                    <p>Structured accountability to measure progress week by week.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">💪</div>
-                    <h3>Why I Started Cards</h3>
-                    <p>Keep your deepest motivation visible when temptation strikes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon">🏆</div>
-                    <h3>Milestone Certificates</h3>
-                    <p>Celebrate victories at 30, 60, 90 days - tangible proof of transformation.</p>
+                <div class="timer-block">
+                    <span id="seconds">59</span>
+                    <span>Seconds</span>
                 </div>
             </div>
-            <p style="font-size:1.3rem;margin-top:2rem;color:var(--primary-red);font-weight:bold;text-align:center;">Without these tools, most men relapse within 30 days...</p>
         </div>
 
-        <div class="comparison">
-            <h2>STARTER vs BASIC - Side by Side</h2>
+        <div style="text-align:center;margin:3rem 0;">
+            <h2 style="font-size:2.5rem;color:var(--gold);margin-bottom:1rem;">6-MONTH PERSONAL MENTORING</h2>
+            <p style="font-size:1.3rem;margin-bottom:2rem;">This is NOT another course. This is Patrick working directly WITH YOU for 6 months.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📹</div>
+                <div class="feature-title">12 Private Sessions</div>
+                <div class="feature-desc">Bi-weekly 1-on-1 video calls (60 min each). Patrick addresses YOUR specific challenges, triggers, and roadblocks.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <div class="feature-title">Direct WhatsApp Access</div>
+                <div class="feature-desc">Message Patrick anytime. When urges hit or life gets hard, you're not alone. Get support within 24 hours.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Personalized Plan</div>
+                <div class="feature-desc">Custom recovery roadmap built around YOUR story, YOUR trauma, YOUR triggers. Not generic advice.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚨</div>
+                <div class="feature-title">Emergency Support</div>
+                <div class="feature-desc">When you're on the edge, Patrick is there. Real-time intervention when you need it most.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <div class="feature-title">Accountability Check-Ins</div>
+                <div class="feature-desc">Bi-weekly progress reviews. Patrick holds you accountable and adjusts your plan as you grow.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">100% Confidential</div>
+                <div class="feature-desc">Everything stays between you and Patrick. No judgment. No shame. Just real support.</div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h2>🆚 Self-Guided vs. Personal Mentoring</h2>
             <div class="comparison-grid">
-                <div class="plan">
-                    <h3>STARTER Bundle</h3>
-                    <div class="price">€97</div>
-                    <p style="text-align:center;opacity:0.8;margin-bottom:1rem;">What you have ✓</p>
+                <div class="comparison-item">
+                    <h3>Self-Guided (What You Have)</h3>
                     <ul>
-                        <li>15 Audio Episodes</li>
-                        <li>Complete Workbook (66 pages)</li>
-                        <li>Brain Science Infographic</li>
-                        <li>7-Step Method</li>
-                        <li>Trauma Understanding</li>
-                        <li>Fasting Guide</li>
-                        <li>Meditation Techniques</li>
-                        <li class="no">90-Day Tracker</li>
-                        <li class="no">Daily Journal</li>
-                        <li class="no">Emergency Cards</li>
-                        <li class="no">Check-In Sheets</li>
-                        <li class="no">Milestone Certificates</li>
+                        <li>Audio course & workbook</li>
+                        <li>Accountability tools</li>
+                        <li>General strategies</li>
+                        <li>You figure it out alone</li>
+                        <li>No personal guidance</li>
+                        <li>No emergency support</li>
                     </ul>
                 </div>
-                <div class="plan highlight">
-                    <div class="plan-badge">BEST VALUE</div>
-                    <h3 style="color:var(--gold);">BASIC Bundle ⭐</h3>
-                    <div class="price" style="color:var(--gold);">€297</div>
-                    <p style="text-align:center;color:var(--gold);font-weight:bold;margin-bottom:1rem;">Complete System ✓</p>
+                <div class="comparison-item highlight">
+                    <h3>With Personal Mentoring ⭐</h3>
                     <ul>
-                        <li>15 Audio Episodes</li>
-                        <li>Complete Workbook (66 pages)</li>
-                        <li>Brain Science Infographic</li>
-                        <li>7-Step Method</li>
-                        <li>Trauma Understanding</li>
-                        <li>Fasting Guide</li>
-                        <li>Meditation Techniques</li>
-                        <li><strong>90-Day Tracker</strong></li>
-                        <li><strong>Daily Journal</strong></li>
-                        <li><strong>Emergency Cards</strong></li>
-                        <li><strong>Check-In Sheets</strong></li>
-                        <li><strong>Milestone Certificates</strong></li>
+                        <li>Everything from BASIC +</li>
+                        <li>12 private video sessions</li>
+                        <li>Direct WhatsApp access</li>
+                        <li>Personalized recovery plan</li>
+                        <li>Emergency intervention</li>
+                        <li>Patrick guides you personally</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="upgrade-box">
-            <h2>🎁 EXCLUSIVE UPGRADE OFFER</h2>
-            <p style="font-size:1.2rem;margin-bottom:1rem;">For STARTER buyers only - Never offered again!</p>
-            <div class="savings">💰 Save €97 Today!</div>
+        <div style="text-align:center;margin:3rem 0;">
+            <h2 style="font-size:2.3rem;color:var(--primary-red);margin-bottom:2rem;">What Others Say About Patrick's Mentoring...</h2>
             
-            <div class="price-breakdown">
-                <div class="price-row">
-                    <span>BASIC Bundle (Regular)</span>
-                    <span style="text-decoration:line-through;opacity:0.7;">€297</span>
-                </div>
-                <div class="price-row">
-                    <span>STARTER (Already Paid)</span>
-                    <span style="color:var(--gold);">-€97</span>
-                </div>
-                <div class="price-row total">
-                    <span>Upgrade Price TODAY</span>
-                    <span>€200</span>
+            <div class="testimonial">
+                <p>"Working 1-on-1 with Patrick changed everything. The course gave me knowledge, but the mentoring gave me breakthrough. He saw patterns I couldn't see and helped me address trauma I didn't know I had. Worth every cent."</p>
+                <div class="author">— Michael S., 6-Month Client</div>
+            </div>
+
+            <div class="testimonial">
+                <p>"I tried to quit for 8 years on my own. Failed every time. Patrick's personal support was the difference. Having someone who GETS IT and can guide you through the dark moments... that's priceless."</p>
+                <div class="author">— David R., 6-Month Client</div>
+            </div>
+
+            <div class="testimonial">
+                <p>"The WhatsApp access alone is worth it. When I was triggered and about to relapse, I messaged Patrick. He responded in 20 minutes and talked me through it. That one moment saved my streak and possibly my marriage."</p>
+                <div class="author">— James T., 6-Month Client</div>
+            </div>
+        </div>
+
+        <div class="price-box">
+            <h2 style="color:var(--gold);font-size:2rem;margin-bottom:2rem;">Investment Comparison</h2>
+            <div class="price-row old">
+                <span>Regular 6-Month Mentoring</span>
+                <span>€2800</span>
+            </div>
+            <div class="price-row" style="color:var(--primary-red);">
+                <span>You Already Paid (STARTER + BASIC)</span>
+                <span>-€297</span>
+            </div>
+            <div style="border-top:2px solid rgba(255,255,255,0.2);margin:1.5rem 0;padding-top:1.5rem;">
+                <div class="price-row" style="color:#2ecc71;font-size:1.8rem;">
+                    <span>Your Upgrade Price TODAY</span>
+                    <span>€2200</span>
                 </div>
             </div>
-            
-            <p style="font-size:1.1rem;margin:2rem 0;">Get the complete accountability system for just €200 more<br>(Regular buyers pay €297)</p>
+            <div style="margin-top:2rem;padding:1.5rem;background:rgba(46,204,113,0.1);border:2px solid #2ecc71;border-radius:10px;">
+                <p style="font-size:1.3rem;color:#2ecc71;font-weight:bold;">💰 SAVE €600 RIGHT NOW</p>
+                <p style="font-size:1rem;margin-top:0.5rem;color:#ccc;">This is €50/session for 6 months of personal support</p>
+            </div>
+        </div>
+
+        <div class="urgency-box">
+            <h3>⚠️ THIS IS YOUR ONLY CHANCE</h3>
+            <p>This offer is ONLY available to men who just purchased the BASIC Bundle.</p>
+            <p style="margin-top:1rem;">If you leave this page, <strong>you'll never see this price again.</strong></p>
+            <p style="margin-top:1rem;">Regular clients pay €2800. You'll pay €2200 if you act now.</p>
+        </div>
+
+        <div style="text-align:center;margin:3rem 0;">
+            <p style="font-size:1.3rem;margin-bottom:2rem;line-height:1.8;">
+                You've already invested €297 in the system.<br>
+                Now invest in <strong>direct access to the man who built it.</strong>
+            </p>
             
             <div style="background:linear-gradient(135deg,#FFD700 0%,#FFA500 100%);padding:25px;border-radius:12px;margin:2rem 0;text-align:center;box-shadow:0 8px 25px rgba(255,215,0,0.4);">
                 <p style="color:#000;font-size:18px;font-weight:bold;margin-bottom:10px;">🎁 USE THIS EXCLUSIVE CODE AT CHECKOUT:</p>
-                <div style="background:#000;color:#FFD700;font-size:32px;font-weight:bold;padding:15px;border-radius:8px;letter-spacing:3px;margin:10px 0;">REBORN26</div>
-                <p style="color:#000;font-size:14px;margin-top:10px;">Save €97 - Enter this code in the coupon field to get your upgrade price!</p>
+                <div style="background:#000;color:#FFD700;font-size:32px;font-weight:bold;padding:15px;border-radius:8px;letter-spacing:3px;margin:10px 0;">REBORNMENTOR26</div>
+                <p style="color:#000;font-size:14px;margin-top:10px;">Save €600 - Enter this code in the coupon field to get your upgrade price!</p>
             </div>
             
-            <a href="https://www.checkout-ds24.com/product/662415" class="cta-button">
-                ✓ YES! Upgrade to BASIC Now - €200
+            <a href="https://www.checkout-ds24.com/product/660962" class="cta-button">
+                ✓ YES! Add Personal Mentoring - €2200
             </a>
             
-            <a href="https://rebornmethod.com/" class="cta-button secondary">
-                ✗ No Thanks, I'll Stick With STARTER
+            <a href="https://rebornmethod.com/thank-you-basic-upgrade.html" class="cta-button secondary">
+                ✗ No Thanks, I'll Do This On My Own
             </a>
-        </div>
-
-        <div style="margin:3rem 0;">
-            <h2 style="text-align:center;color:var(--primary-red);margin-bottom:2rem;">What Others Say...</h2>
-            <div class="testimonial">
-                <p>"I bought STARTER first. When I upgraded to BASIC, everything changed. The tracker kept me accountable like nothing else. Wish I'd upgraded sooner!"</p>
-                <div class="author">- David M., 4 months clean</div>
-            </div>
-            <div class="testimonial">
-                <p>"The emergency cards literally saved me multiple times in my first 60 days. Having those action steps in my pocket was a game-changer."</p>
-                <div class="author">- Michael R., 8 months clean</div>
-            </div>
-            <div class="testimonial">
-                <p>"The milestone certificates might seem small, but celebrating 30 days with that certificate on my wall was HUGE for my confidence."</p>
-                <div class="author">- James K., 90 days clean</div>
-            </div>
+            
+            <p style="margin-top:2rem;font-size:0.9rem;opacity:0.7;">Offer expires in <span id="finalMin">04</span>:<span id="finalSec">59</span></p>
         </div>
 
         <div class="guarantee">
-            <div style="font-size:4rem;margin-bottom:1rem;">🛡️</div>
-            <h3>60-Day Money-Back Guarantee</h3>
-            <p style="font-size:1.1rem;line-height:1.8;margin-top:1rem;">Try BASIC Bundle for 60 days. If you don't see the value, email me for a full refund - no questions asked.</p>
+            <h3>🛡️ 60-Day Money-Back Guarantee</h3>
+            <p style="font-size:1.1rem;line-height:1.8;">Try the first 2 months of mentoring risk-free. If you don't see massive value in the first 4 sessions, get a full refund. No questions asked.</p>
         </div>
 
-        <div style="text-align:center;padding:3rem 2rem;background:#1a1a1a;border-radius:15px;border:3px solid var(--primary-red);">
-            <h2 style="color:var(--primary-red);font-size:2.5rem;margin-bottom:1.5rem;">The Choice Is Yours</h2>
-            <p style="font-size:1.3rem;margin-bottom:2rem;line-height:1.8;">Knowledge got you started. But tools keep you free.<br>Complete your recovery system today.</p>
+        <div style="text-align:center;margin:3rem 0;padding:3rem 2rem;background:linear-gradient(135deg,#1a0000 0%,#0a0a0a 100%);border:4px solid var(--primary-red);border-radius:15px;">
+            <h2 style="color:var(--gold);font-size:2.5rem;margin-bottom:1.5rem;">The Choice Is Yours</h2>
+            <p style="font-size:1.3rem;margin-bottom:2rem;line-height:1.8;">
+                You can do this alone with the tools you have...<br>
+                Or you can have Patrick in your corner for the next 6 months.
+            </p>
+            <p style="font-size:1.1rem;margin-bottom:2rem;color:#ccc;">
+                Most men who go through this program say the mentoring was the difference between "trying again" and "finally free."
+            </p>
             
             <div style="background:linear-gradient(135deg,#FFD700 0%,#FFA500 100%);padding:25px;border-radius:12px;margin:2rem 0;text-align:center;box-shadow:0 8px 25px rgba(255,215,0,0.4);">
                 <p style="color:#000;font-size:18px;font-weight:bold;margin-bottom:10px;">🎁 EXCLUSIVE UPGRADE CODE:</p>
-                <div style="background:#000;color:#FFD700;font-size:32px;font-weight:bold;padding:15px;border-radius:8px;letter-spacing:3px;margin:10px 0;">REBORN26</div>
-                <p style="color:#000;font-size:14px;margin-top:10px;">Enter this code at checkout to save €97!</p>
+                <div style="background:#000;color:#FFD700;font-size:32px;font-weight:bold;padding:15px;border-radius:8px;letter-spacing:3px;margin:10px 0;">REBORNMENTOR26</div>
+                <p style="color:#000;font-size:14px;margin-top:10px;">Enter this code at checkout to save €600!</p>
             </div>
             
-            <a href="https://www.checkout-ds24.com/product/662415" class="cta-button">
-                ✓ Complete My Recovery System - €200
+            <a href="https://www.checkout-ds24.com/product/660962" class="cta-button">
+                ✓ Give Me Personal Mentoring - €2200
             </a>
-            <p style="margin-top:2rem;opacity:0.7;">Offer expires in <span id="finalMin">14</span>:<span id="finalSec">59</span></p>
+            <p style="margin-top:2rem;opacity:0.7;font-size:1rem;">This offer expires when the timer hits zero. Don't miss this.</p>
         </div>
+
     </div>
 
     <script>
-        // Countdown timer (15 minutes)
-        let time=900;
+        // Progress bar animation
+        window.addEventListener('load',function(){
+            document.getElementById('progressBar').style.width='100%';
+        });
+
+        // Countdown timer (5 minutes)
+        let time=300;
         function tick(){
             const m=Math.floor(time/60),s=time%60;
-            document.getElementById('minutes').textContent=m;
+            document.getElementById('minutes').textContent=m<10?'0'+m:m;
             document.getElementById('seconds').textContent=s<10?'0'+s:s;
-            document.getElementById('finalMin').textContent=m;
+            document.getElementById('finalMin').textContent=m<10?'0'+m:m;
             document.getElementById('finalSec').textContent=s<10?'0'+s:s;
             if(time>0)time--;
-            else document.querySelector('.countdown h3').textContent='⏰ Offer Expired';
+            else{
+                document.querySelector('.countdown h3').textContent='⏰ Offer Expired';
+                document.querySelectorAll('.cta-button:not(.secondary)').forEach(btn=>{
+                    btn.style.opacity='0.5';
+                    btn.style.pointerEvents='none';
+                });
+            }
         }
         setInterval(tick,1000);
         tick();
-        setTimeout(()=>document.getElementById('progressBar').classList.add('full'),500);
     </script>
 </body>
 </html>
