@@ -190,11 +190,11 @@
             
             <p style="font-size:1.1rem;margin:2rem 0;">Get the complete accountability system for just €200 more<br>(Regular buyers pay €297)</p>
             
-            <a href="https://www.checkout-ds24.com/answer/yes?template=light" class="cta-button">
+            <a href="https://www.checkout-ds24.com/product/662415" class="cta-button">
                 ✓ YES! Upgrade to BASIC Now - €200
             </a>
             
-            <a href="https://www.checkout-ds24.com/answer/no" class="cta-button secondary">
+            <a href="https://rebornmethod.com/" class="cta-button secondary">
                 ✗ No Thanks, I'll Stick With STARTER
             </a>
         </div>
@@ -224,7 +224,7 @@
         <div style="text-align:center;padding:3rem 2rem;background:#1a1a1a;border-radius:15px;border:3px solid var(--primary-red);">
             <h2 style="color:var(--primary-red);font-size:2.5rem;margin-bottom:1.5rem;">The Choice Is Yours</h2>
             <p style="font-size:1.3rem;margin-bottom:2rem;line-height:1.8;">Knowledge got you started. But tools keep you free.<br>Complete your recovery system today.</p>
-            <a href="https://www.checkout-ds24.com/answer/yes?template=light" class="cta-button">
+            <a href="https://www.checkout-ds24.com/product/662415" class="cta-button">
                 ✓ Complete My Recovery System - €200
             </a>
             <p style="margin-top:2rem;opacity:0.7;">Offer expires in <span id="finalMin">14</span>:<span id="finalSec">59</span></p>
@@ -232,19 +232,6 @@
     </div>
 
     <script>
-        // Digistore24 Session-ID Handler
-        const urlParams = new URLSearchParams(window.location.search);
-        const sessionId = urlParams.get('ds24_session_id');
-        
-        if(sessionId) {
-            // Add session ID to all YES/NO buttons
-            document.querySelectorAll('a[href*="checkout-ds24.com"]').forEach(link => {
-                const url = new URL(link.href);
-                url.searchParams.set('ds24_session_id', sessionId);
-                link.href = url.toString();
-            });
-        }
-
         // Countdown timer (15 minutes)
         let time=900;
         function tick(){
