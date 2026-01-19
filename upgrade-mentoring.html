@@ -254,6 +254,19 @@
     </div>
 
     <script>
+        // Digistore24 Session-ID Handler
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('ds24_session_id');
+        
+        if(sessionId) {
+            // Add session ID to all YES/NO buttons
+            document.querySelectorAll('a[href*="checkout-ds24.com"]').forEach(link => {
+                const url = new URL(link.href);
+                url.searchParams.set('ds24_session_id', sessionId);
+                link.href = url.toString();
+            });
+        }
+
         // Progress bar animation
         window.addEventListener('load',function(){
             document.getElementById('progressBar').style.width='100%';
