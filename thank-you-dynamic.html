@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | REBORN</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#000;color:#fff;line-height:1.6}
+        .container{max-width:900px;margin:0 auto;padding:20px}
+        .header{text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0a0a0a 0%,#1a0000 100%);border:4px solid #FFD700;border-radius:12px;margin-bottom:40px}
+        .success-icon{font-size:80px;margin-bottom:20px;animation:bounceIn 1s ease}
+        @keyframes bounceIn{0%{transform:scale(0);opacity:0}50%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+        .logo{font-size:56px;font-weight:bold;color:#cc0000;letter-spacing:15px;margin-bottom:20px;text-shadow:0 0 20px rgba(204,0,0,0.5)}
+        .header h1{font-size:36px;color:#FFD700;margin-bottom:15px}
+        .download-box{background:#cc0000;padding:40px;border-radius:12px;text-align:center;margin:40px 0;box-shadow:0 8px 32px rgba(204,0,0,0.4)}
+        .download-box h2{font-size:32px;margin-bottom:20px;color:#fff}
+        .download-button{display:inline-block;background:#FFD700;color:#000;padding:20px 50px;font-size:24px;font-weight:bold;text-decoration:none;border-radius:8px;margin:20px 0;transition:all 0.3s;box-shadow:0 4px 15px rgba(255,215,0,0.4)}
+        .download-button:hover{background:#FFA500;transform:scale(1.05)}
+        .info-box{background:#1a1a1a;border:3px solid #cc0000;border-radius:8px;padding:35px;margin:30px 0}
+        .section-title{font-size:28px;color:#cc0000;margin-bottom:20px;text-transform:uppercase;border-bottom:2px solid #cc0000;padding-bottom:10px}
+        .support-box{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);border:3px solid #cc0000;border-radius:8px;padding:30px;text-align:center;margin-top:40px}
+        .support-email{color:#cc0000;text-decoration:none;font-weight:bold;font-size:18px}
+        .payment-notice{background:linear-gradient(135deg,#2a2000 0%,#1a1400 100%);border:3px solid #FFD700;padding:25px;border-radius:10px;margin:30px 0;text-align:center}
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="header">
+            <div class="success-icon">🎉</div>
+            <div class="logo">REBORN</div>
+            <h1 id="headerTitle">WELCOME!</h1>
+            <p id="headerSubtitle">Your Transformation Starts NOW</p>
+        </div>
+        
+        <div class="download-box">
+            <h2>📥 ACCESS YOUR MATERIALS NOW</h2>
+            <p style="font-size:22px;margin-bottom:20px;font-weight:bold;color:#fff">
+                Click the button below to download all your files:
+            </p>
+            
+            <a href="%%DOWNLOAD_URL%%" class="download-button">
+                📥 DOWNLOAD ALL FILES NOW
+            </a>
+            
+            <p style="font-size:18px;margin:25px 0;color:#fff">
+                You'll also receive an email from <strong>Digistore24</strong> with the download link.
+            </p>
+            
+            <div style="background:rgba(0,0,0,0.3);padding:25px;border-radius:10px;text-align:left">
+                <p style="font-size:16px;margin-bottom:10px;color:#fff">✓ Click the download button above</p>
+                <p style="font-size:16px;margin-bottom:10px;color:#fff">✓ Save all files to your computer</p>
+                <p style="font-size:16px;margin-bottom:10px;color:#fff">✓ Check your email for backup link</p>
+                <p style="font-size:16px;margin-top:20px;color:#fff">
+                    <strong>Don't see it?</strong> Contact: <strong>pdm-media@outlook.de</strong>
+                </p>
+            </div>
+        </div>
+        
+        <div class="payment-notice">
+            <div style="font-size:28px;color:#FFD700;margin-bottom:15px">💳</div>
+            <h3 style="font-size:22px;color:#FFD700;margin-bottom:15px;font-weight:bold">Payment & Privacy Information</h3>
+            <p style="font-size:18px;margin-bottom:10px;font-weight:bold;color:#fff">Die Abbuchung erfolgt durch Digistore24</p>
+            <p style="font-size:16px;line-height:1.8;color:#fff">Your bank statement will show "<strong>Digistore24.com</strong>" - NOT "REBORN".<br>This protects your privacy. Your purchase is completely confidential.</p>
+        </div>
+        
+        <div class="info-box" id="contentSection">
+            <!-- Dynamic content loaded by JavaScript -->
+        </div>
+        
+        <div class="support-box">
+            <h3 style="font-size:24px;color:#cc0000;margin-bottom:20px">🆘 NEED HELP?</h3>
+            <div style="font-size:16px;line-height:2">
+                <strong>Email:</strong> <a href="mailto:pdm-media@outlook.de" class="support-email">pdm-media@outlook.de</a><br>
+                <strong>Response Time:</strong> 24-48 hours<br>
+                <strong>Website:</strong> <a href="https://rebornmethod.com" style="color:#cc0000;text-decoration:none">www.rebornmethod.com</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Read GET parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('product_id');
+        
+        // Content for each product
+        const content = {
+            '658190': { // STARTER
+                title: 'WELCOME TO YOUR NEW LIFE!',
+                subtitle: 'Your STARTER Bundle is Ready',
+                sections: `
+                    <div class="section-title">📦 WHAT'S INCLUDED IN YOUR STARTER BUNDLE</div>
+                    <ul style="list-style:none;padding:0">
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ 15 Audio Episodes (MP3 Format)</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Complete Workbook (66 pages PDF)</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Brain Science Infographic</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ 7-Step Method Guide</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Quick Start Guide</li>
+                        <li style="padding:10px 0">✓ Bonus: Urge Management Cards</li>
+                    </ul>
+                    <div style="margin-top:30px">
+                        <div class="section-title">🎯 NEXT STEPS</div>
+                        <p style="font-size:16px;line-height:1.8">
+                            1. Download all files<br>
+                            2. Start with "START_HERE.pdf"<br>
+                            3. Listen to Episode 1<br>
+                            4. Complete Workbook exercises<br>
+                            5. Join WhatsApp Community for support
+                        </p>
+                    </div>
+                `
+            },
+            '662415': { // BASIC
+                title: 'WELCOME TO BASIC BUNDLE!',
+                subtitle: 'Your Complete Recovery System',
+                sections: `
+                    <div class="section-title">📦 YOUR COMPLETE PACKAGE</div>
+                    <p style="font-size:18px;margin-bottom:20px;font-weight:bold;color:#FFD700">STARTER + BASIC Bundle</p>
+                    <ul style="list-style:none;padding:0">
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Everything from STARTER Bundle</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ 90-Day Clean Tracker</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Daily Journal Templates</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Weekly Check-In Sheets</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Emergency Urge Cards</li>
+                        <li style="padding:10px 0;border-bottom:1px solid #333">✓ Emergency Contact Cards</li>
+                        <li style="padding:10px 0">✓ Milestone Certificates (30/60/90 days)</li>
+                    </ul>
+                `
+            },
+            '660962': { // MENTORING
+                title: 'WELCOME TO PREMIUM MENTORING!',
+                subtitle: "You've Just Made The Best Investment",
+                sections: `
+                    <div class="section-title">🏆 YOUR COMPLETE PACKAGE</div>
+                    <p style="font-size:20px;margin-bottom:20px;font-weight:bold;color:#FFD700">STARTER + BASIC + 6-MONTH MENTORING</p>
+                    <p style="font-size:18px;margin-bottom:20px">Total Investment: €2497</p>
+                    
+                    <div style="background:#1a0000;padding:25px;border-radius:10px;border:2px solid #FFD700;margin:20px 0">
+                        <h3 style="color:#FFD700;margin-bottom:15px">📹 6-MONTH MENTORING INCLUDES:</h3>
+                        <ul style="list-style:none;padding:0">
+                            <li style="padding:10px 0;border-bottom:1px solid #333">✓ 12 Private Video Sessions (45 min, 2x/month)</li>
+                            <li style="padding:10px 0;border-bottom:1px solid #333">✓ Direct WhatsApp Access to Patrick</li>
+                            <li style="padding:10px 0;border-bottom:1px solid #333">✓ Personalized Recovery Plan</li>
+                            <li style="padding:10px 0;border-bottom:1px solid #333">✓ Emergency Support</li>
+                            <li style="padding:10px 0;border-bottom:1px solid #333">✓ Accountability Check-Ins (2x/month)</li>
+                            <li style="padding:10px 0">✓ Complete Bundle Access</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="section-title" style="margin-top:30px">📧 WHAT HAPPENS NEXT?</div>
+                    <p style="font-size:16px;line-height:1.8;margin-bottom:15px">
+                        <strong style="color:#FFD700">Within 24 hours:</strong><br>
+                        Patrick will email you from <strong>pdm-media@outlook.de</strong> to:<br>
+                        • Schedule your first session<br>
+                        • Add you to private WhatsApp<br>
+                        • Send onboarding documents
+                    </p>
+                `
+            }
+        };
+        
+        // Load content based on product_id
+        if(content[productId]) {
+            document.getElementById('headerTitle').textContent = content[productId].title;
+            document.getElementById('headerSubtitle').textContent = content[productId].subtitle;
+            document.getElementById('contentSection').innerHTML = content[productId].sections;
+        } else {
+            // Default content if no/wrong product_id
+            document.getElementById('contentSection').innerHTML = `
+                <div class="section-title">📦 YOUR PURCHASE</div>
+                <p style="font-size:18px">Thank you for your purchase! Download your files using the button above.</p>
+            `;
+        }
+    </script>
+</body>
+</html>
