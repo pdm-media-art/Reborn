@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Premium Mentoring | REBORN</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;}
+        body {font-family:'Arial','Helvetica',sans-serif;background:#000;color:#fff;line-height:1.6;}
+        .container {max-width:900px;margin:0 auto;padding:20px;}
+        
+        .header {text-align:center;padding:40px 20px;background:linear-gradient(135deg,#0a0a0a 0%,#1a0000 100%);border:4px solid #FFD700;border-radius:12px;margin-bottom:40px;}
+        .logo {font-size:56px;font-weight:bold;color:#cc0000;letter-spacing:15px;margin-bottom:20px;text-shadow:0 0 20px rgba(204,0,0,0.5);}
+        .success-icon {font-size:80px;margin-bottom:20px;animation:bounceIn 1s ease;}
+        @keyframes bounceIn {0%{transform:scale(0);opacity:0;}50%{transform:scale(1.1);}100%{transform:scale(1);opacity:1;}}
+        .header h1 {font-size:36px;color:#FFD700;margin-bottom:15px;}
+        .header p {font-size:18px;color:#ccc;}
+        
+        .highlight-box {background:linear-gradient(135deg,#FFD700 0%,#FFA500 100%);padding:40px;border-radius:12px;text-align:center;margin-bottom:40px;box-shadow:0 8px 32px rgba(255,215,0,0.4);color:#000;}
+        .highlight-box h2 {font-size:32px;margin-bottom:20px;font-weight:bold;}
+        .highlight-box p {font-size:18px;margin-bottom:15px;font-weight:500;}
+        .highlight-box .price {font-size:48px;font-weight:bold;margin:20px 0;color:#cc0000;}
+        
+        .payment-notice {background:linear-gradient(135deg,#2a2000 0%,#1a1400 100%);border:3px solid #FFD700;padding:25px;border-radius:10px;margin:30px 0;text-align:center;}
+        .payment-notice h3 {font-size:22px;color:#FFD700;margin-bottom:15px;font-weight:bold;}
+        
+        .section {background:#0a0a0a;border:3px solid #cc0000;border-radius:8px;padding:35px;margin-bottom:30px;}
+        .section-title {font-size:28px;color:#cc0000;margin-bottom:20px;text-transform:uppercase;border-bottom:2px solid #cc0000;padding-bottom:10px;}
+        .section-content {font-size:16px;line-height:1.8;}
+        
+        .steps {counter-reset:step;}
+        .step-item {margin:20px 0;padding:20px;background:#1a1a1a;border-left:5px solid #FFD700;position:relative;padding-left:80px;}
+        .step-item::before {counter-increment:step;content:counter(step);position:absolute;left:20px;top:50%;transform:translateY(-50%);background:#FFD700;color:#000;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;}
+        .step-title {font-size:18px;color:#FFD700;font-weight:bold;margin-bottom:8px;}
+        
+        .package-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:25px 0;}
+        .package-item {background:#1a1a1a;border:3px solid #cc0000;border-radius:10px;padding:20px;text-align:center;}
+        .package-item h4 {color:#cc0000;font-size:20px;margin-bottom:10px;}
+        .package-item ul {list-style:none;text-align:left;font-size:14px;padding:0;}
+        .package-item li {padding:8px 0;padding-left:25px;position:relative;}
+        .package-item li::before {content:"✓";position:absolute;left:0;color:#cc0000;font-weight:bold;}
+        
+        .mentoring-details {background:linear-gradient(135deg,#1a0a00 0%,#0a0a0a 100%);border:3px solid #FFD700;border-radius:12px;padding:35px;margin:30px 0;}
+        .mentoring-details h3 {color:#FFD700;font-size:24px;margin-bottom:20px;text-align:center;}
+        .mentoring-features {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:20px;}
+        .mentoring-feature {background:rgba(0,0,0,0.3);padding:20px;border-radius:8px;border-left:4px solid #FFD700;}
+        .mentoring-feature h4 {color:#FFD700;font-size:18px;margin-bottom:10px;}
+        .mentoring-feature p {font-size:14px;line-height:1.6;color:#ccc;}
+        
+        .cta-box {background:#cc0000;padding:30px;border-radius:12px;text-align:center;margin:30px 0;}
+        .cta-box h3 {font-size:28px;margin-bottom:15px;color:#fff;}
+        .cta-box p {font-size:18px;margin-bottom:20px;}
+        .cta-box a {display:inline-block;background:#FFD700;color:#000;padding:15px 40px;font-size:20px;font-weight:bold;text-decoration:none;border-radius:50px;transition:all 0.3s;}
+        .cta-box a:hover {background:#FFA500;transform:scale(1.05);}
+        
+        .support-box {background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);border:3px solid #cc0000;border-radius:8px;padding:30px;text-align:center;margin-top:40px;}
+        .support-title {font-size:24px;color:#cc0000;margin-bottom:20px;}
+        .support-info {font-size:16px;line-height:2;}
+        .support-email {color:#cc0000;text-decoration:none;font-weight:bold;font-size:18px;}
+        .support-email:hover {color:#ff0000;text-decoration:underline;}
+        
+        .footer {text-align:center;padding:30px 20px;margin-top:50px;border-top:2px solid #cc0000;color:#666;font-size:14px;}
+        
+        @media(max-width:768px){
+            .logo {font-size:40px;letter-spacing:8px;}
+            .header h1 {font-size:28px;}
+            .highlight-box h2 {font-size:24px;}
+            .highlight-box .price {font-size:36px;}
+            .package-grid {grid-template-columns:1fr;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="header">
+            <div class="success-icon">🎉</div>
+            <div class="logo">REBORN</div>
+            <h1>WELCOME TO PREMIUM MENTORING!</h1>
+            <p>You've Just Made The Best Investment In Your Freedom</p>
+        </div>
+        
+        <div class="highlight-box">
+            <h2>🏆 CONGRATULATIONS!</h2>
+            <p style="font-size:20px;margin-bottom:10px;">You now have COMPLETE ACCESS to:</p>
+            <p style="font-size:22px;font-weight:bold;">6-Month Personal Mentoring with Patrick</p>
+            <div class="price">€2497 Total Investment</div>
+            <p style="font-size:16px;margin-top:15px;">STARTER + BASIC + MENTORING - Everything You Need</p>
+        </div>
+        
+        <div class="payment-notice">
+            <div style="font-size:28px;color:#FFD700;margin-bottom:15px;">💳</div>
+            <h3>Payment & Privacy Information</h3>
+            <p style="font-size:18px;margin-bottom:10px;font-weight:bold;">Die Abbuchung erfolgt durch Digistore24</p>
+            <p style="font-size:16px;line-height:1.8;">Your bank statement will show "<strong>Digistore24.com</strong>" - NOT "REBORN".<br>This protects your privacy. Your purchase is completely confidential.</p>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎯 WHAT HAPPENS NEXT?</div>
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-title">Check Your Email (Next 5-10 Minutes)</div>
+                    You'll receive 2 emails from <strong>Digistore24</strong>:<br>
+                    1. Download links for all REBORN materials<br>
+                    2. Payment confirmation for mentoring program
+                </div>
+                <div class="step-item">
+                    <div class="step-title">Patrick Will Contact You (Within 24 Hours)</div>
+                    Patrick will email you from <strong>pdm-media@outlook.de</strong> to:<br>
+                    • Schedule your first 1-on-1 session<br>
+                    • Add you to private WhatsApp<br>
+                    • Send onboarding documents
+                </div>
+                <div class="step-item">
+                    <div class="step-title">Download All Materials</div>
+                    Click the link in your Digistore24 email to download:<br>
+                    • 15 Audio Episodes + Workbook<br>
+                    • 90-Day Tracker & Accountability Tools<br>
+                    • All BASIC Bundle materials
+                </div>
+                <div class="step-item">
+                    <div class="step-title">Join WhatsApp Community</div>
+                    Get support from other men in recovery while you wait for Patrick's message.
+                </div>
+                <div class="step-item">
+                    <div class="step-title">Complete Intake Form</div>
+                    Patrick will send you a detailed intake form to prepare for your first session.
+                </div>
+            </div>
+        </div>
+        
+        <div class="mentoring-details">
+            <h3>🚀 YOUR 6-MONTH MENTORING PROGRAM INCLUDES:</h3>
+            <div class="mentoring-features">
+                <div class="mentoring-feature">
+                    <h4>📹 12 Private Video Sessions</h4>
+                    <p>Bi-weekly 1-on-1 calls (60 minutes each). Deep-dive into YOUR specific challenges, triggers, and recovery roadmap.</p>
+                </div>
+                <div class="mentoring-feature">
+                    <h4>💬 Direct WhatsApp Access</h4>
+                    <p>Message Patrick anytime. When urges hit or you need support, you're not alone. Response within 24 hours guaranteed.</p>
+                </div>
+                <div class="mentoring-feature">
+                    <h4>🎯 Personalized Recovery Plan</h4>
+                    <p>Custom roadmap built around YOUR story, YOUR trauma, YOUR triggers. Not generic advice - this is tailored to YOU.</p>
+                </div>
+                <div class="mentoring-feature">
+                    <h4>🚨 Emergency Support</h4>
+                    <p>When you're struggling and on the edge, Patrick is there. Real-time intervention when you need it most.</p>
+                </div>
+                <div class="mentoring-feature">
+                    <h4>✅ Accountability Check-Ins</h4>
+                    <p>Bi-weekly progress reviews. Patrick holds you accountable and adjusts your plan as you grow and evolve.</p>
+                </div>
+                <div class="mentoring-feature">
+                    <h4>🔒 100% Confidential</h4>
+                    <p>Everything stays between you and Patrick. No judgment. No shame. Just real, honest support.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📦 YOUR COMPLETE PACKAGE</div>
+            <div class="package-grid">
+                <div class="package-item">
+                    <h4>STARTER Bundle</h4>
+                    <ul>
+                        <li>15 Audio Episodes</li>
+                        <li>Complete Workbook (66 pages)</li>
+                        <li>Brain Science Infographic</li>
+                        <li>7-Step Method Guide</li>
+                    </ul>
+                </div>
+                <div class="package-item">
+                    <h4>BASIC Bundle</h4>
+                    <ul>
+                        <li>90-Day Clean Tracker</li>
+                        <li>Daily Journal Templates</li>
+                        <li>Emergency Urge Cards</li>
+                        <li>Weekly Check-In Sheets</li>
+                        <li>Milestone Certificates</li>
+                    </ul>
+                </div>
+                <div class="package-item" style="border-color:#FFD700;">
+                    <h4 style="color:#FFD700;">6-Month MENTORING ⭐</h4>
+                    <ul>
+                        <li style="color:#FFD700;">12 Private Sessions</li>
+                        <li style="color:#FFD700;">WhatsApp Access</li>
+                        <li style="color:#FFD700;">Personalized Plan</li>
+                        <li style="color:#FFD700;">Emergency Support</li>
+                        <li style="color:#FFD700;">Accountability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-box">
+            <h3>📲 Join The Community NOW</h3>
+            <p>Connect with other men in recovery while you wait for Patrick's message</p>
+            <a href="https://whatsapp.com/channel/0029VbBvKXg1SWsxDAezIW0M" target="_blank">Join WhatsApp Channel</a>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">⚠️ IMPORTANT NOTES</div>
+            <div class="section-content">
+                <p style="margin-bottom:15px;">
+                    <strong style="color:#cc0000;">Email Delivery:</strong> Download links are sent by Digistore24 within 5-10 minutes. Check spam/junk folder if you don't see it.
+                </p>
+                <p style="margin-bottom:15px;">
+                    <strong style="color:#cc0000;">Patrick's Contact:</strong> Expect email from pdm-media@outlook.de within 24 hours to schedule your first session.
+                </p>
+                <p style="margin-bottom:15px;">
+                    <strong style="color:#cc0000;">Download Limit:</strong> Your link works for 90 days and can be used 5 times. Save all files immediately!
+                </p>
+                <p style="margin-bottom:15px;">
+                    <strong style="color:#cc0000;">Privacy:</strong> All downloads and sessions are confidential. Your bank statement shows only "Digistore24.com".
+                </p>
+                <p style="margin-bottom:15px;">
+                    <strong style="color:#cc0000;">Session Scheduling:</strong> Sessions are scheduled bi-weekly (every 2 weeks) for 6 months. Flexible timing to fit your schedule.
+                </p>
+                <p>
+                    <strong style="color:#cc0000;">60-Day Guarantee:</strong> Try the first 2 months risk-free. Not satisfied after 4 sessions? Full refund, no questions asked.
+                </p>
+            </div>
+        </div>
+        
+        <div class="support-box">
+            <div class="support-title">🆘 QUESTIONS OR TECHNICAL ISSUES?</div>
+            <div class="support-info">
+                <strong>Email Support:</strong> <a href="mailto:pdm-media@outlook.de" class="support-email">pdm-media@outlook.de</a><br>
+                <strong>Response Time:</strong> Within 24 hours<br>
+                <strong>Website:</strong> <a href="https://rebornmethod.com" style="color:#cc0000;text-decoration:none;">www.rebornmethod.com</a><br><br>
+                For download issues, session scheduling, or mentoring questions!
+            </div>
+        </div>
+        
+        <div style="text-align:center;margin:40px 0;padding:30px;background:linear-gradient(135deg,#1a0000 0%,#0a0a0a 100%);border:4px solid #FFD700;border-radius:15px;">
+            <h2 style="color:#FFD700;font-size:32px;margin-bottom:20px;">Your Journey Starts NOW</h2>
+            <p style="font-size:20px;line-height:1.8;margin-bottom:15px;">
+                You've invested in the complete system.<br>
+                You've invested in direct access to Patrick.<br>
+                You've invested in your FREEDOM.
+            </p>
+            <p style="font-size:18px;color:#ccc;margin-top:20px;">
+                Most men who complete this program say it changed their life.<br>
+                <strong style="color:#FFD700;">You're about to become one of them.</strong>
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p><strong>REBORN - The 7-Step Method to Crush Pornography Addiction</strong></p>
+            <p>© 2025 Patrick Devosse | www.rebornmethod.com | Payment processed by Digistore24</p>
+        </div>
+
+    </div>
+</body>
+</html>
