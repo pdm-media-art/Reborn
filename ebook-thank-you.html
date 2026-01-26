@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - REBORN Method</title>
+    <meta name="description" content="Your free guide is on its way">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        /* HEADER */
+        .logo {
+            font-size: 56px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            color: #999999;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+        
+        /* SUCCESS BOX */
+        .success-box {
+            background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+            border: 3px solid #e74c3c;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.3);
+        }
+        
+        .checkmark {
+            font-size: 72px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .email-note {
+            font-size: 16px;
+            color: #cccccc;
+            font-style: italic;
+            margin-top: 30px;
+        }
+        
+        /* NEXT STEPS */
+        .next-steps {
+            background: #1a1a1a;
+            border-left: 5px solid #e74c3c;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 5px;
+            text-align: left;
+        }
+        
+        .next-steps h2 {
+            color: #e74c3c;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .next-steps ol {
+            list-style: none;
+            counter-reset: step-counter;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        
+        .next-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #e74c3c;
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        /* CTA BUTTON */
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: normal;
+            padding: 20px 40px;
+            text-decoration: none;
+            border: 2px solid #e74c3c;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #e74c3c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* FOOTER */
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #333333;
+            color: #666666;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 42px;
+                letter-spacing: 4px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .success-box {
+                padding: 40px 25px;
+            }
+            
+            .next-steps {
+                padding: 25px 20px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="logo">REBORN</div>
+        <div class="tagline">The Method</div>
+        
+        <!-- SUCCESS MESSAGE -->
+        <div class="success-box">
+            <div class="checkmark">✓</div>
+            <h1>Check Your Email</h1>
+            <p>Your free guide <strong>"The Man You're Becoming vs. The Man You Could Have Been"</strong> is on its way to your inbox.</p>
+            <p>It should arrive within the next 5 minutes.</p>
+            <p class="email-note">If you don't see it, check your spam/promotions folder.</p>
+        </div>
+        
+        <!-- NEXT STEPS -->
+        <div class="next-steps">
+            <h2>What to Do Next</h2>
+            <ol>
+                <li><strong>Open your email</strong> and download the guide (PDF)</li>
+                <li><strong>Read it cover to cover</strong> – it will take 20-30 minutes</li>
+                <li><strong>Understand the split</strong> between the man you're becoming and the man you could have been</li>
+                <li><strong>Make a decision</strong> about what happens next</li>
+            </ol>
+        </div>
+        
+        <!-- CTA -->
+        <a href="https://rebornmethod.com" class="cta-button">
+            Explore the Complete REBORN Method
+        </a>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>Questions? Email us at <a href="mailto:pdm-media@outlook.de">pdm-media@outlook.de</a></p>
+            <p style="margin-top: 20px;">© 2026 REBORN by Patrick Devosse</p>
+        </div>
+        
+    </div>
+</body>
+</html>
