@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REBORN — The Dopamine Trap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #e74c3c;
+            --red-dark: #c0392b;
+            --red-glow: rgba(231, 76, 60, 0.4);
+            --black: #0a0a0a;
+            --dark: #111111;
+            --dark-card: #161616;
+            --gray: #888888;
+            --light: #e0e0e0;
+            --white: #f5f5f5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--black);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(ellipse at 50% 0%, rgba(231, 76, 60, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 100%, rgba(231, 76, 60, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* === HEADER === */
+        .header {
+            text-align: center;
+            padding: 60px 20px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-label {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(42px, 8vw, 80px);
+            color: var(--white);
+            letter-spacing: 6px;
+            line-height: 1;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+
+        .header h1 span { color: var(--red); }
+
+        .header .subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            font-size: clamp(16px, 3vw, 22px);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 8px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: var(--red);
+            margin: 30px auto;
+            opacity: 0;
+            animation: expandWidth 0.6s ease forwards 0.8s;
+        }
+
+        /* === INTRO === */
+        .intro {
+            max-width: 720px;
+            margin: 0 auto 50px;
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--gray);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 1s;
+        }
+
+        .intro strong { color: var(--red); font-weight: 600; }
+
+        /* === CYCLE SECTION === */
+        .cycle-section {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+
+        /* === CIRCLE (Desktop) === */
+        .cycle-ring {
+            position: relative;
+            width: min(600px, 85vw);
+            height: min(600px, 85vw);
+            margin: 0 auto 60px;
+        }
+
+        .cycle-ring svg.ring-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        .ring-path {
+            fill: none;
+            stroke: var(--red);
+            stroke-width: 2;
+            stroke-dasharray: 8 6;
+            opacity: 0.25;
+            animation: rotateDash 30s linear infinite;
+        }
+
+        .ring-arrows {
+            fill: none;
+            stroke: var(--red);
+            stroke-width: 2.5;
+            opacity: 0.5;
+        }
+
+        .cycle-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: min(180px, 35vw);
+        }
+
+        .cycle-center .trapped {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(22px, 4vw, 34px);
+            color: var(--red);
+            letter-spacing: 4px;
+            line-height: 1.1;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .cycle-center .trapped-sub {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            font-size: clamp(10px, 2vw, 13px);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 6px;
+        }
+
+        /* === NODES === */
+        .cycle-node {
+            position: absolute;
+            width: min(150px, 28vw);
+            text-align: center;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            cursor: default;
+            transition: transform 0.3s ease;
+        }
+
+        .cycle-node:hover { transform: translate(-50%, -50%) scale(1.08); }
+
+        .cycle-node .node-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(32px, 6vw, 48px);
+            color: var(--red);
+            line-height: 1;
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }
+
+        .cycle-node:hover .node-number { opacity: 0.5; }
+
+        .cycle-node .node-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: clamp(13px, 2.5vw, 17px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin: 4px 0;
+        }
+
+        .cycle-node .node-desc {
+            font-size: clamp(10px, 1.8vw, 12px);
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .node-1 { top: 2%;  left: 50%; }
+        .node-2 { top: 25%; left: 93%; }
+        .node-3 { top: 72%; left: 93%; }
+        .node-4 { top: 97%; left: 50%; }
+        .node-5 { top: 72%; left: 7%;  }
+        .node-6 { top: 25%; left: 7%;  }
+
+        .node-1 { animation: fadeIn 0.6s ease forwards 1.2s; }
+        .node-2 { animation: fadeIn 0.6s ease forwards 1.4s; }
+        .node-3 { animation: fadeIn 0.6s ease forwards 1.6s; }
+        .node-4 { animation: fadeIn 0.6s ease forwards 1.8s; }
+        .node-5 { animation: fadeIn 0.6s ease forwards 2.0s; }
+        .node-6 { animation: fadeIn 0.6s ease forwards 2.2s; }
+
+        /* === INSIGHT BOX === */
+        .insight-box {
+            max-width: 720px;
+            margin: 20px auto 50px;
+            padding: 32px 36px;
+            border-left: 3px solid var(--red);
+            background: var(--dark-card);
+            position: relative;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 2.5s;
+        }
+
+        .insight-box::before {
+            content: 'KEY INSIGHT';
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--red);
+            position: absolute;
+            top: -10px; left: 36px;
+            background: var(--black);
+            padding: 0 12px;
+        }
+
+        .insight-box p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--light);
+        }
+
+        .insight-box strong { color: var(--white); font-weight: 600; }
+
+        /* === BOTTOM CARDS === */
+        .bottom-cards {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            padding: 0 24px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 2.8s;
+        }
+
+        .bottom-card {
+            background: var(--dark-card);
+            padding: 28px 24px;
+            border-top: 2px solid var(--red);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bottom-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(231, 76, 60, 0.1);
+        }
+
+        .bottom-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+
+        .bottom-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--gray);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            text-align: center;
+            padding: 60px 24px 40px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 3s;
+        }
+
+        .footer .break-free {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(28px, 5vw, 44px);
+            letter-spacing: 6px;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .footer .break-free span { color: var(--red); }
+
+        .footer .footer-sub {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .footer .brand {
+            margin-top: 40px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 8px;
+            color: var(--red);
+            opacity: 0.4;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes expandWidth {
+            from { opacity: 0; width: 0; }
+            to   { opacity: 1; width: 80px; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50%      { opacity: 0.5; }
+        }
+
+        @keyframes rotateDash {
+            to { stroke-dashoffset: -1000; }
+        }
+
+        /* === MOBILE === */
+        @media (max-width: 700px) {
+            .cycle-ring { display: none; }
+
+            .cycle-mobile {
+                display: flex !important;
+                flex-direction: column;
+                gap: 0;
+                padding: 0 16px;
+                max-width: 500px;
+                margin: 0 auto 40px;
+            }
+
+            .mobile-step {
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 20px 0;
+                position: relative;
+                opacity: 0;
+                animation: fadeUp 0.5s ease forwards;
+            }
+
+            .mobile-step:nth-child(1) { animation-delay: 1.2s; }
+            .mobile-step:nth-child(2) { animation-delay: 1.4s; }
+            .mobile-step:nth-child(3) { animation-delay: 1.6s; }
+            .mobile-step:nth-child(4) { animation-delay: 1.8s; }
+            .mobile-step:nth-child(5) { animation-delay: 2.0s; }
+            .mobile-step:nth-child(6) { animation-delay: 2.2s; }
+
+            .mobile-step::after {
+                content: '';
+                position: absolute;
+                left: 22px; top: 52px; bottom: -2px;
+                width: 2px;
+                background: linear-gradient(to bottom, var(--red), transparent);
+                opacity: 0.2;
+            }
+
+            .mobile-step:last-child::after {
+                background: linear-gradient(to bottom, var(--red), var(--red));
+                opacity: 0.2;
+                bottom: 0;
+            }
+
+            .mobile-num {
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 36px;
+                color: var(--red);
+                opacity: 0.3;
+                line-height: 1;
+                min-width: 44px;
+                text-align: center;
+            }
+
+            .mobile-content h4 {
+                font-family: 'Oswald', sans-serif;
+                font-weight: 600;
+                font-size: 16px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--white);
+                margin-bottom: 4px;
+            }
+
+            .mobile-content p {
+                font-size: 13px;
+                color: var(--gray);
+                line-height: 1.6;
+            }
+
+            .mobile-loop-back {
+                text-align: center;
+                padding: 16px 0 8px;
+                opacity: 0;
+                animation: fadeUp 0.5s ease forwards 2.4s;
+            }
+
+            .mobile-loop-back span {
+                font-family: 'Oswald', sans-serif;
+                font-weight: 300;
+                font-size: 12px;
+                letter-spacing: 4px;
+                text-transform: uppercase;
+                color: var(--red);
+                opacity: 0.5;
+            }
+
+            .bottom-cards { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 701px) {
+            .cycle-mobile { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-label">The REBORN Method</div>
+        <h1>THE <span>DOPAMINE</span> TRAP</h1>
+        <div class="subtitle">How Pornography Hijacks Your Brain</div>
+        <div class="divider"></div>
+    </header>
+
+    <section class="intro">
+        <p>Your brain releases dopamine not just when you experience pleasure, but in <strong>anticipation</strong> of pleasure. Pornography exploits this ancient wiring — flooding your brain with amounts nature never intended, trapping you in a cycle you don't even see.</p>
+    </section>
+
+    <section class="cycle-section">
+        <!-- Desktop Circle -->
+        <div class="cycle-ring">
+            <svg class="ring-bg" viewBox="0 0 600 600">
+                <circle class="ring-path" cx="300" cy="300" r="220" />
+                <defs>
+                    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#e74c3c" opacity="0.5"/>
+                    </marker>
+                </defs>
+                <path class="ring-arrows" d="M 300 80 A 220 220 0 0 1 490 180" marker-end="url(#arrowhead)"/>
+                <path class="ring-arrows" d="M 510 240 A 220 220 0 0 1 490 430" marker-end="url(#arrowhead)"/>
+                <path class="ring-arrows" d="M 470 460 A 220 220 0 0 1 300 520" marker-end="url(#arrowhead)"/>
+                <path class="ring-arrows" d="M 260 520 A 220 220 0 0 1 110 430" marker-end="url(#arrowhead)"/>
+                <path class="ring-arrows" d="M 90 400 A 220 220 0 0 1 100 190" marker-end="url(#arrowhead)"/>
+                <path class="ring-arrows" d="M 120 160 A 220 220 0 0 1 270 82" marker-end="url(#arrowhead)"/>
+            </svg>
+
+            <div class="cycle-center">
+                <div class="trapped">THE TRAP</div>
+                <div class="trapped-sub">Repeat until broken</div>
+            </div>
+
+            <div class="cycle-node node-1">
+                <div class="node-number">01</div>
+                <div class="node-title">Pain / Trigger</div>
+                <div class="node-desc">Shame, rejection, loneliness, stress, or unhealed trauma surfaces</div>
+            </div>
+            <div class="cycle-node node-2">
+                <div class="node-number">02</div>
+                <div class="node-title">Craving</div>
+                <div class="node-desc">The brain seeks escape — dopamine spikes in anticipation alone</div>
+            </div>
+            <div class="cycle-node node-3">
+                <div class="node-number">03</div>
+                <div class="node-title">Acting Out</div>
+                <div class="node-desc">Pornography floods the brain with artificial dopamine</div>
+            </div>
+            <div class="cycle-node node-4">
+                <div class="node-number">04</div>
+                <div class="node-title">Numbness</div>
+                <div class="node-desc">Brief escape — pain is masked, energy is depleted, nothing is gained</div>
+            </div>
+            <div class="cycle-node node-5">
+                <div class="node-number">05</div>
+                <div class="node-title">Shame &amp; Guilt</div>
+                <div class="node-desc">Reality returns — isolation deepens, self-worth crashes</div>
+            </div>
+            <div class="cycle-node node-6">
+                <div class="node-number">06</div>
+                <div class="node-title">Deeper Pain</div>
+                <div class="node-desc">Depression, loneliness, lower baseline — the brain needs more</div>
+            </div>
+        </div>
+
+        <!-- Mobile Vertical -->
+        <div class="cycle-mobile">
+            <div class="mobile-step">
+                <div class="mobile-num">01</div>
+                <div class="mobile-content">
+                    <h4>Pain / Trigger</h4>
+                    <p>Shame, rejection, loneliness, stress, or unhealed trauma surfaces</p>
+                </div>
+            </div>
+            <div class="mobile-step">
+                <div class="mobile-num">02</div>
+                <div class="mobile-content">
+                    <h4>Craving</h4>
+                    <p>The brain seeks escape — dopamine spikes in anticipation alone</p>
+                </div>
+            </div>
+            <div class="mobile-step">
+                <div class="mobile-num">03</div>
+                <div class="mobile-content">
+                    <h4>Acting Out</h4>
+                    <p>Pornography floods the brain with artificial dopamine</p>
+                </div>
+            </div>
+            <div class="mobile-step">
+                <div class="mobile-num">04</div>
+                <div class="mobile-content">
+                    <h4>Numbness</h4>
+                    <p>Brief escape — pain is masked, energy is depleted, nothing is gained</p>
+                </div>
+            </div>
+            <div class="mobile-step">
+                <div class="mobile-num">05</div>
+                <div class="mobile-content">
+                    <h4>Shame & Guilt</h4>
+                    <p>Reality returns — isolation deepens, self-worth crashes</p>
+                </div>
+            </div>
+            <div class="mobile-step">
+                <div class="mobile-num">06</div>
+                <div class="mobile-content">
+                    <h4>Deeper Pain</h4>
+                    <p>Depression, loneliness, lower baseline — the brain needs more</p>
+                </div>
+            </div>
+            <div class="mobile-loop-back">
+                <span>&#8635; The cycle repeats — until you break it</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="insight-box">
+        <p><strong>You don't have a porn problem. You have a pain problem.</strong> Pornography is not the enemy — it's the painkiller. The real wound lives underneath. Every time you numb the pain instead of facing it, the cycle tightens. The hunt, the search, the next click is more compelling than the viewing itself — because you're chasing a feeling that never satisfies. It's not real connection. It's not real intimacy. It's an illusion.</p>
+    </section>
+
+    <div class="bottom-cards">
+        <div class="bottom-card">
+            <h3>The Brain's Lie</h3>
+            <p>Pornography tricks your brain into thinking you're engaging in reproductive behavior. But you're sitting alone, staring at a screen, depleting your energy on an illusion. Your brain gets hijacked by a hyper-stimulus — masked in sexual intention, but designed to produce dopamine and keep you trapped.</p>
+        </div>
+        <div class="bottom-card">
+            <h3>The Way Out</h3>
+            <p>Breaking free requires addressing the pain — not fighting the behavior. When you heal what's underneath, the craving loses its grip. You become someone who no longer needs the escape. That's not willpower. That's transformation.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="break-free">BREAK THE <span>CYCLE</span></div>
+        <div class="footer-sub">Heal the pain. Reclaim your life.</div>
+        <div class="brand">REBORN</div>
+    </footer>
+
+</body>
+</html>
