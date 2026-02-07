@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dopamine Scale | REBORN by Patrick Devosse</title>
+    <meta name="description" content="Understand why pornography addiction feels impossible to escape. The Dopamine Scale explains the brain's reward imbalance and shows the path back to balance.">
+    <meta name="keywords" content="dopamine scale, porn addiction, dopamine imbalance, addiction recovery, brain reward system, Patrick Devosse, REBORN method">
+    <meta name="author" content="Patrick Devosse">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rebornmethod.com/dopaminescale.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rebornmethod.com/dopaminescale.html">
+    <meta property="og:title" content="The Dopamine Scale | Why You Can't Stop">
+    <meta property="og:description" content="Your brain is trapped in a loop. The Dopamine Scale shows why — and how to escape.">
+    <meta property="og:image" content="https://rebornmethod.com/images/og-image.jpg">
+    <meta property="og:site_name" content="REBORN by Patrick Devosse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Dopamine Scale | Why You Can't Stop">
+    <meta name="twitter:description" content="Your brain is trapped in a dopamine loop. See the science behind the cycle.">
+    <meta name="theme-color" content="#e74c3c">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Dopamine Scale","author":{"@type":"Person","name":"Patrick Devosse"},"publisher":{"@type":"Organization","name":"REBORN"},"description":"Understanding why pornography addiction feels impossible to escape through the dopamine scale concept."}</script>
+    <style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e74c3c;--red-dark:#c0392b;--red-glow:rgba(231,76,60,.15);--black:#060606;--black-card:#0e0e0e;--gray-100:#f0f0f0;--gray-200:#ccc;--gray-400:#888;--gray-600:#555;--gold:#d4a84b;--radius:12px;--radius-lg:20px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--black);color:var(--gray-200);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:.04em;line-height:1.1;color:var(--gray-100)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,6,6,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+nav .nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:64px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--red);text-decoration:none;letter-spacing:.1em}
+.nav-back{color:var(--gray-400);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .3s;display:flex;align-items:center;gap:.4rem}
+.nav-back:hover{color:var(--gray-100)}
+
+/* HERO */
+.hero{padding:10rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,var(--red-glow) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(231,76,60,.12);border:1px solid rgba(231,76,60,.25);border-radius:100px;padding:.4rem 1.2rem;font-size:.8rem;font-weight:600;color:var(--red);margin-bottom:2rem;letter-spacing:.05em}
+.hero h1{font-size:clamp(2.8rem,7vw,4.5rem);margin-bottom:1rem}
+.hero h1 .accent{color:var(--red)}
+.hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:var(--gray-400);max-width:600px;margin:0 auto}
+
+/* INTERACTIVE SCALE */
+.scale-section{padding:4rem 0;position:relative}
+.scale-container{max-width:600px;margin:0 auto;position:relative;height:380px;user-select:none}
+.scale-pivot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;background:var(--gray-400);border-radius:50%;z-index:5;box-shadow:0 0 20px rgba(255,255,255,.1)}
+.scale-base{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:8px;height:120px;background:linear-gradient(to top,var(--gray-600),var(--gray-400));border-radius:4px}
+.scale-foot{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:100px;height:20px;background:var(--gray-600);border-radius:10px}
+.scale-beam{position:absolute;top:calc(50% - 4px);left:50%;width:90%;height:8px;background:linear-gradient(90deg,var(--red),var(--gray-400),#4ecdc4);border-radius:4px;transform-origin:center;transform:translateX(-50%) rotate(0deg);transition:transform 1.2s cubic-bezier(.34,1.56,.64,1);z-index:3}
+.scale-pan{position:absolute;top:calc(50% - 80px);width:140px;text-align:center;transition:all 1.2s cubic-bezier(.34,1.56,.64,1);z-index:4}
+.scale-pan-left{left:5%}
+.scale-pan-right{right:5%}
+.pan-circle{width:100px;height:100px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;border:2px solid;transition:all 1.2s}
+.pan-left-circle{background:rgba(231,76,60,.12);border-color:rgba(231,76,60,.4);color:var(--red)}
+.pan-right-circle{background:rgba(78,205,196,.12);border-color:rgba(78,205,196,.4);color:#4ecdc4}
+.pan-icon{font-size:1.8rem;margin-bottom:.2rem}
+.pan-value{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;margin-top:.2rem}
+
+/* SCALE STATES */
+.scale-beam.addiction{transform:translateX(-50%) rotate(-18deg)}
+.scale-beam.crash{transform:translateX(-50%) rotate(18deg)}
+.scale-beam.balanced{transform:translateX(-50%) rotate(0deg)}
+
+.scale-pan-left.addiction{transform:translateY(50px)}
+.scale-pan-right.addiction{transform:translateY(-50px)}
+.scale-pan-left.crash{transform:translateY(-50px)}
+.scale-pan-right.crash{transform:translateY(50px)}
+.scale-pan-left.balanced{transform:translateY(0)}
+.scale-pan-right.balanced{transform:translateY(0)}
+
+/* CONTROLS */
+.scale-controls{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.scale-btn{padding:.7rem 1.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;cursor:pointer;border:2px solid rgba(255,255,255,.15);background:transparent;color:var(--gray-200);transition:all .3s;letter-spacing:.02em}
+.scale-btn:hover{border-color:var(--red);color:var(--red)}
+.scale-btn.active{background:var(--red);border-color:var(--red);color:white;box-shadow:0 4px 20px rgba(231,76,60,.4)}
+.scale-label{text-align:center;margin-top:1.5rem;font-size:1rem;color:var(--gray-100);font-weight:600;min-height:1.5em;transition:opacity .3s}
+.scale-desc{text-align:center;margin-top:.5rem;font-size:.9rem;color:var(--gray-400);max-width:500px;margin-left:auto;margin-right:auto;min-height:3em;transition:opacity .3s}
+
+/* CYCLE DIAGRAM */
+.cycle-section{padding:5rem 0}
+.cycle-section .section-label{display:block;text-align:center;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem}
+.cycle-section h2{text-align:center;font-size:clamp(2rem,4vw,3rem);margin-bottom:3rem}
+.cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:700px;margin:0 auto}
+.cycle-step{background:var(--black-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden;transition:all .4s}
+.cycle-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.cycle-step:hover::before{transform:scaleX(1)}
+.cycle-step:hover{border-color:rgba(231,76,60,.2);transform:translateY(-3px)}
+.step-number{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--red);opacity:.3;position:absolute;top:.5rem;right:1rem;line-height:1}
+.step-icon{font-size:2rem;margin-bottom:.75rem}
+.cycle-step h3{font-size:1.2rem;margin-bottom:.5rem}
+.cycle-step p{font-size:.88rem;color:var(--gray-400);line-height:1.6}
+.cycle-arrow{display:flex;align-items:center;justify-content:center;grid-column:1/-1;color:var(--red);font-size:2rem;opacity:.5}
+
+/* EXPLANATION SECTIONS */
+.explain-section{padding:5rem 0}
+.explain-card{background:var(--black-card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-lg);padding:3rem;margin-bottom:2rem;position:relative;overflow:hidden}
+.explain-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red)}
+.explain-card h3{font-size:clamp(1.3rem,3vw,1.6rem);margin-bottom:1rem;padding-left:.5rem}
+.explain-card p{font-size:1rem;color:var(--gray-400);line-height:1.8;padding-left:.5rem;margin-bottom:.75rem}
+.explain-card p:last-child{margin-bottom:0}
+.explain-card p strong{color:var(--gray-100)}
+.explain-card.hope::before{background:#4ecdc4}
+.explain-card.hope h3{color:#4ecdc4}
+
+/* RECOVERY TIMELINE */
+.timeline-section{padding:5rem 0;background:var(--black-card)}
+.timeline-section h2{text-align:center;font-size:clamp(2rem,4vw,3rem);margin-bottom:.75rem}
+.timeline-section .section-label{display:block;text-align:center;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ecdc4;margin-bottom:.75rem}
+.timeline-sub{text-align:center;color:var(--gray-400);font-size:1.05rem;margin-bottom:3rem}
+.timeline{max-width:600px;margin:0 auto;position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--red),#4ecdc4)}
+.timeline-item{position:relative;margin-bottom:2.5rem}
+.timeline-dot{position:absolute;left:-33px;top:.3rem;width:12px;height:12px;border-radius:50%;border:2px solid;background:var(--black-card)}
+.timeline-item:nth-child(1) .timeline-dot,.timeline-item:nth-child(2) .timeline-dot{border-color:var(--red)}
+.timeline-item:nth-child(3) .timeline-dot{border-color:var(--gold)}
+.timeline-item:nth-child(4) .timeline-dot,.timeline-item:nth-child(5) .timeline-dot{border-color:#4ecdc4}
+.timeline-item h3{font-size:1.1rem;margin-bottom:.3rem}
+.timeline-item p{font-size:.9rem;color:var(--gray-400);line-height:1.6}
+.timeline-item .time{font-size:.75rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem;display:block}
+.timeline-item:nth-child(3) .time{color:var(--gold)}
+.timeline-item:nth-child(4) .time,.timeline-item:nth-child(5) .time{color:#4ecdc4}
+
+/* CTA */
+.cta-section{padding:5rem 0;text-align:center}
+.cta-section h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1rem}
+.cta-section p{color:var(--gray-400);font-size:1.1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 2rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.btn-primary{background:var(--red);color:white;box-shadow:0 4px 24px rgba(231,76,60,.35)}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(231,76,60,.45)}
+.btn-outline{background:transparent;color:var(--gray-200);border:1px solid rgba(255,255,255,.15)}
+.btn-outline:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.btn-teal{background:#4ecdc4;color:var(--black);box-shadow:0 4px 24px rgba(78,205,196,.3)}
+.btn-teal:hover{background:#3dbdb5;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--black);padding:3rem 0;border-top:1px solid rgba(255,255,255,.06);text-align:center}
+footer p{color:var(--gray-600);font-size:.85rem;margin-bottom:.4rem}
+footer a{color:var(--gray-400);text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--gray-100)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .cycle-grid{grid-template-columns:1fr}
+    .scale-container{height:340px}
+    .scale-pan{width:120px}
+    .pan-circle{width:80px;height:80px}
+    .pan-icon{font-size:1.4rem}
+    .pan-value{font-size:1.5rem}
+    .explain-card{padding:2rem 1.5rem}
+}
+    </style>
+</head>
+<body>
+
+    <nav><div class="nav-inner"><a href="index.html" class="nav-logo">REBORN</a><a href="index.html" class="nav-back">&larr; Back to Home</a></div></nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content reveal">
+            <div class="hero-badge">&#9878; Free Resource</div>
+            <h1>The Dopamine <span class="accent">Scale</span></h1>
+            <p class="hero-sub">Why pornography addiction feels impossible to escape &mdash; and the science behind reclaiming your balance.</p>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SCALE -->
+    <section class="scale-section">
+        <div class="container">
+            <div class="scale-container reveal">
+                <div class="scale-foot"></div>
+                <div class="scale-base"></div>
+                <div class="scale-pivot"></div>
+                <div class="scale-beam" id="beam"></div>
+                <div class="scale-pan scale-pan-left" id="panLeft">
+                    <div class="pan-circle pan-left-circle">
+                        <span class="pan-icon" id="leftIcon">&#9889;</span>
+                        <span style="font-size:.65rem">Dopamine</span>
+                        <span class="pan-value" id="leftVal">HIGH</span>
+                    </div>
+                </div>
+                <div class="scale-pan scale-pan-right" id="panRight">
+                    <div class="pan-circle pan-right-circle">
+                        <span class="pan-icon" id="rightIcon">&#9878;</span>
+                        <span style="font-size:.65rem">Stress</span>
+                        <span class="pan-value" id="rightVal">LOW</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scale-controls reveal">
+                <button class="scale-btn active" data-state="addiction" onclick="setState('addiction')">&#9889; Porn Use</button>
+                <button class="scale-btn" data-state="crash" onclick="setState('crash')">&#128546; After Crash</button>
+                <button class="scale-btn" data-state="balanced" onclick="setState('balanced')">&#9878; Recovery</button>
+            </div>
+            <div class="scale-label reveal" id="scaleLabel">Pornography floods your brain with dopamine</div>
+            <div class="scale-desc reveal" id="scaleDesc">Sexual stimulation produces one of the highest dopamine spikes possible. This is why the pull feels so intense &mdash; it's not weakness, it's neuroscience.</div>
+        </div>
+    </section>
+
+    <!-- THE CYCLE -->
+    <section class="cycle-section">
+        <div class="container">
+            <span class="section-label reveal">The Trap</span>
+            <h2 class="reveal">The Endless Cycle</h2>
+            <div class="cycle-grid">
+                <div class="cycle-step reveal">
+                    <span class="step-number">1</span>
+                    <div class="step-icon">&#128640;</div>
+                    <h3>Dopamine Spike</h3>
+                    <p>Pornography causes a rapid, extreme surge in dopamine. Your brain registers this as a survival-level reward.</p>
+                </div>
+                <div class="cycle-step reveal">
+                    <span class="step-number">2</span>
+                    <div class="step-icon">&#128556;</div>
+                    <h3>Shame &amp; Guilt</h3>
+                    <p>Almost immediately after, feelings of shame, guilt, and stress appear. Dopamine levels crash below baseline.</p>
+                </div>
+                <div class="cycle-step reveal">
+                    <span class="step-number">3</span>
+                    <div class="step-icon">&#128547;</div>
+                    <h3>Emotional Crash</h3>
+                    <p>Energy is spent and "wasted." Your body enters a state of chronic stress. The scale tips toward pain.</p>
+                </div>
+                <div class="cycle-step reveal">
+                    <span class="step-number">4</span>
+                    <div class="step-icon">&#128257;</div>
+                    <h3>Seek More</h3>
+                    <p>To restore dopamine, the brain drives you back to pornography. The cycle repeats. The scale never balances.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPLANATIONS -->
+    <section class="explain-section">
+        <div class="container">
+            <div class="explain-card reveal">
+                <h3>The Real Problem: Imbalance</h3>
+                <p>Over time, your brain adapts. Normal activities &mdash; exercise, socializing, work &mdash; no longer produce enough dopamine to feel good. Your dopamine threshold becomes unnaturally high.</p>
+                <p><strong>Too much dopamine stimulation leads to increased stress. Too much stress drives the need for even more dopamine.</strong> The scale can never stabilize in this state.</p>
+                <p>Many consumers report they no longer feel joy in everyday life. This isn't a character flaw &mdash; it's a neurological adaptation that can be reversed.</p>
+            </div>
+            <div class="explain-card hope reveal">
+                <h3>The Path Back to Balance</h3>
+                <p>This process is <strong>natural and reversible</strong>. When you stop consuming pornography, you will feel worse for a period of time. For several weeks, dopamine cannot be easily compensated for, because your brain has become dependent on those extreme highs.</p>
+                <p><strong>This phase passes.</strong></p>
+                <p>By introducing healthy behaviors that provide moderate, consistent dopamine, your brain gradually recalibrates. Over time, this restores balance to the dopamine scale &mdash; and allows you to break free permanently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOVERY TIMELINE -->
+    <section class="timeline-section">
+        <div class="container">
+            <span class="timeline-section .section-label reveal" style="display:block;text-align:center;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ecdc4;margin-bottom:.75rem">Recovery</span>
+            <h2 class="reveal">What Happens When You Stop</h2>
+            <p class="timeline-sub reveal">Your brain heals in stages. Here's what to expect.</p>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="time">Days 1&ndash;7</span>
+                    <h3>The Withdrawal</h3>
+                    <p>Intense cravings, irritability, restlessness. Your brain is screaming for dopamine. This is the hardest part &mdash; and the most important.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="time">Weeks 2&ndash;4</span>
+                    <h3>The Flatline</h3>
+                    <p>Low energy, low motivation, emotional numbness. Dopamine receptors are healing. Many people quit here thinking it's not working. It is.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="time">Weeks 4&ndash;8</span>
+                    <h3>The Shift</h3>
+                    <p>Small pleasures start to return. Music sounds better. Conversations feel real. Your brain is recalibrating to normal dopamine levels.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="time">Months 2&ndash;4</span>
+                    <h3>New Baseline</h3>
+                    <p>Consistent energy. Clearer thinking. Emotional depth. Your dopamine scale is finding balance for the first time in years.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <span class="time">Months 6+</span>
+                    <h3>Freedom</h3>
+                    <p>The pull weakens. New habits are wired in. You don't just resist pornography &mdash; you don't need it anymore. The scale is balanced.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <h2>Ready to Restore <span style="color:var(--red)">Balance</span>?</h2>
+            <p>Understanding the scale is the first step. The next step is building the habits that rewire your brain.</p>
+            <div class="cta-buttons">
+                <a href="https://myablefy.com/s/rebornmethod/the-man-you-re-becoming-vs-the-man-you-could-have-been-19fdf3f0/payment" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get The Split Guide &mdash; $3</a>
+                <a href="index.html#programs" class="btn btn-outline">View All Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 REBORN by Patrick Devosse</p>
+        <p><a href="index.html">Home</a> &middot; <a href="dopaminetrap.html">Dopamine Trap</a> &middot; <a href="index.html#programs">Programs</a> &middot; <a href="mailto:pdm-media@outlook.de">Contact</a></p>
+        <p style="margin-top:.75rem"><a href="datenschutz.html">Datenschutz</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="impressum.html">Impressum</a></p>
+    </footer>
+
+    <script>
+    // INTERACTIVE SCALE
+    const states = {
+        addiction: {
+            label: 'Pornography floods your brain with dopamine',
+            desc: 'Sexual stimulation produces one of the highest dopamine spikes possible. This is why the pull feels so intense \u2014 it\'s not weakness, it\'s neuroscience.',
+            leftVal: 'HIGH', rightVal: 'LOW', leftIcon: '\u26A1', rightIcon: '\u2696'
+        },
+        crash: {
+            label: 'After use: shame crashes everything',
+            desc: 'Dopamine drops below baseline. Shame, guilt, and exhaustion take over. A huge amount of energy is wasted. Your body enters chronic stress.',
+            leftVal: 'LOW', rightVal: 'HIGH', leftIcon: '\u2B07', rightIcon: '\uD83D\uDD25'
+        },
+        balanced: {
+            label: 'Recovery restores natural balance',
+            desc: 'When you build healthy habits, your brain recalibrates. Moderate, consistent dopamine from real activities replaces the extreme highs and lows.',
+            leftVal: '\u2713', rightVal: '\u2713', leftIcon: '\u2600', rightIcon: '\u2696'
+        }
+    };
+    function setState(state) {
+        const s = states[state];
+        document.getElementById('beam').className = 'scale-beam ' + state;
+        document.getElementById('panLeft').className = 'scale-pan scale-pan-left ' + state;
+        document.getElementById('panRight').className = 'scale-pan scale-pan-right ' + state;
+        document.getElementById('scaleLabel').textContent = s.label;
+        document.getElementById('scaleDesc').textContent = s.desc;
+        document.getElementById('leftVal').textContent = s.leftVal;
+        document.getElementById('rightVal').textContent = s.rightVal;
+        document.getElementById('leftIcon').textContent = s.leftIcon;
+        document.getElementById('rightIcon').textContent = s.rightIcon;
+        document.querySelectorAll('.scale-btn').forEach(b => {
+            b.classList.toggle('active', b.dataset.state === state);
+        });
+    }
+    // Auto-cycle on load
+    let autoCycle;
+    function startAutoCycle() {
+        const seq = ['addiction', 'crash', 'addiction', 'crash', 'balanced'];
+        let i = 0;
+        autoCycle = setInterval(() => {
+            if (i >= seq.length) { clearInterval(autoCycle); return; }
+            setState(seq[i]); i++;
+        }, 2500);
+    }
+    document.querySelectorAll('.scale-btn').forEach(b => {
+        b.addEventListener('click', () => clearInterval(autoCycle));
+    });
+
+    // REVEAL
+    const ro = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                if (e.target.closest('.scale-section')) startAutoCycle();
+            }
+        });
+    }, {threshold: .08, rootMargin: '0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    </script>
+
+</body>
+</html>
