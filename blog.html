@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — REBORN Method | Porn Addiction Recovery Insights</title>
+    <meta name="description" content="Science-based insights on pornography addiction, brain rewiring, trauma healing, and recovery. Written by Patrick Devosse — 6+ years porn-free.">
+    <meta name="keywords" content="porn addiction recovery, quit porn, nofap, dopamine detox, pornography addiction help, brain rewiring, trauma healing">
+    <meta name="author" content="Patrick Devosse">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rebornmethod.com/blog.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="REBORN Blog — Porn Addiction Recovery Insights">
+    <meta property="og:description" content="Science-based insights on pornography addiction, brain rewiring, trauma healing, and recovery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebornmethod.com/blog.html">
+    <meta property="og:site_name" content="REBORN Method">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="REBORN Blog — Porn Addiction Recovery Insights">
+    <meta name="twitter:description" content="Science-based insights on pornography addiction, brain rewiring, and recovery.">
+
+    <!-- Schema.org Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "REBORN Method Blog",
+        "description": "Science-based insights on pornography addiction recovery",
+        "url": "https://rebornmethod.com/blog.html",
+        "author": {
+            "@type": "Person",
+            "name": "Patrick Devosse",
+            "url": "https://rebornmethod.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "REBORN Method"
+        }
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --red: #e74c3c;
+            --red-dark: #c0392b;
+            --teal: #4ecdc4;
+            --bg: #050505;
+            --bg-card: #0a0a0a;
+            --bg-hover: #0f0f0f;
+            --text: #b0b0b0;
+            --text-light: #666;
+            --white: #f0f0f0;
+            --border: rgba(255,255,255,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--red); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: #f0f0f0; }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(5,5,5,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--red);
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--white); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 32px 60px;
+            text-align: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 15%; right: 15%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(231,76,60,0.15), transparent);
+        }
+        .hero-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 14px;
+            color: var(--red);
+            letter-spacing: 5px;
+            margin-bottom: 12px;
+        }
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.05;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 17px;
+            color: var(--text-light);
+            max-width: 560px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* ===== BLOG GRID ===== */
+        .blog-section {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 60px 32px 80px;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        /* ===== BLOG CARD ===== */
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(231,76,60,0.2);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .blog-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .card-tag {
+            display: inline-block;
+            padding: 20px 24px 0;
+        }
+        .card-tag span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(231,76,60,0.1);
+            color: var(--red);
+        }
+        .card-tag span.tag-science { background: rgba(78,205,196,0.1); color: var(--teal); }
+        .card-tag span.tag-story { background: rgba(240,192,64,0.1); color: #f0c040; }
+        .card-tag span.tag-method { background: rgba(231,76,60,0.1); color: var(--red); }
+        .card-tag span.tag-mindset { background: rgba(155,89,182,0.1); color: #9b59b6; }
+
+        .card-body {
+            padding: 16px 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--white);
+            letter-spacing: 0.5px;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+            flex: 1;
+            margin-bottom: 16px;
+        }
+        .card-meta {
+            font-size: 12px;
+            color: #444;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        /* ===== NEWSLETTER CTA ===== */
+        .newsletter {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 32px 80px;
+            text-align: center;
+        }
+        .newsletter-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .newsletter-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 25%; right: 25%;
+            height: 2px;
+            background: var(--red);
+        }
+        .newsletter h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--white);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .newsletter p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+        }
+        .newsletter-form input:focus {
+            border-color: var(--red);
+        }
+        .newsletter-form button {
+            padding: 12px 24px;
+            background: var(--red);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .newsletter-form button:hover {
+            background: var(--red-dark);
+        }
+        .newsletter-consent {
+            font-size: 11px;
+            color: #444;
+            margin-top: 12px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--red);
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        .footer-copy {
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px; left: 0; right: 0;
+                background: rgba(5,5,5,0.98);
+                padding: 20px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-toggle { display: block; }
+            .hero { padding: 120px 20px 48px; }
+            .blog-section { padding: 40px 20px 60px; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .newsletter { padding: 0 20px 60px; }
+            .newsletter-form { flex-direction: column; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="index.html" class="nav-logo">REBORN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="dopaminetrap.html">Dopamine Trap</a></li>
+        <li><a href="dopaminescale.html">Dopamine Scale</a></li>
+        <li><a href="index.html#coaching">Coaching</a></li>
+        <li><a href="index.html#programs">Programs</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <p class="hero-label fade-up">REBORN BLOG</p>
+    <h1 class="fade-up">Insights For Men Who<br>Want To Break Free</h1>
+    <p class="fade-up">Science-based strategies, hard truths, and real experience — from someone who's been there.</p>
+</header>
+
+<!-- BLOG GRID -->
+<main class="blog-section">
+    <div class="blog-grid">
+
+        <!-- POST 1 -->
+        <article class="blog-card fade-up">
+            <a href="blog/why-willpower-fails.html">
+                <div class="card-tag"><span class="tag-science">NEUROSCIENCE</span></div>
+                <div class="card-body">
+                    <h2 class="card-title">Why Willpower Fails Every Time — And What Actually Works</h2>
+                    <p class="card-excerpt">You've tried quitting 100 times. The problem isn't your discipline. It's that you're fighting your own brain — and your brain always wins.</p>
+                    <div class="card-meta">
+                        <span>Patrick Devosse</span>
+                        <span>8 min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- POST 2 (Placeholder) -->
+        <article class="blog-card fade-up">
+            <a href="blog/the-shame-cycle.html">
+                <div class="card-tag"><span class="tag-method">RECOVERY</span></div>
+                <div class="card-body">
+                    <h2 class="card-title">The Shame Cycle: Why Feeling Bad Keeps You Stuck</h2>
+                    <p class="card-excerpt">Shame doesn't motivate change — it fuels the exact behavior you're trying to escape. Here's the neuroscience behind it.</p>
+                    <div class="card-meta">
+                        <span>Patrick Devosse</span>
+                        <span>6 min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- POST 3 (Placeholder) -->
+        <article class="blog-card fade-up">
+            <a href="blog/your-addiction-birthday.html">
+                <div class="card-tag"><span class="tag-story">TRAUMA</span></div>
+                <div class="card-body">
+                    <h2 class="card-title">Your "Addiction Birthday" — The Day Your Brain Chose Porn</h2>
+                    <p class="card-excerpt">There was a specific moment your brain decided pornography equals survival. Finding that moment changes everything.</p>
+                    <div class="card-meta">
+                        <span>Patrick Devosse</span>
+                        <span>7 min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- POST 4 (Placeholder) -->
+        <article class="blog-card fade-up">
+            <a href="blog/dopamine-reset.html">
+                <div class="card-tag"><span class="tag-science">NEUROSCIENCE</span></div>
+                <div class="card-body">
+                    <h2 class="card-title">The 90-Day Dopamine Reset: What Actually Happens In Your Brain</h2>
+                    <p class="card-excerpt">Day 1 vs Day 30 vs Day 90 — a timeline of what's happening behind the scenes when you stop watching porn.</p>
+                    <div class="card-meta">
+                        <span>Patrick Devosse</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- POST 5 (Placeholder) -->
+        <article class="blog-card fade-up">
+            <a href="blog/nofap-isnt-enough.html">
+                <div class="card-tag"><span class="tag-mindset">MINDSET</span></div>
+                <div class="card-body">
+                    <h2 class="card-title">Why NoFap Isn't Enough (And What's Missing)</h2>
+                    <p class="card-excerpt">Abstinence is not recovery. If you're only counting days, you're missing the root cause entirely.</p>
+                    <div class="card-meta">
+                        <span>Patrick Devosse</span>
+                        <span>7 min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+        <!-- POST 6 (Placeholder) -->
+        <article class="blog-card fade-up">
+            <a href="blog/fasting-and-recovery.html">
+                <div class="card-tag"><span class="tag-method">RECOVERY</span></div>
+                <div class="card-body">
+                    <h2 class="card-title">How Fasting Accelerates Porn Addiction Recovery</h2>
+                    <p class="card-excerpt">Fasting isn't just about food. It rewires the same dopamine pathways that pornography hijacked.</p>
+                    <div class="card-meta">
+                        <span>Patrick Devosse</span>
+                        <span>9 min read</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+
+    </div>
+</main>
+
+<!-- NEWSLETTER CTA -->
+<section class="newsletter">
+    <div class="newsletter-box fade-up">
+        <h2>Break Free From The Cycle</h2>
+        <p>Join 1,000+ men getting weekly insights on recovery, brain science, and transformation.</p>
+        <form class="newsletter-form" action="#" method="POST">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">JOIN FREE</button>
+        </form>
+        <p class="newsletter-consent">By signing up, you agree to receive emails from REBORN. Unsubscribe anytime. <a href="datenschutz.html">Privacy Policy</a></p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-logo">REBORN</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="dopaminetrap.html">Dopamine Trap</a>
+        <a href="dopaminescale.html">Dopamine Scale</a>
+        <a href="index.html#programs">Programs</a>
+        <a href="index.html#coaching">Coaching</a>
+        <a href="https://www.amazon.com/dp/B0GCVPTGYR">Book</a>
+    </div>
+    <div class="footer-links">
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="impressum.html">Impressum</a>
+    </div>
+    <p class="footer-copy">© 2026 REBORN by Patrick Devosse. All rights reserved.</p>
+</footer>
+
+<!-- SCROLL REVEAL -->
+<script>
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
+</script>
+
+</body>
+</html>
