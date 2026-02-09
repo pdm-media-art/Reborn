@@ -498,11 +498,39 @@
     <div class="newsletter-box fade-up">
         <h2>Break Free From The Cycle</h2>
         <p>Join 1,000+ men getting weekly insights on recovery, brain science, and transformation.</p>
-        <form class="newsletter-form" action="#" method="POST">
-            <input type="email" placeholder="Your email address" required>
-            <button type="submit">JOIN FREE</button>
+        <form class="newsletter-form" onsubmit="return subscribeNewsletter(event)">
+            <input type="email" id="blogEmail" placeholder="Your email address" required>
+            <button type="submit" id="blogSubmitBtn">JOIN FREE</button>
         </form>
-        <p class="newsletter-consent">By signing up, you agree to receive emails from REBORN. Unsubscribe anytime. <a href="datenschutz.html">Privacy Policy</a></p>
+        <p class="newsletter-consent" id="blogConsent">By signing up, you agree to receive emails from REBORN. Unsubscribe anytime. <a href="datenschutz.html">Privacy Policy</a></p>
+        <script>
+        function subscribeNewsletter(e){
+            e.preventDefault();
+            var email=document.getElementById('blogEmail').value;
+            var btn=document.getElementById('blogSubmitBtn');
+            var consent=document.getElementById('blogConsent');
+            btn.textContent='SENDING...';btn.disabled=true;
+            try{
+                window._klOnsite=window._klOnsite||[];
+                if(window.klaviyo){
+                    window.klaviyo.push(['identify',{'$email':email,'Blog Subscriber':true}]);
+                    window.klaviyo.push(['track','Blog Newsletter Signup',{'source':'blog-page'}]);
+                }
+                fetch('https://a.klaviyo.com/client/subscriptions/?company_id=VQJCx9',{
+                    method:'POST',
+                    headers:{'Content-Type':'application/json','revision':'2024-02-15'},
+                    body:JSON.stringify({data:{type:'subscription',attributes:{profile:{data:{type:'profile',attributes:{email:email}}},custom_source:'Blog Newsletter'},relationships:{list:{data:{type:'list',id:'SW7qn3'}}}}})
+                }).catch(function(){});
+                btn.textContent='\u2713 SUBSCRIBED!';btn.style.background='#25D366';
+                document.getElementById('blogEmail').style.display='none';
+                consent.innerHTML='<strong style="color:#4ecdc4">Welcome to REBORN. Check your inbox.</strong>';
+            }catch(err){
+                btn.textContent='JOIN FREE';btn.disabled=false;
+                consent.innerHTML='<strong style="color:var(--red)">Something went wrong. Try again or email pdm-media@outlook.de</strong>';
+            }
+            return false;
+        }
+        </script>
     </div>
 </section>
 
