@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | REBORN Method</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #060606;
+            color: #ccc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 40% at 50% 40%, rgba(231,76,60,.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .content { position: relative; z-index: 1; max-width: 500px; }
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #e74c3c;
+            letter-spacing: .15em;
+            margin-bottom: 3rem;
+            text-decoration: none;
+            display: block;
+        }
+        .error-code {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(6rem, 15vw, 10rem);
+            color: #e74c3c;
+            line-height: 1;
+            opacity: .15;
+            margin-bottom: -1.5rem;
+            letter-spacing: .05em;
+        }
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: #f0f0f0;
+            letter-spacing: .04em;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1rem;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        .buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .85rem 2rem;
+            border-radius: 100px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: .95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .btn-primary {
+            background: #e74c3c;
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(231,76,60,.3);
+        }
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(231,76,60,.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #ccc;
+            border: 1px solid rgba(255,255,255,.15);
+        }
+        .btn-outline:hover {
+            border-color: #e74c3c;
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+        .footer-note {
+            margin-top: 4rem;
+            font-size: .8rem;
+            color: #444;
+        }
+        .footer-note a { color: #666; text-decoration: none; }
+        .footer-note a:hover { color: #e74c3c; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <a href="index.html" class="logo">REBORN</a>
+        <div class="error-code">404</div>
+        <h1>This Page Doesn't Exist</h1>
+        <p>The page you're looking for was moved, deleted, or never existed. But your recovery journey? That's still right here.</p>
+        <div class="buttons">
+            <a href="index.html" class="btn btn-primary">← Back to Home</a>
+            <a href="blog.html" class="btn btn-outline">Read the Blog</a>
+        </div>
+        <p class="footer-note">&copy; 2026 REBORN by Patrick Devosse &middot; <a href="index.html#contact">Contact</a></p>
+    </div>
+</body>
+</html>
