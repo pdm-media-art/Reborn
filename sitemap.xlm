@@ -27,21 +27,55 @@
         <priority>0.8</priority>
     </url>
 
-    <!-- BLOG POSTS — Add new posts here -->
+    <!-- BLOG POSTS -->
     <url>
         <loc>https://rebornmethod.com/blog/why-willpower-fails.html</loc>
         <lastmod>2026-02-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-    <!--
     <url>
         <loc>https://rebornmethod.com/blog/the-shame-cycle.html</loc>
         <lastmod>2026-02-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-    -->
+    <url>
+        <loc>https://rebornmethod.com/blog/your-addiction-birthday.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/dopamine-reset.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/nofap-isnt-enough.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/fasting-and-recovery.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/the-split-explained.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/porn-rewires-relationships.html</loc>
+        <lastmod>2026-02-09</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
     <!-- LEGAL -->
     <url>
