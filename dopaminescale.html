@@ -54,15 +54,15 @@ nav .nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;just
 .scale-pivot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;background:var(--gray-400);border-radius:50%;z-index:5;box-shadow:0 0 20px rgba(255,255,255,.1)}
 .scale-base{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:8px;height:120px;background:linear-gradient(to top,var(--gray-600),var(--gray-400));border-radius:4px}
 .scale-foot{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:100px;height:20px;background:var(--gray-600);border-radius:10px}
-.scale-beam{position:absolute;top:calc(50% - 4px);left:50%;width:90%;height:8px;background:linear-gradient(90deg,var(--red),var(--gray-400),#4ecdc4);border-radius:4px;transform-origin:center;transform:translateX(-50%) rotate(0deg);transition:transform 1.2s cubic-bezier(.34,1.56,.64,1);z-index:3}
-.scale-pan{position:absolute;top:calc(50% - 80px);width:140px;text-align:center;transition:all 1.2s cubic-bezier(.34,1.56,.64,1);z-index:4}
+.scale-beam{position:absolute;top:calc(50% - 4px);left:50%;width:90%;height:8px;background:linear-gradient(90deg,var(--red),var(--gray-400),#4ecdc4);border-radius:4px;transform-origin:center;transform:translateX(-50%) rotate(0deg);transition:transform 2s cubic-bezier(.25,.46,.45,.94);z-index:3}
+.scale-pan{position:absolute;top:calc(50% - 80px);width:140px;text-align:center;transition:all 2s cubic-bezier(.25,.46,.45,.94);z-index:4}
 .scale-pan-left{left:5%}
 .scale-pan-right{right:5%}
-.pan-circle{width:100px;height:100px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;border:2px solid;transition:all 1.2s}
+.pan-circle{width:100px;height:100px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;border:2px solid;transition:all 2s cubic-bezier(.25,.46,.45,.94)}
 .pan-left-circle{background:rgba(231,76,60,.12);border-color:rgba(231,76,60,.4);color:var(--red)}
 .pan-right-circle{background:rgba(78,205,196,.12);border-color:rgba(78,205,196,.4);color:#4ecdc4}
-.pan-icon{font-size:1.8rem;margin-bottom:.2rem}
-.pan-value{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;margin-top:.2rem}
+.pan-icon{font-size:1.8rem;margin-bottom:.2rem;transition:opacity .6s}
+.pan-value{font-family:'Bebas Neue',sans-serif;font-size:2rem;line-height:1;margin-top:.2rem;transition:opacity .6s}
 
 /* SCALE STATES */
 .scale-beam.addiction{transform:translateX(-50%) rotate(-18deg)}
@@ -76,13 +76,17 @@ nav .nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;just
 .scale-pan-left.balanced{transform:translateY(0)}
 .scale-pan-right.balanced{transform:translateY(0)}
 
+/* TEXT FADE */
+.scale-label,.scale-desc{transition:opacity .5s ease}
+.scale-label.fading,.scale-desc.fading{opacity:0}
+
 /* CONTROLS */
 .scale-controls{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap}
 .scale-btn{padding:.7rem 1.5rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.85rem;cursor:pointer;border:2px solid rgba(255,255,255,.15);background:transparent;color:var(--gray-200);transition:all .3s;letter-spacing:.02em}
 .scale-btn:hover{border-color:var(--red);color:var(--red)}
 .scale-btn.active{background:var(--red);border-color:var(--red);color:white;box-shadow:0 4px 20px rgba(231,76,60,.4)}
-.scale-label{text-align:center;margin-top:1.5rem;font-size:1rem;color:var(--gray-100);font-weight:600;min-height:1.5em;transition:opacity .3s}
-.scale-desc{text-align:center;margin-top:.5rem;font-size:.9rem;color:var(--gray-400);max-width:500px;margin-left:auto;margin-right:auto;min-height:3em;transition:opacity .3s}
+.scale-label{text-align:center;margin-top:1.5rem;font-size:1rem;color:var(--gray-100);font-weight:600;min-height:1.5em}
+.scale-desc{text-align:center;margin-top:.5rem;font-size:.9rem;color:var(--gray-400);max-width:500px;margin-left:auto;margin-right:auto;min-height:3em}
 
 /* CYCLE DIAGRAM */
 .cycle-section{padding:5rem 0}
@@ -97,7 +101,6 @@ nav .nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;just
 .step-icon{font-size:2rem;margin-bottom:.75rem}
 .cycle-step h3{font-size:1.2rem;margin-bottom:.5rem}
 .cycle-step p{font-size:.88rem;color:var(--gray-400);line-height:1.6}
-.cycle-arrow{display:flex;align-items:center;justify-content:center;grid-column:1/-1;color:var(--red);font-size:2rem;opacity:.5}
 
 /* EXPLANATION SECTIONS */
 .explain-section{padding:5rem 0}
@@ -138,8 +141,6 @@ nav .nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;just
 .btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(231,76,60,.45)}
 .btn-outline{background:transparent;color:var(--gray-200);border:1px solid rgba(255,255,255,.15)}
 .btn-outline:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
-.btn-teal{background:#4ecdc4;color:var(--black);box-shadow:0 4px 24px rgba(78,205,196,.3)}
-.btn-teal:hover{background:#3dbdb5;transform:translateY(-2px)}
 
 /* FOOTER */
 footer{background:var(--black);padding:3rem 0;border-top:1px solid rgba(255,255,255,.06);text-align:center}
@@ -179,7 +180,7 @@ footer a:hover{color:var(--gray-100)}
     <!-- INTERACTIVE SCALE -->
     <section class="scale-section">
         <div class="container">
-            <div class="scale-container reveal">
+            <div class="scale-container reveal" id="scaleArea">
                 <div class="scale-foot"></div>
                 <div class="scale-base"></div>
                 <div class="scale-pivot"></div>
@@ -200,9 +201,9 @@ footer a:hover{color:var(--gray-100)}
                 </div>
             </div>
             <div class="scale-controls reveal">
-                <button class="scale-btn active" data-state="addiction" onclick="setState('addiction')">&#9889; Porn Use</button>
-                <button class="scale-btn" data-state="crash" onclick="setState('crash')">&#128546; After Crash</button>
-                <button class="scale-btn" data-state="balanced" onclick="setState('balanced')">&#9878; Recovery</button>
+                <button class="scale-btn active" data-state="addiction" onclick="userSetState('addiction')">&#9889; Porn Use</button>
+                <button class="scale-btn" data-state="crash" onclick="userSetState('crash')">&#128546; After Crash</button>
+                <button class="scale-btn" data-state="balanced" onclick="userSetState('balanced')">&#9878; Recovery</button>
             </div>
             <div class="scale-label reveal" id="scaleLabel">Pornography floods your brain with dopamine</div>
             <div class="scale-desc reveal" id="scaleDesc">Sexual stimulation produces one of the highest dopamine spikes possible. This is why the pull feels so intense &mdash; it's not weakness, it's neuroscience.</div>
@@ -264,7 +265,7 @@ footer a:hover{color:var(--gray-100)}
     <!-- RECOVERY TIMELINE -->
     <section class="timeline-section">
         <div class="container">
-            <span class="timeline-section .section-label reveal" style="display:block;text-align:center;font-size:.75rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#4ecdc4;margin-bottom:.75rem">Recovery</span>
+            <span class="section-label reveal">Recovery</span>
             <h2 class="reveal">What Happens When You Stop</h2>
             <p class="timeline-sub reveal">Your brain heals in stages. Here's what to expect.</p>
             <div class="timeline">
@@ -317,16 +318,20 @@ footer a:hover{color:var(--gray-100)}
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 REBORN by Patrick Devosse</p>
-        <p><a href="index.html">Home</a> &middot; <a href="dopaminetrap.html">Dopamine Trap</a> &middot; <a href="index.html#programs">Programs</a> &middot; <a href="mailto:pdm-media@outlook.de">Contact</a></p>
+        <p><a href="index.html">Home</a> &middot; <a href="blog.html">Blog</a> &middot; <a href="dopaminetrap.html">Dopamine Trap</a> &middot; <a href="index.html#programs">Programs</a> &middot; <a href="mailto:pdm-media@outlook.de">Contact</a></p>
         <p style="margin-top:.75rem"><a href="datenschutz.html">Datenschutz</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="impressum.html">Impressum</a></p>
     </footer>
 
     <script>
-    // INTERACTIVE SCALE
-    const states = {
+    // ===== DOPAMINE SCALE — SMOOTH TRANSITIONS =====
+    var currentState = 'addiction';
+    var autoCycleTimer = null;
+    var userTookControl = false;
+
+    var states = {
         addiction: {
             label: 'Pornography floods your brain with dopamine',
-            desc: 'Sexual stimulation produces one of the highest dopamine spikes possible. This is why the pull feels so intense \u2014 it\'s not weakness, it\'s neuroscience.',
+            desc: 'Sexual stimulation produces one of the highest dopamine spikes possible. This is why the pull feels so intense \u2014 it\u0027s not weakness, it\u0027s neuroscience.',
             leftVal: 'HIGH', rightVal: 'LOW', leftIcon: '\u26A1', rightIcon: '\u2696'
         },
         crash: {
@@ -340,45 +345,122 @@ footer a:hover{color:var(--gray-100)}
             leftVal: '\u2713', rightVal: '\u2713', leftIcon: '\u2600', rightIcon: '\u2696'
         }
     };
+
     function setState(state) {
-        const s = states[state];
+        if (state === currentState) return;
+        currentState = state;
+        var s = states[state];
+
+        // Animate beam and pans
         document.getElementById('beam').className = 'scale-beam ' + state;
         document.getElementById('panLeft').className = 'scale-pan scale-pan-left ' + state;
         document.getElementById('panRight').className = 'scale-pan scale-pan-right ' + state;
-        document.getElementById('scaleLabel').textContent = s.label;
-        document.getElementById('scaleDesc').textContent = s.desc;
-        document.getElementById('leftVal').textContent = s.leftVal;
-        document.getElementById('rightVal').textContent = s.rightVal;
-        document.getElementById('leftIcon').textContent = s.leftIcon;
-        document.getElementById('rightIcon').textContent = s.rightIcon;
-        document.querySelectorAll('.scale-btn').forEach(b => {
+
+        // Crossfade text: fade out, swap, fade in
+        var labelEl = document.getElementById('scaleLabel');
+        var descEl = document.getElementById('scaleDesc');
+        labelEl.classList.add('fading');
+        descEl.classList.add('fading');
+
+        setTimeout(function() {
+            labelEl.textContent = s.label;
+            descEl.textContent = s.desc;
+            labelEl.classList.remove('fading');
+            descEl.classList.remove('fading');
+        }, 500);
+
+        // Crossfade pan values
+        var leftIcon = document.getElementById('leftIcon');
+        var rightIcon = document.getElementById('rightIcon');
+        var leftVal = document.getElementById('leftVal');
+        var rightVal = document.getElementById('rightVal');
+
+        leftIcon.style.opacity = '0';
+        rightIcon.style.opacity = '0';
+        leftVal.style.opacity = '0';
+        rightVal.style.opacity = '0';
+
+        setTimeout(function() {
+            leftVal.textContent = s.leftVal;
+            rightVal.textContent = s.rightVal;
+            leftIcon.textContent = s.leftIcon;
+            rightIcon.textContent = s.rightIcon;
+            leftIcon.style.opacity = '1';
+            rightIcon.style.opacity = '1';
+            leftVal.style.opacity = '1';
+            rightVal.style.opacity = '1';
+        }, 600);
+
+        // Update buttons
+        document.querySelectorAll('.scale-btn').forEach(function(b) {
             b.classList.toggle('active', b.dataset.state === state);
         });
     }
-    // Auto-cycle on load
-    let autoCycle;
-    function startAutoCycle() {
-        const seq = ['addiction', 'crash', 'addiction', 'crash', 'balanced'];
-        let i = 0;
-        autoCycle = setInterval(() => {
-            if (i >= seq.length) { clearInterval(autoCycle); return; }
-            setState(seq[i]); i++;
-        }, 2500);
+
+    // User interaction — stops auto-cycle permanently
+    function userSetState(state) {
+        stopAutoCycle();
+        userTookControl = true;
+        setState(state);
     }
-    document.querySelectorAll('.scale-btn').forEach(b => {
-        b.addEventListener('click', () => clearInterval(autoCycle));
+
+    // Auto-cycle — slow and smooth
+    function startAutoCycle() {
+        if (userTookControl) return;
+        var sequence = ['addiction', 'crash', 'balanced'];
+        var step = 0;
+
+        // Start at addiction (already set)
+        autoCycleTimer = setInterval(function() {
+            step++;
+            if (step >= sequence.length) {
+                clearInterval(autoCycleTimer);
+                autoCycleTimer = null;
+                return;
+            }
+            setState(sequence[step]);
+        }, 4000); // 4 seconds between each state
+    }
+
+    function stopAutoCycle() {
+        if (autoCycleTimer) {
+            clearInterval(autoCycleTimer);
+            autoCycleTimer = null;
+        }
+    }
+
+    // Stop auto-cycle on ANY user interaction with the scale area
+    var scaleArea = document.getElementById('scaleArea');
+    scaleArea.addEventListener('mouseenter', function() {
+        stopAutoCycle();
+        userTookControl = true;
+    });
+    scaleArea.addEventListener('touchstart', function() {
+        stopAutoCycle();
+        userTookControl = true;
+    }, {passive: true});
+
+    // Also stop on button hover
+    document.querySelectorAll('.scale-btn').forEach(function(b) {
+        b.addEventListener('mouseenter', function() {
+            stopAutoCycle();
+            userTookControl = true;
+        });
     });
 
-    // REVEAL
-    const ro = new IntersectionObserver(entries => {
-        entries.forEach(e => {
+    // ===== REVEAL ON SCROLL =====
+    var ro = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
             if (e.isIntersecting) {
                 e.target.classList.add('visible');
-                if (e.target.closest('.scale-section')) startAutoCycle();
+                // Start auto-cycle when scale becomes visible
+                if (e.target.closest('.scale-section') && !userTookControl) {
+                    startAutoCycle();
+                }
             }
         });
     }, {threshold: .08, rootMargin: '0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    document.querySelectorAll('.reveal').forEach(function(el) { ro.observe(el); });
     </script>
 
 </body>
