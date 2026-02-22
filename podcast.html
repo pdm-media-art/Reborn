@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Podcast Listeners | REBORN Method</title>
     
+    <!-- Klaviyo JavaScript -->
+    <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/VQJCx9/klaviyo.js?company_id=VQJCx9'></script>
+    <script type="text/javascript"> 
+    !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -162,8 +168,8 @@
         }
         
         /* Klaviyo form styling for dark theme */
-        .klaviyo-form-Vz9kmD input[type="email"],
-        .klaviyo-form-Vz9kmD input[type="text"] {
+        .klaviyo-form-Ukxfc3 input[type="email"],
+        .klaviyo-form-Ukxfc3 input[type="text"] {
             background: #0a0a0a !important;
             border: 1px solid #333333 !important;
             color: #ffffff !important;
@@ -171,12 +177,12 @@
             border-radius: 6px !important;
         }
         
-        .klaviyo-form-Vz9kmD input::placeholder {
+        .klaviyo-form-Ukxfc3 input::placeholder {
             color: #666666 !important;
         }
         
-        .klaviyo-form-Vz9kmD button,
-        .klaviyo-form-Vz9kmD input[type="submit"] {
+        .klaviyo-form-Ukxfc3 button,
+        .klaviyo-form-Ukxfc3 input[type="submit"] {
             background: #e74c3c !important;
             color: #ffffff !important;
             border: none !important;
@@ -188,8 +194,8 @@
             margin-top: 12px !important;
         }
         
-        .klaviyo-form-Vz9kmD button:hover,
-        .klaviyo-form-Vz9kmD input[type="submit"]:hover {
+        .klaviyo-form-Ukxfc3 button:hover,
+        .klaviyo-form-Ukxfc3 input[type="submit"]:hover {
             background: #c0392b !important;
         }
         
@@ -240,7 +246,7 @@
             <h2>Get Instant Access</h2>
             
             <!-- KLAVIYO FORM -->
-            <div class="klaviyo-form-Vz9kmD"></div>
+            <div class="klaviyo-form-Ukxfc3"></div>
             
             <p class="cta-text">
                 ✓ Instant delivery to your inbox<br>
@@ -273,12 +279,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const source = urlParams.get('source') || 'podcast';
         
-        // Send source to Klaviyo if available
-        if (typeof _learnq !== 'undefined') {
-            _learnq.push(['identify', {
-                '$source': source
-            }]);
-        }
+        // Send source to Klaviyo
+        window._klOnsite = window._klOnsite || [];
+        window._klOnsite.push(['identify', {
+            '$source': source
+        }]);
     </script>
 </body>
 </html>
