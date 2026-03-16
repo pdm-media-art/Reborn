@@ -10,7 +10,7 @@
     </url>
     <url>
         <loc>https://rebornmethod.com/blog.html</loc>
-        <lastmod>2026-03-14</lastmod>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -147,6 +147,36 @@
     <url>
         <loc>https://rebornmethod.com/blog/the-hourglass.html</loc>
         <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/lost-years.html</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/day-zero-again.html</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/first-7-days.html</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/emotionally-stuck.html</loc>
+        <lastmod>2026-03-14</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://rebornmethod.com/blog/your-brain-is-not-the-king.html</loc>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
