@@ -372,6 +372,72 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .phases-banner {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 48px 32px;
+        }
+        .phases-banner-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .phases-banner-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 8px;
+        }
+        .phases-banner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            letter-spacing: .04em;
+            color: #f0f0f0;
+            margin-bottom: 6px;
+        }
+        .phases-banner > .phases-banner-inner > p {
+            font-size: .9rem;
+            color: #888;
+            margin-bottom: 28px;
+        }
+        .phases-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .phase-pill {
+            background: #060606;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+            padding: 20px 22px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform .25s, border-color .25s;
+        }
+        .phase-pill:hover { transform: translateY(-3px); color: inherit; }
+        .phase-pill.p1 { border-top: 3px solid var(--red); }
+        .phase-pill.p2 { border-top: 3px solid #4ecdc4; }
+        .phase-pill.p3 { border-top: 3px solid #d4a84b; }
+        .phase-pill.p1:hover { border-color: var(--red); }
+        .phase-pill.p2:hover { border-color: #4ecdc4; }
+        .phase-pill.p3:hover { border-color: #d4a84b; }
+        .pill-num { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+        .phase-pill.p1 .pill-num { color: var(--red); }
+        .phase-pill.p2 .pill-num { color: #4ecdc4; }
+        .phase-pill.p3 .pill-num { color: #d4a84b; }
+        .pill-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: .04em; color: #f0f0f0; line-height: 1; }
+        .pill-desc { font-size: .82rem; color: #666; line-height: 1.5; }
+        .pill-cta { font-size: .8rem; font-weight: 700; letter-spacing: .04em; margin-top: 4px; }
+        .phase-pill.p1 .pill-cta { color: var(--red); }
+        .phase-pill.p2 .pill-cta { color: #4ecdc4; }
+        .phase-pill.p3 .pill-cta { color: #d4a84b; }
+        @media (max-width: 768px) {
+            .phases-cards { grid-template-columns: 1fr; }
+            .phases-banner { padding: 40px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -397,6 +463,35 @@
     <h1 class="fade-up">Insights For Men Who<br>Want To Break Free</h1>
     <p class="fade-up">Science-based strategies, hard truths, and real experience — from someone who's been there.</p>
 </header>
+
+<!-- PHASES BANNER -->
+<section class="phases-banner">
+    <div class="phases-banner-inner">
+        <div class="phases-banner-label">The REBORN Method</div>
+        <h2>Start Here: The 3-Phase Recovery Journey</h2>
+        <p>All articles below are organized around the three phases. Choose where you are right now.</p>
+        <div class="phases-cards">
+            <a href="destroy-porn-addiction.html" class="phase-pill p1">
+                <span class="pill-num">Phase 1 of 3</span>
+                <span class="pill-title">DESTROY</span>
+                <span class="pill-desc">Break the cycle, handle urges &amp; survive the first 30 days.</span>
+                <span class="pill-cta">Read the Phase 1 Guide &rarr;</span>
+            </a>
+            <a href="understanding-porn-addiction.html" class="phase-pill p2">
+                <span class="pill-num">Phase 2 of 3</span>
+                <span class="pill-title">UNDERSTANDING</span>
+                <span class="pill-desc">Neuroscience, childhood wounds &amp; the root causes of addiction.</span>
+                <span class="pill-cta">Read the Phase 2 Guide &rarr;</span>
+            </a>
+            <a href="creation-new-identity.html" class="phase-pill p3">
+                <span class="pill-num">Phase 3 of 3</span>
+                <span class="pill-title">CREATION</span>
+                <span class="pill-desc">Identity, relationships &amp; the man you were meant to become.</span>
+                <span class="pill-cta">Read the Phase 3 Guide &rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- BLOG GRID -->
 <main class="blog-section">
