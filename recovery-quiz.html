@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Phase Are You In? Recovery Quiz | REBORN</title>
+    <meta name="description" content="Answer 7 questions and find out exactly where you are in your recovery journey — and what to do next. Free quiz by Patrick Devosse.">
+    <meta name="author" content="Patrick Devosse">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://rebornmethod.com/recovery-quiz">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rebornmethod.com/recovery-quiz">
+    <meta property="og:title" content="Which Recovery Phase Are You In? | REBORN Quiz">
+    <meta property="og:description" content="7 questions. Find out if you're in DESTROY, UNDERSTANDING, or CREATION — and what to do next.">
+    <meta property="og:image" content="https://rebornmethod.com/images/og-image.jpg">
+    <meta property="og:site_name" content="REBORN by Patrick Devosse">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Which Recovery Phase Are You In? | REBORN Quiz">
+    <meta name="twitter:description" content="7 questions. Find out exactly where you are — and what to do next.">
+    <meta name="twitter:image" content="https://rebornmethod.com/images/og-image.jpg">
+    <meta name="theme-color" content="#e74c3c">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <link rel="preload" href="/fonts/bebas-neue-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/dm-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#e74c3c;--red-dark:#c0392b;--red-glow:rgba(231,76,60,.15);--teal:#4ecdc4;--gold:#d4a84b;--black:#060606;--black-card:#0e0e0e;--gray-100:#f0f0f0;--gray-200:#ccc;--gray-400:#888;--gray-600:#555;--radius:12px;--radius-lg:20px}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--black);color:var(--gray-200);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,6,6,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04)}
+nav .nav-inner{max-width:1140px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;height:64px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--red);text-decoration:none;letter-spacing:.1em}
+.nav-links{list-style:none;display:flex;gap:1.5rem;align-items:center}
+.nav-links a{color:var(--gray-400);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--gray-100)}
+.nav-links .nav-cta{background:var(--red);color:white;padding:.45rem 1rem;border-radius:100px;font-weight:600;font-size:.8rem}
+.nav-links .nav-cta:hover{background:var(--red-dark);color:white}
+.mobile-toggle{display:none;background:none;border:none;color:var(--gray-100);font-size:1.5rem;cursor:pointer}
+/* HERO */
+.quiz-hero{padding:9rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden}
+.quiz-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(231,76,60,.1) 0%,transparent 70%);pointer-events:none}
+.quiz-hero-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.quiz-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.2);border-radius:100px;padding:.35rem 1rem;font-size:.75rem;font-weight:700;color:var(--red);margin-bottom:1.25rem;letter-spacing:.08em;text-transform:uppercase}
+.quiz-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7vw,4.5rem);letter-spacing:.04em;line-height:1.05;color:var(--gray-100);margin-bottom:1rem}
+.quiz-hero h1 .accent{color:var(--red)}
+.quiz-hero p{color:var(--gray-400);font-size:1.05rem;margin-bottom:.5rem}
+.quiz-meta{display:flex;justify-content:center;gap:2rem;margin-top:1.5rem}
+.quiz-meta span{font-size:.82rem;color:var(--gray-600);display:flex;align-items:center;gap:.4rem}
+/* QUIZ WRAPPER */
+.quiz-wrap{max-width:680px;margin:0 auto;padding:0 1.5rem 6rem}
+/* PROGRESS */
+.progress-bar-wrap{background:rgba(255,255,255,.05);border-radius:100px;height:4px;margin-bottom:2.5rem;overflow:hidden}
+.progress-bar{height:100%;background:var(--red);border-radius:100px;transition:width .4s ease}
+.progress-label{font-size:.78rem;color:var(--gray-600);margin-bottom:.6rem;text-align:right}
+/* QUESTION */
+.question-block{display:none;animation:fadeQ .35s ease}
+.question-block.active{display:block}
+@keyframes fadeQ{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.q-number{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+.q-text{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,4vw,2rem);letter-spacing:.03em;line-height:1.15;color:var(--gray-100);margin-bottom:1.75rem}
+/* ANSWERS */
+.answers{display:flex;flex-direction:column;gap:.75rem}
+.answer-btn{background:var(--black-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:1rem 1.4rem;text-align:left;cursor:pointer;transition:border-color .25s,background .25s,transform .2s;font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--gray-200);line-height:1.5;display:flex;align-items:flex-start;gap:.9rem}
+.answer-btn:hover{border-color:rgba(231,76,60,.35);background:rgba(231,76,60,.04);transform:translateX(3px)}
+.answer-btn.selected{border-color:var(--red);background:rgba(231,76,60,.08)}
+.answer-letter{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--red);flex-shrink:0;width:1.2rem;margin-top:.05rem}
+/* RESULT */
+.result-block{display:none;animation:fadeQ .5s ease}
+.result-block.active{display:block}
+.result-phase-badge{display:inline-flex;align-items:center;gap:.5rem;border-radius:100px;padding:.4rem 1.2rem;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+.result-phase-badge.p1{background:rgba(231,76,60,.12);border:1px solid rgba(231,76,60,.25);color:var(--red)}
+.result-phase-badge.p2{background:rgba(78,205,196,.1);border:1px solid rgba(78,205,196,.22);color:var(--teal)}
+.result-phase-badge.p3{background:rgba(212,168,75,.1);border:1px solid rgba(212,168,75,.22);color:var(--gold)}
+.result-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,8vw,5rem);letter-spacing:.04em;line-height:1;margin-bottom:1rem}
+.result-block.p1 .result-title{color:var(--red)}
+.result-block.p2 .result-title{color:var(--teal)}
+.result-block.p3 .result-title{color:var(--gold)}
+.result-headline{font-size:clamp(1rem,2.5vw,1.25rem);color:var(--gray-100);font-weight:700;margin-bottom:.75rem;line-height:1.4}
+.result-desc{color:var(--gray-400);font-size:.98rem;line-height:1.8;margin-bottom:2rem}
+.result-what{background:var(--black-card);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-bottom:2rem}
+.result-what h3{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.04em;margin-bottom:1rem}
+.result-what ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.result-what li{font-size:.92rem;color:var(--gray-400);display:flex;align-items:flex-start;gap:.7rem}
+.result-what li::before{content:'→';flex-shrink:0;margin-top:.05rem}
+.result-block.p1 .result-what li::before{color:var(--red)}
+.result-block.p2 .result-what li::before{color:var(--teal)}
+.result-block.p3 .result-what li::before{color:var(--gold)}
+.result-cta-main{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:1rem 2.2rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;text-decoration:none;transition:all .3s;width:100%;margin-bottom:.9rem}
+.result-block.p1 .result-cta-main{background:var(--red);color:white;box-shadow:0 4px 20px rgba(231,76,60,.3)}
+.result-block.p1 .result-cta-main:hover{background:var(--red-dark);transform:translateY(-2px)}
+.result-block.p2 .result-cta-main{background:var(--teal);color:#060606;box-shadow:0 4px 20px rgba(78,205,196,.25)}
+.result-block.p2 .result-cta-main:hover{background:#3dbdb5;transform:translateY(-2px)}
+.result-block.p3 .result-cta-main{background:var(--gold);color:#060606;font-weight:700;box-shadow:0 4px 20px rgba(212,168,75,.25)}
+.result-block.p3 .result-cta-main:hover{background:#b8902f;transform:translateY(-2px)}
+.result-retry{display:block;text-align:center;font-size:.85rem;color:var(--gray-600);text-decoration:none;transition:color .3s;cursor:pointer;background:none;border:none;width:100%;padding:.5rem}
+.result-retry:hover{color:var(--gray-200)}
+.result-others{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06)}
+.result-others p{font-size:.82rem;color:var(--gray-600);margin-bottom:1rem;text-align:center}
+.other-phases{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+.other-pill{font-size:.82rem;font-weight:600;padding:.45rem 1.1rem;border-radius:100px;text-decoration:none;border:1px solid;transition:all .3s}
+.other-pill.p1{color:var(--red);border-color:rgba(231,76,60,.3)}
+.other-pill.p1:hover{background:rgba(231,76,60,.1)}
+.other-pill.p2{color:var(--teal);border-color:rgba(78,205,196,.3)}
+.other-pill.p2:hover{background:rgba(78,205,196,.1)}
+.other-pill.p3{color:var(--gold);border-color:rgba(212,168,75,.3)}
+.other-pill.p3:hover{background:rgba(212,168,75,.1)}
+/* FOOTER */
+footer{background:var(--black);padding:3rem 1.5rem;border-top:1px solid rgba(255,255,255,.06);text-align:center}
+footer p{color:var(--gray-600);font-size:.85rem;margin-bottom:.4rem}
+footer a{color:var(--gray-400);text-decoration:none;transition:color .3s}
+footer a:hover{color:var(--gray-100)}
+/* MOBILE */
+@media(max-width:768px){
+    .nav-links{display:none}
+    .mobile-toggle{display:block}
+    nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(6,6,6,.98);backdrop-filter:blur(20px);padding:1.5rem;gap:0;border-top:1px solid rgba(231,76,60,.2)}
+    nav.open .nav-links li{text-align:center;padding:.75rem 0}
+    nav.open .nav-links a{font-size:1rem;color:var(--gray-200)}
+    .quiz-meta{gap:1.2rem;flex-wrap:wrap}
+}
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">REBORN</a>
+            <button class="mobile-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="dopaminetrap.html">Dopamine Trap</a></li>
+                <li><a href="dopaminescale.html">Dopamine Scale</a></li>
+                <li><a href="index.html#coaching">Mentoring</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#programs" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="quiz-hero">
+        <div class="quiz-hero-inner">
+            <div class="quiz-badge">Free Assessment</div>
+            <h1>Where Are You in Your <span class="accent">Recovery?</span></h1>
+            <p>7 honest questions. No sign-up. Find out which phase you're in and exactly what to do next.</p>
+            <div class="quiz-meta">
+                <span>&#9679; 2 minutes</span>
+                <span>&#9679; 7 questions</span>
+                <span>&#9679; Instant result</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-wrap">
+
+        <!-- PROGRESS -->
+        <div id="progressWrap" style="display:none">
+            <div class="progress-label"><span id="progressText">Question 1 of 7</span></div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:14%"></div></div>
+        </div>
+
+        <!-- START SCREEN -->
+        <div id="startScreen" style="text-align:center;padding:2rem 0">
+            <p style="color:var(--gray-400);margin-bottom:2rem;font-size:1rem">Answer honestly. There's no wrong answer — only the truth about where you are right now.</p>
+            <button onclick="startQuiz()" style="background:var(--red);color:white;border:none;border-radius:100px;padding:1rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 4px 20px rgba(231,76,60,.3)" onmouseover="this.style.background='#c0392b';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--red)';this.style.transform='none'">Start the Quiz &rarr;</button>
+        </div>
+
+        <!-- Q1 -->
+        <div class="question-block" id="q1">
+            <div class="q-number">Question 1 of 7</div>
+            <div class="q-text">How often are you currently watching pornography?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(1,'a')"><span class="answer-letter">A</span>Daily or almost daily — I can't seem to stop</button>
+                <button class="answer-btn" onclick="answer(1,'b')"><span class="answer-letter">B</span>Occasionally — I've had stretches of clean time but still relapse</button>
+                <button class="answer-btn" onclick="answer(1,'c')"><span class="answer-letter">C</span>Rarely or not at all — I've broken the active habit</button>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-block" id="q2">
+            <div class="q-number">Question 2 of 7</div>
+            <div class="q-text">When you have an urge, what usually happens?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(2,'a')"><span class="answer-letter">A</span>I give in — the urge always wins eventually</button>
+                <button class="answer-btn" onclick="answer(2,'b')"><span class="answer-letter">B</span>I resist sometimes, but the urges are still intense and confusing</button>
+                <button class="answer-btn" onclick="answer(2,'c')"><span class="answer-letter">C</span>I can handle urges — they don't control my decisions anymore</button>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-block" id="q3">
+            <div class="q-number">Question 3 of 7</div>
+            <div class="q-text">Do you understand WHY you started using porn in the first place?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(3,'a')"><span class="answer-letter">A</span>Not really — it just became a habit, I don't know the root cause</button>
+                <button class="answer-btn" onclick="answer(3,'b')"><span class="answer-letter">B</span>I'm starting to see it — emotional pain, stress, loneliness — but it's not fully clear</button>
+                <button class="answer-btn" onclick="answer(3,'c')"><span class="answer-letter">C</span>Yes — I understand the wound that drove me to it</button>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-block" id="q4">
+            <div class="q-number">Question 4 of 7</div>
+            <div class="q-text">How would you describe your relationship with shame after a relapse?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(4,'a')"><span class="answer-letter">A</span>Overwhelming — shame is what sends me right back to porn</button>
+                <button class="answer-btn" onclick="answer(4,'b')"><span class="answer-letter">B</span>I feel it, but I'm learning to separate shame from self-worth</button>
+                <button class="answer-btn" onclick="answer(4,'c')"><span class="answer-letter">C</span>I've largely moved past the shame spiral — it doesn't control me</button>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-block" id="q5">
+            <div class="q-number">Question 5 of 7</div>
+            <div class="q-text">How much do you think about who you're becoming — your identity beyond the addiction?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(5,'a')"><span class="answer-letter">A</span>Barely — I'm just trying to get through the day without relapsing</button>
+                <button class="answer-btn" onclick="answer(5,'b')"><span class="answer-letter">B</span>Sometimes — I'm starting to ask deeper questions about who I am</button>
+                <button class="answer-btn" onclick="answer(5,'c')"><span class="answer-letter">C</span>Constantly — building my identity and purpose is my main focus now</button>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-block" id="q6">
+            <div class="q-number">Question 6 of 7</div>
+            <div class="q-text">How has pornography affected your relationships?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(6,'a')"><span class="answer-letter">A</span>I don't even think about it — surviving the addiction is all I can manage right now</button>
+                <button class="answer-btn" onclick="answer(6,'b')"><span class="answer-letter">B</span>I'm aware of the damage and starting to understand it — but haven't addressed it yet</button>
+                <button class="answer-btn" onclick="answer(6,'c')"><span class="answer-letter">C</span>I'm actively working to repair and rebuild my relationships</button>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-block" id="q7">
+            <div class="q-number">Question 7 of 7</div>
+            <div class="q-text">What does "recovery" mean to you right now?</div>
+            <div class="answers">
+                <button class="answer-btn" onclick="answer(7,'a')"><span class="answer-letter">A</span>Not watching porn — that's the whole goal right now</button>
+                <button class="answer-btn" onclick="answer(7,'b')"><span class="answer-letter">B</span>Understanding why I got here and healing the underlying pain</button>
+                <button class="answer-btn" onclick="answer(7,'c')"><span class="answer-letter">C</span>Becoming the man I was meant to be — freedom is just the starting point</button>
+            </div>
+        </div>
+
+        <!-- RESULT: PHASE 1 -->
+        <div class="result-block p1" id="result-p1">
+            <div class="result-phase-badge p1">Your Phase: 1 of 3</div>
+            <div class="result-title">DESTROY</div>
+            <div class="result-headline">You're in the hardest part. And the most important.</div>
+            <p class="result-desc">You're still in active battle with the addiction — and that's okay. Most men spend years here before they find the right approach. The DESTROY phase is about understanding the cycle that controls you, surviving the first 30 days, and breaking the shame spiral that keeps pulling you back in. You don't need more willpower. You need a strategy.</p>
+            <div class="result-what">
+                <h3>What to do right now:</h3>
+                <ul>
+                    <li>Read the DESTROY Pillar Page — your complete guide to Phase 1</li>
+                    <li>Understand the 72-hour relapse pattern — why you relapse every 3 days</li>
+                    <li>Download the Dopamine Trap Guide — free, visual, explains your brain</li>
+                    <li>Consider The Split Bundle (€17) — the identity framework that stops relapses</li>
+                </ul>
+            </div>
+            <a href="destroy-porn-addiction.html" class="result-cta-main">Start Phase 1: DESTROY &rarr;</a>
+            <button class="result-retry" onclick="resetQuiz()">Retake the quiz</button>
+            <div class="result-others">
+                <p>Explore all phases:</p>
+                <div class="other-phases">
+                    <a href="destroy-porn-addiction.html" class="other-pill p1">Phase 1: DESTROY</a>
+                    <a href="understanding-porn-addiction.html" class="other-pill p2">Phase 2: UNDERSTANDING</a>
+                    <a href="creation-new-identity.html" class="other-pill p3">Phase 3: CREATION</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT: PHASE 2 -->
+        <div class="result-block p2" id="result-p2">
+            <div class="result-phase-badge p2">Your Phase: 2 of 3</div>
+            <div class="result-title">UNDERSTANDING</div>
+            <div class="result-headline">You've broken the surface. Now go to the root.</div>
+            <p class="result-desc">You've made real progress — you've had clean time, you know the addiction is a problem, and you're starting to ask deeper questions. But something keeps pulling you back, and you're not sure what it is. That's the work of Phase 2: understanding the neuroscience, the childhood wound, and the exact moment your brain decided pornography equals survival. You don't have a porn problem. You have a pain problem.</p>
+            <div class="result-what">
+                <h3>What to do right now:</h3>
+                <ul>
+                    <li>Read the UNDERSTANDING Pillar Page — your complete guide to Phase 2</li>
+                    <li>Find your Addiction Birthday — the specific moment everything started</li>
+                    <li>Download the Dopamine Scale Guide — understand your brain's reward balance</li>
+                    <li>Consider RETROSPECT (book) — endorsed by John Gray, Ph.D</li>
+                </ul>
+            </div>
+            <a href="understanding-porn-addiction.html" class="result-cta-main">Start Phase 2: UNDERSTANDING &rarr;</a>
+            <button class="result-retry" onclick="resetQuiz()">Retake the quiz</button>
+            <div class="result-others">
+                <p>Explore all phases:</p>
+                <div class="other-phases">
+                    <a href="destroy-porn-addiction.html" class="other-pill p1">Phase 1: DESTROY</a>
+                    <a href="understanding-porn-addiction.html" class="other-pill p2">Phase 2: UNDERSTANDING</a>
+                    <a href="creation-new-identity.html" class="other-pill p3">Phase 3: CREATION</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT: PHASE 3 -->
+        <div class="result-block p3" id="result-p3">
+            <div class="result-phase-badge p3">Your Phase: 3 of 3</div>
+            <div class="result-title">CREATION</div>
+            <div class="result-headline">Freedom is not the finish line — it's the starting point.</div>
+            <p class="result-desc">You've done the hard work. The addiction no longer controls your daily life. Now the question isn't "how do I stop" — it's "who am I becoming?" Phase 3 is where you rebuild identity, repair relationships, discover purpose, and become the man you were always meant to be. Most men never get here. You have. Don't stop now.</p>
+            <div class="result-what">
+                <h3>What to do right now:</h3>
+                <ul>
+                    <li>Read the CREATION Pillar Page — your complete guide to Phase 3</li>
+                    <li>Download the Identity Shift Worksheet — define who you're becoming</li>
+                    <li>Read RESPECTED (book) — the man you become after pornography</li>
+                    <li>Consider 1:1 mentoring with Patrick — the first call is free</li>
+                </ul>
+            </div>
+            <a href="creation-new-identity.html" class="result-cta-main">Start Phase 3: CREATION &rarr;</a>
+            <button class="result-retry" onclick="resetQuiz()">Retake the quiz</button>
+            <div class="result-others">
+                <p>Explore all phases:</p>
+                <div class="other-phases">
+                    <a href="destroy-porn-addiction.html" class="other-pill p1">Phase 1: DESTROY</a>
+                    <a href="understanding-porn-addiction.html" class="other-pill p2">Phase 2: UNDERSTANDING</a>
+                    <a href="creation-new-identity.html" class="other-pill p3">Phase 3: CREATION</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 REBORN by Patrick Devosse. All rights reserved.</p>
+        <p><a href="index.html">Home</a> &middot; <a href="blog.html">Blog</a> &middot; <a href="index.html#programs">Programs</a> &middot; <a href="mailto:pdm-media@outlook.de">Contact</a></p>
+        <p style="margin-top:.75rem"><a href="datenschutz.html" rel="nofollow">Datenschutz</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="impressum.html" rel="nofollow">Impressum</a></p>
+    </footer>
+
+    <script>
+    // Nav
+    document.querySelectorAll('.nav-links a').forEach(a=>{
+        a.addEventListener('click',()=>document.querySelector('nav').classList.remove('open'))
+    });
+
+    // Quiz state
+    const scores = {a:0, b:0, c:0};
+    let currentQ = 0;
+    const totalQ = 7;
+
+    function startQuiz() {
+        document.getElementById('startScreen').style.display = 'none';
+        document.getElementById('progressWrap').style.display = 'block';
+        showQuestion(1);
+    }
+
+    function showQuestion(n) {
+        document.querySelectorAll('.question-block').forEach(q=>q.classList.remove('active'));
+        const qEl = document.getElementById('q'+n);
+        if(qEl) {
+            qEl.classList.add('active');
+            // Reset selection
+            qEl.querySelectorAll('.answer-btn').forEach(b=>b.classList.remove('selected'));
+        }
+        currentQ = n;
+        updateProgress(n);
+        window.scrollTo({top: document.querySelector('.quiz-wrap').offsetTop - 80, behavior:'smooth'});
+    }
+
+    function updateProgress(n) {
+        const pct = Math.round((n / totalQ) * 100);
+        document.getElementById('progressBar').style.width = pct + '%';
+        document.getElementById('progressText').textContent = 'Question ' + n + ' of ' + totalQ;
+    }
+
+    function answer(qNum, choice) {
+        // Highlight selection briefly then advance
+        const qEl = document.getElementById('q'+qNum);
+        qEl.querySelectorAll('.answer-btn').forEach(b=>b.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+
+        scores[choice]++;
+
+        setTimeout(()=>{
+            if(qNum < totalQ) {
+                showQuestion(qNum + 1);
+            } else {
+                showResult();
+            }
+        }, 280);
+    }
+
+    function showResult() {
+        document.querySelectorAll('.question-block').forEach(q=>q.classList.remove('active'));
+        document.getElementById('progressWrap').style.display = 'none';
+
+        // Determine phase
+        let phase;
+        if(scores.c >= scores.b && scores.c >= scores.a) {
+            phase = 'p3';
+        } else if(scores.b >= scores.a) {
+            phase = 'p2';
+        } else {
+            phase = 'p1';
+        }
+
+        // Tiebreak: if a===b, lean p1; if b===c, lean p2
+        if(scores.a === scores.b && scores.a >= scores.c) phase = 'p1';
+        if(scores.b === scores.c && scores.b > scores.a) phase = 'p2';
+
+        document.getElementById('result-'+phase).classList.add('active');
+        window.scrollTo({top: document.querySelector('.quiz-wrap').offsetTop - 80, behavior:'smooth'});
+    }
+
+    function resetQuiz() {
+        scores.a = 0; scores.b = 0; scores.c = 0;
+        currentQ = 0;
+        document.querySelectorAll('.result-block').forEach(r=>r.classList.remove('active'));
+        document.getElementById('startScreen').style.display = 'block';
+        document.getElementById('progressWrap').style.display = 'none';
+        window.scrollTo({top: document.querySelector('.quiz-hero').offsetTop, behavior:'smooth'});
+    }
+    </script>
+</body>
+</html>
