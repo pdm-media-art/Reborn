@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identity Reset Worksheet — REBORN Method</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../../favicon.png">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #060606;
+      --card:   #0f0f0f;
+      --border: rgba(255,255,255,.08);
+      --red:    #e74c3c;
+      --teal:   #4ecdc4;
+      --gold:   #c9a84c;
+      --g100:   #f0f0f0;
+      --g300:   #aaaaaa;
+      --g500:   #555555;
+      --g700:   #222222;
+    }
+
+    body {
+      background: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--g100);
+      padding: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--gold);
+      color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: .7rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 100;
+      transition: background .2s;
+    }
+    .print-btn:hover { background: #b8963e; }
+
+    /* COVER */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4rem;
+      margin-bottom: 4rem;
+    }
+    .cover-tag {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .cover h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      letter-spacing: .04em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .cover h1 span { color: var(--gold); }
+    .cover-sub {
+      font-size: 1.1rem;
+      color: var(--g300);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .cover-instructions {
+      background: rgba(201,168,76,.06);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 560px;
+    }
+    .cover-instructions h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: .08em;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+    .cover-instructions ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .cover-instructions li {
+      font-size: .88rem;
+      color: var(--g300);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .cover-instructions li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: .8rem;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 4rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .05em;
+      color: var(--g100);
+    }
+    .section-header p {
+      font-size: .82rem;
+      color: var(--g500);
+      margin-top: .2rem;
+    }
+
+    /* Insight box */
+    .insight {
+      background: rgba(201,168,76,.04);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: .88rem;
+      color: var(--g300);
+      line-height: 1.6;
+    }
+    .insight strong { color: var(--gold); }
+
+    /* DOT BOX */
+    .dot-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .dot-box label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .75rem;
+    }
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 18px 18px;
+      height: 120px;
+      border-radius: 6px;
+    }
+    .dot-grid-lg {
+      background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 18px 18px;
+      height: 200px;
+      border-radius: 6px;
+    }
+
+    /* WRITE LINES */
+    .write-lines {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .write-line {
+      height: 1px;
+      background: var(--border);
+    }
+    .write-line::after {
+      content: '';
+      display: block;
+      height: 28px;
+    }
+
+    /* IDENTITY SPLIT — two column */
+    .split-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .split-col {
+      padding: 1.5rem;
+    }
+    .split-col:first-child {
+      border-right: 1px solid var(--border);
+      background: rgba(231,76,60,.03);
+    }
+    .split-col:last-child {
+      background: rgba(201,168,76,.03);
+    }
+    .split-col h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: .08em;
+      margin-bottom: 1.25rem;
+    }
+    .split-col:first-child h3 { color: var(--red); }
+    .split-col:last-child h3 { color: var(--gold); }
+    .split-row {
+      margin-bottom: 1.25rem;
+    }
+    .split-row label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .4rem;
+    }
+
+    /* PHRASE CARDS */
+    .phrase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .phrase-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: rgba(255,255,255,.01);
+    }
+    .phrase-card .old {
+      font-size: .8rem;
+      color: var(--g700);
+      text-decoration: line-through;
+      margin-bottom: .4rem;
+    }
+    .phrase-card .arrow {
+      color: var(--gold);
+      font-size: .9rem;
+      margin-bottom: .4rem;
+    }
+    .phrase-card label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+
+    /* PILLARS */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .pillar {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: rgba(255,255,255,.01);
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .pillar h4 {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pillar .sub {
+      font-size: .75rem;
+      color: var(--g500);
+      line-height: 1.5;
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+      position: relative;
+    }
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: .9rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot.past {
+      background: rgba(231,76,60,.1);
+      border: 2px solid rgba(231,76,60,.3);
+      color: var(--red);
+    }
+    .timeline-dot.future {
+      background: rgba(201,168,76,.1);
+      border: 2px solid rgba(201,168,76,.3);
+      color: var(--gold);
+    }
+    .timeline-content label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .5rem;
+      margin-top: .6rem;
+    }
+    .timeline-content .dot-box {
+      margin-bottom: 0;
+    }
+
+    /* DECLARATION */
+    .declaration {
+      background: rgba(201,168,76,.04);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .declaration h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: .06em;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .declaration-name {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: .08em;
+      color: var(--g100);
+      border-bottom: 2px solid var(--gold);
+      padding: 0 2rem .25rem;
+      min-width: 300px;
+      margin-bottom: .5rem;
+    }
+    .declaration p {
+      font-size: .85rem;
+      color: var(--g500);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .declaration-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+    .decl-field label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .5rem;
+    }
+    .decl-line {
+      height: 1px;
+      background: rgba(255,255,255,.15);
+      margin-top: 1.5rem;
+    }
+
+    /* TRAITS */
+    .traits-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .trait-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: rgba(255,255,255,.01);
+    }
+    .trait-box label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+    .trait-num {
+      font-size: .65rem;
+      color: var(--g700);
+      margin-bottom: .3rem;
+    }
+
+    /* PRINT */
+    @media print {
+      @page { margin: 1.5cm; size: A4; }
+      .print-btn { display: none !important; }
+      body { background: white; color: #111; padding: 0; max-width: none; }
+      :root {
+        --black:  white;
+        --card:   #f5f5f5;
+        --border: #ddd;
+        --g100:   #111;
+        --g300:   #444;
+        --g500:   #666;
+        --g700:   #999;
+      }
+      .cover { page-break-after: always; min-height: auto; padding-bottom: 2rem; margin-bottom: 2rem; }
+      .section { page-break-inside: avoid; }
+      .split-table { page-break-inside: avoid; }
+      .dot-grid { background-image: radial-gradient(circle, #ccc 1px, transparent 1px); background-size: 18px 18px; }
+      .dot-grid-lg { background-image: radial-gradient(circle, #ccc 1px, transparent 1px); background-size: 18px 18px; }
+      .insight { border-left: 3px solid #bbb; background: #f9f9f9; }
+      .declaration { background: #fff8e8; border-color: #ddd; }
+      .phrase-card { border-color: #ddd; background: #fafafa; }
+      .pillar { border-color: #ddd; background: #fafafa; }
+      .trait-box { border-color: #ddd; background: #fafafa; }
+      .split-col:first-child { background: #fff8f8; }
+      .split-col:last-child { background: #fffdf0; }
+      .timeline::before { background: #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">REBORN Method — Phase 3: CREATION</div>
+  <h1>Identity Reset<br><span>Worksheet</span></h1>
+  <p class="cover-sub">
+    Addiction is partly an identity problem. You've been living as "the guy who does this." That identity must be consciously dismantled and rebuilt. This worksheet guides you through the most important work in Phase 3: deciding — not discovering — who you are becoming.
+  </p>
+
+  <div class="cover-instructions">
+    <h3>How to Use This Worksheet</h3>
+    <ul>
+      <li>Do this in a quiet space — give it at least 60 uninterrupted minutes</li>
+      <li>Write in the present tense — not "I want to be" but "I am"</li>
+      <li>This is not fantasy — it's a construction blueprint for real behavior change</li>
+      <li>Return to Section 5 (Your Declaration) every morning for 30 days</li>
+      <li>Share your answers with Patrick — this becomes the foundation for your sessions</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 1: ADDICTION BIRTHDAY -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <h2>Your Addiction Birthday</h2>
+      <p>Trace the origin — when did this actually start?</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Your Addiction Has a Birthday:</strong> The behavior didn't come from nowhere. Something happened — a first exposure, an emotional gap, a way to cope that got locked in. Finding that birthday doesn't excuse the behavior. It explains it. And explanation is the first step to change.
+  </div>
+
+  <div class="dot-box">
+    <label>How old were you when you first encountered this? What was happening in your life at that time?</label>
+    <div class="dot-grid-lg"></div>
+  </div>
+
+  <div class="dot-box">
+    <label>What need was it filling at that moment? (connection, escape, control, numbing, excitement?)</label>
+    <div class="dot-grid"></div>
+  </div>
+
+  <div class="dot-box">
+    <label>Write a letter to your younger self at that moment. What do you want to tell him?</label>
+    <div class="dot-grid-lg"></div>
+  </div>
+</div>
+
+<!-- SECTION 2: THE SPLIT — WHO YOU WERE vs. WHO YOU ARE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div>
+      <h2>The Split</h2>
+      <p>Examine both sides of you — the one you're leaving behind and the one you're stepping into.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>The Two Men:</strong> Inside you right now are two versions of yourself. The old identity that the addiction belongs to. And the new identity that you are building. Recovery is not about fixing the old man — it's about fully becoming the new one. These two men cannot coexist indefinitely.
+  </div>
+
+  <div class="split-table">
+    <div class="split-col">
+      <h3>The Old Identity</h3>
+      <div class="split-row">
+        <label>How he sees himself</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>His core beliefs about himself</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>What he turns to when life gets hard</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>What he tells himself to justify the behavior</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>What he's afraid of</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+    </div>
+    <div class="split-col">
+      <h3>The New Identity</h3>
+      <div class="split-row">
+        <label>How he sees himself</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>His core beliefs about himself</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>What he turns to when life gets hard</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>The truth he speaks to himself instead</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+      <div class="split-row">
+        <label>What drives him forward</label>
+        <div class="write-lines">
+          <div class="write-line"></div>
+          <div class="write-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-box">
+    <label>What is the biggest difference between these two men? What changed first?</label>
+    <div class="dot-grid"></div>
+  </div>
+</div>
+
+<!-- SECTION 3: REWRITING YOUR SELF-TALK -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div>
+      <h2>Rewriting Your Self-Talk</h2>
+      <p>The stories you repeat become the identity you live. Replace the old scripts.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Language Shapes Reality:</strong> The sentences you repeat about yourself in your head are not just thoughts — they are programming instructions. The old language must be consciously replaced. Not suppressed. Replaced.
+  </div>
+
+  <div class="phrase-grid">
+    <div class="phrase-card">
+      <div class="old">"I can't stop — I've tried everything."</div>
+      <div class="arrow">↓</div>
+      <label>My new statement:</label>
+      <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+    <div class="phrase-card">
+      <div class="old">"This is just who I am."</div>
+      <div class="arrow">↓</div>
+      <label>My new statement:</label>
+      <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+    <div class="phrase-card">
+      <div class="old">"I deserve a reward after a hard day."</div>
+      <div class="arrow">↓</div>
+      <label>My new statement:</label>
+      <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+    <div class="phrase-card">
+      <div class="old">"One relapse means I failed."</div>
+      <div class="arrow">↓</div>
+      <label>My new statement:</label>
+      <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+    <div class="phrase-card">
+      <div class="old">"Nobody would understand."</div>
+      <div class="arrow">↓</div>
+      <label>My new statement:</label>
+      <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+    <div class="phrase-card">
+      <div class="old">Your most common lie to yourself:</div>
+      <div class="arrow">↓</div>
+      <label>The truth instead:</label>
+      <div class="write-lines"><div class="write-line"></div><div class="write-line"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: THE 5 PILLARS OF YOUR NEW IDENTITY -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div>
+      <h2>The 5 Pillars</h2>
+      <p>Identity is built on behavior. Define what the new man does consistently.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Identity Follows Action:</strong> You don't believe your way to a new identity — you act your way there. Every small action that aligns with the new man strengthens the new neural pathway. Define the behaviors first. The belief follows.
+  </div>
+
+  <div class="pillar-grid">
+    <div class="pillar">
+      <h4>Body & Health</h4>
+      <p class="sub">What does this man do with his body daily? Sleep, movement, what he puts in it.</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="pillar">
+      <h4>Mind & Focus</h4>
+      <p class="sub">How does he protect and train his mind? What does he read, consume, think about?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="pillar">
+      <h4>Relationships</h4>
+      <p class="sub">How does he show up for others? What kind of man is he in his closest relationships?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="pillar">
+      <h4>Purpose & Work</h4>
+      <p class="sub">What is he building? What work gives him meaning? What does he contribute?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="pillar">
+      <h4>Integrity & Values</h4>
+      <p class="sub">What are his non-negotiables? What does he never compromise on, no matter what?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-box">
+    <label>Which pillar needs the most work right now, and what's the first small action to strengthen it?</label>
+    <div class="dot-grid"></div>
+  </div>
+</div>
+
+<!-- SECTION 5: YOUR 3 CORE IDENTITY TRAITS -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div>
+      <h2>Your 3 Core Identity Traits</h2>
+      <p>Choose 3 words that define who you are becoming — then prove them with behaviors.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>A Name Changes Everything:</strong> When you say "I am disciplined" instead of "I am trying to be more disciplined," your brain processes it differently. These three traits are not aspirations. They are facts you are making true through daily action.
+  </div>
+
+  <div class="traits-row">
+    <div class="trait-box">
+      <label>Trait #1 — I am...</label>
+      <div class="write-line" style="margin-bottom: 1.25rem;"></div>
+      <div style="font-size: .72rem; color: var(--g500); margin-bottom: .5rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;">What this looks like in daily life:</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trait-box">
+      <label>Trait #2 — I am...</label>
+      <div class="write-line" style="margin-bottom: 1.25rem;"></div>
+      <div style="font-size: .72rem; color: var(--g500); margin-bottom: .5rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;">What this looks like in daily life:</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trait-box">
+      <label>Trait #3 — I am...</label>
+      <div class="write-line" style="margin-bottom: 1.25rem;"></div>
+      <div style="font-size: .72rem; color: var(--g500); margin-bottom: .5rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;">What this looks like in daily life:</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: YOUR VISION — 1 YEAR FROM NOW -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div>
+      <h2>One Year From Now</h2>
+      <p>The clearer the vision, the stronger the pull. Write it in detail.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot past">NOW</div>
+      <div class="timeline-content">
+        <label>Where you are right now — be honest</label>
+        <div class="dot-box"><div class="dot-grid"></div></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot future">90D</div>
+      <div class="timeline-content">
+        <label>90 days from now — what has changed? What does your daily life look like?</label>
+        <div class="dot-box"><div class="dot-grid"></div></div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot future">1Y</div>
+      <div class="timeline-content">
+        <label>One year from now — describe the man you are. Wake up in his morning. Who is he?</label>
+        <div class="dot-box"><div class="dot-grid-lg"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: YOUR IDENTITY DECLARATION -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div>
+      <h2>Your Identity Declaration</h2>
+      <p>Write it. Sign it. Read it every morning.</p>
+    </div>
+  </div>
+
+  <div class="declaration">
+    <h3>I Am REBORN</h3>
+
+    <p>
+      I am no longer defined by my past behavior. I am not my worst moments.<br>
+      I am the sum of every decision I make from this day forward.
+    </p>
+
+    <p style="font-style: italic; color: var(--g300); font-size: .85rem;">
+      Write your name below — the name of the man you are becoming:
+    </p>
+    <div class="declaration-name"></div>
+    <br><br>
+
+    <div class="dot-box" style="text-align: left; background: rgba(255,255,255,.02);">
+      <label>My declaration in my own words — what I am committing to, who I am choosing to be:</label>
+      <div class="dot-grid-lg"></div>
+    </div>
+
+    <div class="declaration-footer">
+      <div class="decl-field">
+        <label>Signature</label>
+        <div class="decl-line"></div>
+      </div>
+      <div class="decl-field">
+        <label>Date</label>
+        <div class="decl-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight" style="border-left-color: var(--gold); background: rgba(201,168,76,.04); margin-top: 1.5rem;">
+    <strong>This is not the end of the worksheet — it's the beginning of the work.</strong> The declaration means nothing until it's backed by decisions. Every morning you choose. Every trigger you interrupt. Every day you stay clean is a vote for the man on this page. Over time, the votes win.
+  </div>
+</div>
+
+</body>
+</html>

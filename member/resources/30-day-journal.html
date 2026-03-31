@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30-Day Recovery Journal — REBORN Method</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    :root {
+      --black: #060606; --red: #e74c3c; --teal: #4ecdc4; --gold: #c9a84c;
+      --g100: #f0f0f0; --g300: #aaa; --g500: #555; --g700: #222;
+      --border: rgba(255,255,255,.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--g100);
+    }
+
+    /* SCREEN: cover + print button */
+    .screen-only { display: block; }
+    @media print { .screen-only { display: none !important; } }
+
+    /* PRINT STYLES */
+    @media print {
+      body { background: white; color: #111; }
+      .page { box-shadow: none !important; border: none !important; margin: 0 !important; page-break-after: always; }
+      .page:last-child { page-break-after: avoid; }
+      .line { border-color: #ddd !important; }
+      .section-tag { background: #111 !important; color: white !important; }
+      .day-number { color: #cc2222 !important; }
+      .cover-logo { color: #111 !important; }
+      .cover-logo span { color: #cc2222 !important; }
+      .cover-sub { color: #666 !important; }
+      .cover-quote { color: #333 !important; }
+      .cover-quote em { color: #cc2222 !important; }
+      .prompt-label { color: #666 !important; }
+      .dot-box { border-color: #ccc !important; }
+      .week-header { border-color: #cc2222 !important; color: #111 !important; }
+      .week-theme { color: #666 !important; }
+    }
+
+    /* COVER */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4rem 3.5rem;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 5px;
+      background: linear-gradient(90deg, var(--red), var(--teal));
+    }
+    .cover::after {
+      content: '';
+      position: absolute; bottom: -100px; right: -80px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(231,76,60,.06) 0%, transparent 70%);
+    }
+    .cover-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem; letter-spacing: .1em; color: var(--g100);
+    }
+    .cover-logo span { color: var(--red); }
+    .cover-body { max-width: 540px; }
+    .cover-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem;
+    }
+    .cover-tag::before { content: ''; width: 20px; height: 2px; background: var(--red); }
+    .cover-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      line-height: .95; letter-spacing: .02em; color: var(--g100);
+      margin-bottom: .75rem;
+    }
+    .cover-title span { color: var(--red); }
+    .cover-sub {
+      font-size: 1.1rem; color: var(--g500); margin-bottom: 2.5rem;
+      font-style: italic;
+    }
+    .cover-quote {
+      font-size: 1rem; color: var(--g300); line-height: 1.8; border-left: 2px solid var(--red);
+      padding-left: 1.25rem; margin-bottom: 2.5rem; max-width: 460px;
+    }
+    .cover-quote em { color: var(--g100); font-style: normal; font-weight: 600; }
+    .cover-instructions {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .cover-instructions h3 {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--red); margin-bottom: .75rem;
+    }
+    .cover-instructions ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .cover-instructions li {
+      font-size: .88rem; color: var(--g300); display: flex; gap: .75rem;
+    }
+    .cover-instructions li::before { content: '→'; color: var(--red); flex-shrink: 0; }
+    .cover-footer {
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .cover-name-line {
+      display: flex; flex-direction: column; gap: .5rem;
+    }
+    .cover-name-label { font-size: .72rem; color: var(--g500); text-transform: uppercase; letter-spacing: .08em; }
+    .cover-name-field {
+      width: 280px; border-bottom: 1px solid var(--g700); padding-bottom: .35rem;
+      font-size: .95rem; color: var(--g700); font-style: italic;
+    }
+    .cover-date { font-size: .82rem; color: var(--g700); }
+
+    /* WEEK HEADER PAGE */
+    .page {
+      min-height: 100vh; padding: 3rem 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .page::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--red), transparent);
+    }
+    .week-header-block {
+      border-left: 3px solid var(--red); padding-left: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .week-number {
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--red); margin-bottom: .35rem;
+    }
+    .week-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem; letter-spacing: .04em; line-height: 1; color: var(--g100);
+      margin-bottom: .4rem;
+    }
+    .week-theme { font-size: .92rem; color: var(--g500); font-style: italic; }
+    .week-insight {
+      background: rgba(231,76,60,.06); border: 1px solid rgba(231,76,60,.15);
+      border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+    }
+    .week-insight p { font-size: .9rem; color: var(--g300); line-height: 1.7; }
+    .week-insight strong { color: var(--g100); }
+
+    /* DAY ENTRY */
+    .day-block { margin-bottom: 2.5rem; }
+    .day-header {
+      display: flex; align-items: baseline; gap: .75rem; margin-bottom: 1rem;
+    }
+    .day-number {
+      font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem;
+      letter-spacing: .02em; line-height: 1; color: var(--red); flex-shrink: 0;
+    }
+    .day-label-wrap { display: flex; flex-direction: column; }
+    .day-label { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--g500); }
+    .day-date-line {
+      display: flex; gap: .5rem; align-items: center;
+      border-bottom: 1px solid var(--g700); padding-bottom: .2rem; margin-top: .15rem;
+      width: 160px;
+    }
+    .day-date-line span { font-size: .78rem; color: var(--g700); }
+
+    .section-tag {
+      display: inline-flex; background: var(--red); color: white;
+      font-size: .62rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: .2rem .6rem; border-radius: 4px;
+      margin-bottom: .5rem;
+    }
+    .section-tag.eve { background: var(--g700); }
+
+    .prompt-label {
+      font-size: .82rem; color: var(--g500); margin-bottom: .5rem;
+      line-height: 1.4;
+    }
+    .prompt-label strong { color: var(--g300); }
+
+    .lines { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.25rem; }
+    .line {
+      width: 100%; border: none; border-bottom: 1px solid var(--g700);
+      height: 1.6rem; background: transparent;
+    }
+
+    .mood-row {
+      display: flex; gap: .75rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .mood-box {
+      flex: 1; min-width: 80px; border: 1px solid var(--g700); border-radius: 8px;
+      padding: .6rem .5rem; text-align: center;
+    }
+    .mood-box .emoji { font-size: 1.4rem; display: block; margin-bottom: .2rem; }
+    .mood-box .mood-label { font-size: .65rem; color: var(--g500); text-transform: uppercase; letter-spacing: .06em; }
+    .mood-circle {
+      width: 18px; height: 18px; border: 2px solid var(--g700); border-radius: 50%;
+      margin: .35rem auto 0; cursor: pointer;
+    }
+
+    .dot-box {
+      width: 100%; min-height: 80px; border: 1px solid var(--g700); border-radius: 8px;
+      background: repeating-linear-gradient(
+        transparent, transparent 24px, rgba(255,255,255,.03) 24px, rgba(255,255,255,.03) 25px
+      );
+      margin-bottom: 1.25rem; padding: .5rem;
+    }
+
+    .urge-meter {
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem;
+    }
+    .urge-label { font-size: .78rem; color: var(--g500); flex-shrink: 0; }
+    .urge-scale { display: flex; gap: .4rem; flex: 1; }
+    .urge-num {
+      width: 28px; height: 28px; border: 1px solid var(--g700); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; color: var(--g500); cursor: pointer;
+    }
+
+    /* Print button */
+    .print-bar {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+      display: flex; gap: .75rem;
+    }
+    .print-btn {
+      background: var(--red); color: white; border: none; border-radius: 100px;
+      padding: .85rem 1.75rem; font-family: 'DM Sans', sans-serif; font-size: .95rem;
+      font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(231,76,60,.4);
+      transition: all .2s; display: flex; align-items: center; gap: .5rem;
+    }
+    .print-btn:hover { background: var(--red-d, #c0392b); transform: translateY(-2px); }
+    .back-btn {
+      background: rgba(255,255,255,.06); color: var(--g300); border: 1px solid var(--border);
+      border-radius: 100px; padding: .85rem 1.5rem; font-family: 'DM Sans', sans-serif;
+      font-size: .9rem; cursor: pointer; text-decoration: none; display: flex; align-items: center;
+    }
+    .back-btn:hover { background: rgba(255,255,255,.1); }
+  </style>
+</head>
+<body>
+
+<!-- PRINT BAR -->
+<div class="print-bar screen-only">
+  <a href="../dashboard.html" class="back-btn">← Dashboard</a>
+  <button class="print-btn" onclick="window.print()">🖨 Print / Save as PDF</button>
+</div>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover page">
+  <div class="cover-logo">RE<span>B</span>ORN</div>
+
+  <div class="cover-body">
+    <div class="cover-tag">Member Resource · Phase 1</div>
+    <div class="cover-title">30-Day<br><span>Recovery</span><br>Journal</div>
+    <p class="cover-sub">Your daily companion through the hardest and most important month.</p>
+
+    <blockquote class="cover-quote">
+      "You don't need more willpower. You need a <em>daily practice</em> that rewires the very patterns that keep pulling you back. This journal is that practice."
+      <br><br>
+      <span style="font-size:.82rem;color:var(--g500)">— Patrick Devosse, REBORN Method</span>
+    </blockquote>
+
+    <div class="cover-instructions">
+      <h3>How to use this journal</h3>
+      <ul>
+        <li>Complete the morning section within 15 minutes of waking up</li>
+        <li>Fill in the urge tracker throughout the day — honestly</li>
+        <li>Complete the evening reflection before sleep</li>
+        <li>Don't skip days. A missed day is just Day 1 again</li>
+        <li>If you relapse — don't close this journal. Open it</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-name-line">
+      <div class="cover-name-label">This journal belongs to</div>
+      <div class="cover-name-field">&nbsp;</div>
+      <div class="cover-name-label" style="margin-top:.75rem">Starting date</div>
+      <div class="cover-name-field">&nbsp;</div>
+    </div>
+    <div class="cover-date">rebornmethod.com</div>
+  </div>
+</div>
+
+<!-- ══════════ WEEK 1 ══════════ -->
+<div class="page">
+  <div class="week-header-block">
+    <div class="week-number">Week 1 · Days 1–7</div>
+    <div class="week-title">SURVIVE &<br>UNDERSTAND</div>
+    <div class="week-theme">The first 7 days are the hardest. Your only job is to understand what's happening — not to fix it.</div>
+  </div>
+  <div class="week-insight">
+    <p>
+      <strong>What's happening in your brain right now:</strong> Your dopamine system is recalibrating. Withdrawal is real — irritability, brain fog, restlessness. This is not weakness. This is neurochemistry. The urges you feel are your brain desperately seeking the dopamine shortcut it's been trained to use. Every time you don't act on an urge, you weaken that neural pathway. You are literally rewiring yourself — one hour at a time.
+    </p>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-number">01</div>
+      <div class="day-label-wrap">
+        <div class="day-label">Day One</div>
+        <div class="day-date-line"><span>Date:</span></div>
+      </div>
+    </div>
+
+    <div class="section-tag">☀ Morning</div>
+    <p class="prompt-label"><strong>How do I feel right now?</strong> (be honest — no judgment)</p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+
+    <p class="prompt-label"><strong>My intention for today:</strong> One specific thing I will do differently.</p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+
+    <p class="prompt-label"><strong>My highest-risk moment today will be:</strong></p>
+    <div class="lines"><div class="line"></div></div>
+    <p class="prompt-label" style="margin-top:.25rem"><strong>My plan for that moment:</strong></p>
+    <div class="lines"><div class="line"></div></div>
+
+    <div style="margin-top:.75rem">
+      <p class="prompt-label"><strong>Urge intensity today (circle one):</strong></p>
+      <div class="urge-meter">
+        <span class="urge-label">None</span>
+        <div class="urge-scale">
+          <div class="urge-num">1</div><div class="urge-num">2</div><div class="urge-num">3</div>
+          <div class="urge-num">4</div><div class="urge-num">5</div><div class="urge-num">6</div>
+          <div class="urge-num">7</div><div class="urge-num">8</div><div class="urge-num">9</div>
+          <div class="urge-num">10</div>
+        </div>
+        <span class="urge-label">Unbearable</span>
+      </div>
+    </div>
+
+    <div class="section-tag eve">🌙 Evening</div>
+    <p class="prompt-label"><strong>What happened today?</strong> Did I act on any urges? What triggered them?</p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <p class="prompt-label"><strong>One thing I'm proud of today, no matter how small:</strong></p>
+    <div class="lines"><div class="line"></div></div>
+    <p class="prompt-label"><strong>Tomorrow I will:</strong></p>
+    <div class="lines"><div class="line"></div></div>
+  </div>
+</div>
+
+<!-- DAYS 2-7 compressed template -->
+<div class="page">
+  <!-- DAY 2 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-number">02</div>
+      <div class="day-label-wrap">
+        <div class="day-label">Day Two</div>
+        <div class="day-date-line"><span>Date:</span></div>
+      </div>
+    </div>
+    <div class="section-tag">☀ Morning</div>
+    <p class="prompt-label"><strong>How am I feeling?</strong> What's the first emotion I notice?</p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+    <p class="prompt-label"><strong>Today's intention + highest-risk moment + my plan:</strong></p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="urge-meter">
+      <span class="urge-label">Urge:</span>
+      <div class="urge-scale">
+        <div class="urge-num">1</div><div class="urge-num">2</div><div class="urge-num">3</div>
+        <div class="urge-num">4</div><div class="urge-num">5</div><div class="urge-num">6</div>
+        <div class="urge-num">7</div><div class="urge-num">8</div><div class="urge-num">9</div>
+        <div class="urge-num">10</div>
+      </div>
+    </div>
+    <div class="section-tag eve">🌙 Evening</div>
+    <p class="prompt-label"><strong>What triggered me today? What did I do with it?</strong></p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <p class="prompt-label"><strong>One win from today:</strong></p>
+    <div class="lines"><div class="line"></div></div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-block" style="margin-top:2rem">
+    <div class="day-header">
+      <div class="day-number">03</div>
+      <div class="day-label-wrap">
+        <div class="day-label">Day Three — <em style="font-family:'DM Sans';font-size:.78rem;color:var(--g500)">72-Hour mark. The hardest point. You are here.</em></div>
+        <div class="day-date-line"><span>Date:</span></div>
+      </div>
+    </div>
+    <div class="section-tag">☀ Morning</div>
+    <p class="prompt-label"><strong>Day 3 is statistically the hardest for most men.</strong> Acknowledge that. What do you feel right now?</p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+    <p class="prompt-label"><strong>WHY am I doing this?</strong> Write your real reason — not the nice version. The raw one.</p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    <div class="urge-meter">
+      <span class="urge-label">Urge:</span>
+      <div class="urge-scale">
+        <div class="urge-num">1</div><div class="urge-num">2</div><div class="urge-num">3</div>
+        <div class="urge-num">4</div><div class="urge-num">5</div><div class="urge-num">6</div>
+        <div class="urge-num">7</div><div class="urge-num">8</div><div class="urge-num">9</div>
+        <div class="urge-num">10</div>
+      </div>
+    </div>
+    <div class="section-tag eve">🌙 Evening</div>
+    <p class="prompt-label"><strong>Did you make it through Day 3?</strong> If yes — write what got you through. If no — write what happened without shame.</p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  </div>
+</div>
+
+<!-- WEEK 2 HEADER -->
+<div class="page">
+  <div class="week-header-block">
+    <div class="week-number">Week 2 · Days 8–14</div>
+    <div class="week-title">FIND THE<br>ROOT</div>
+    <div class="week-theme">The urges are quieting. Now the real work begins: understanding what's underneath the behavior.</div>
+  </div>
+  <div class="week-insight">
+    <p>
+      <strong>The Addiction Birthday:</strong> Somewhere in your past — likely before age 18 — there was a moment when your brain first decided that pornography equals safety, comfort, or escape from pain. That moment is your Addiction Birthday. This week, you're going to find it. Not to blame your past, but to understand that your brain was trying to protect you. It just chose the wrong tool.
+    </p>
+  </div>
+
+  <div class="day-block" style="margin-top:1.5rem">
+    <div class="day-header">
+      <div class="day-number">08</div>
+      <div class="day-label-wrap">
+        <div class="day-label">Day Eight — Week 2 Begins</div>
+        <div class="day-date-line"><span>Date:</span></div>
+      </div>
+    </div>
+    <div class="section-tag">☀ Morning</div>
+    <p class="prompt-label"><strong>One week in. What has changed?</strong> Even small shifts count.</p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+
+    <p class="prompt-label"><strong>Deep question for this week:</strong> When did I first start using pornography? What was going on in my life at that time?</p>
+    <div class="dot-box"></div>
+
+    <div class="urge-meter">
+      <span class="urge-label">Urge:</span>
+      <div class="urge-scale">
+        <div class="urge-num">1</div><div class="urge-num">2</div><div class="urge-num">3</div>
+        <div class="urge-num">4</div><div class="urge-num">5</div><div class="urge-num">6</div>
+        <div class="urge-num">7</div><div class="urge-num">8</div><div class="urge-num">9</div>
+        <div class="urge-num">10</div>
+      </div>
+    </div>
+    <div class="section-tag eve">🌙 Evening</div>
+    <p class="prompt-label"><strong>What emotion am I most often running from?</strong></p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  </div>
+</div>
+
+<!-- WEEK 3 + 4 HEADER -->
+<div class="page">
+  <div class="week-header-block">
+    <div class="week-number">Week 3 · Days 15–21</div>
+    <div class="week-title">REWIRE &<br>REPLACE</div>
+    <div class="week-theme">You've survived two weeks and found the root. Now you build new patterns — intentionally.</div>
+  </div>
+  <div class="week-insight">
+    <p>
+      <strong>The brain doesn't delete patterns — it replaces them.</strong> You cannot simply "stop" a behavior without giving your brain an alternative dopamine pathway. This week is about building identity-based behaviors that serve the man you're becoming. Not restrictions. Replacements.
+    </p>
+  </div>
+
+  <div class="day-block" style="margin-top:1.5rem">
+    <div class="day-header">
+      <div class="day-number">15</div>
+      <div class="day-label-wrap">
+        <div class="day-label">Day Fifteen — Halfway</div>
+        <div class="day-date-line"><span>Date:</span></div>
+      </div>
+    </div>
+    <div class="section-tag">☀ Morning</div>
+    <p class="prompt-label"><strong>What behavior have I started replacing pornography with?</strong> (good or bad — write honestly)</p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+    <p class="prompt-label"><strong>My replacement plan:</strong> When the urge hits, I will immediately do:</p>
+    <div class="lines"><div class="line"></div></div>
+    <p class="prompt-label" style="margin-top:.25rem">When I feel lonely, I will:</p>
+    <div class="lines"><div class="line"></div></div>
+    <p class="prompt-label" style="margin-top:.25rem">When I feel stressed, I will:</p>
+    <div class="lines"><div class="line"></div></div>
+    <div class="urge-meter">
+      <span class="urge-label">Urge:</span>
+      <div class="urge-scale">
+        <div class="urge-num">1</div><div class="urge-num">2</div><div class="urge-num">3</div>
+        <div class="urge-num">4</div><div class="urge-num">5</div><div class="urge-num">6</div>
+        <div class="urge-num">7</div><div class="urge-num">8</div><div class="urge-num">9</div>
+        <div class="urge-num">10</div>
+      </div>
+    </div>
+    <div class="section-tag eve">🌙 Evening</div>
+    <p class="prompt-label"><strong>Who am I becoming?</strong> Describe the man — not the goals, the man himself.</p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  </div>
+</div>
+
+<!-- DAY 30 — FINAL -->
+<div class="page">
+  <div class="week-header-block">
+    <div class="week-number">Day 30 · The End of the Beginning</div>
+    <div class="week-title">YOU<br>MADE IT</div>
+    <div class="week-theme">"30 days ago you made a decision. Today is the proof that it was real."</div>
+  </div>
+
+  <div class="week-insight">
+    <p>
+      This is not the finish line. This is the starting point. 30 days means your brain has begun to heal. Your dopamine receptors are rebalancing. The neural pathway for pornography is weaker. The man writing in this journal today is not the same man who opened it on Day 1. <strong>That matters.</strong>
+    </p>
+  </div>
+
+  <div class="day-block" style="margin-top:1.5rem">
+    <div class="day-header">
+      <div class="day-number">30</div>
+      <div class="day-label-wrap">
+        <div class="day-label">Day Thirty</div>
+        <div class="day-date-line"><span>Date:</span></div>
+      </div>
+    </div>
+
+    <p class="prompt-label" style="margin-bottom:1rem"><strong>Write a letter to the man who opened this journal on Day 1.</strong> Tell him what you know now that he didn't.</p>
+    <div class="dot-box" style="min-height:180px"></div>
+
+    <p class="prompt-label" style="margin-top:1rem"><strong>What is the single most important thing I've learned about myself in these 30 days?</strong></p>
+    <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+
+    <p class="prompt-label"><strong>The man I am becoming:</strong></p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+
+    <p class="prompt-label"><strong>My next 30 days will be different because:</strong></p>
+    <div class="lines"><div class="line"></div><div class="line"></div></div>
+
+    <div style="margin-top:2.5rem;padding:1.5rem;background:rgba(231,76,60,.06);border:1px solid rgba(231,76,60,.15);border-radius:10px;text-align:center">
+      <p style="font-size:.72rem;color:var(--g500);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem">REBORN Method</p>
+      <p style="font-size:.95rem;color:var(--g300);line-height:1.7">
+        You are not your addiction.<br>
+        You are not your worst day.<br>
+        <strong style="color:var(--g100)">You are the decision to keep going.</strong>
+      </p>
+      <p style="margin-top:1rem;font-size:.8rem;color:var(--g500)">rebornmethod.com · Patrick Devosse</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
