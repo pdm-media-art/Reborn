@@ -5,7 +5,7 @@
 // ============================================================
 
 const SUPABASE_URL = 'https://yjpgacbdqgvaoazfdwit.supabase.co';
-const SUPABASE_ANON_KEY = sb_publishable_nJbxieYyoh8P5mhNZp9WPQ_TDummH7L';
+const SUPABASE_ANON_KEY = 'sb_publishable_nJbxieYyoh8P5mhNZp9WPQ_TDummH7L';
 
 // ============================================================
 // ADMIN CONFIG
