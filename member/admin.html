@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — REBORN Method</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #060606; --card: #0f0f0f; --card2: #141414;
+      --border: rgba(255,255,255,.07);
+      --red: #e74c3c; --red-d: #c0392b;
+      --teal: #4ecdc4; --gold: #c9a84c;
+      --g100: #f0f0f0; --g300: #aaaaaa; --g500: #555555; --g700: #222222;
+      --sidebar: 240px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black); font-family: 'DM Sans', sans-serif;
+      color: var(--g100); min-height: 100vh;
+      display: grid; grid-template-columns: var(--sidebar) 1fr; grid-template-rows: auto 1fr;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      grid-row: 1 / -1; background: var(--card); border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    }
+    .sidebar-logo {
+      padding: 1.75rem 1.5rem 1.5rem; border-bottom: 1px solid var(--border);
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .08em;
+      text-decoration: none; color: var(--g100); display: block;
+    }
+    .sidebar-logo span { color: var(--red); }
+    .admin-badge {
+      margin: 1rem 1.5rem; padding: .4rem .85rem;
+      background: rgba(231,76,60,.1); border: 1px solid rgba(231,76,60,.25);
+      border-radius: 6px; font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--red); text-align: center;
+    }
+    .sidebar-nav { flex: 1; padding: 1rem 0; }
+    .nav-section {
+      padding: .5rem 1.5rem .25rem; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--g700);
+    }
+    .nav-item {
+      display: flex; align-items: center; gap: .75rem; padding: .65rem 1.5rem;
+      font-size: .88rem; font-weight: 500; color: var(--g500); text-decoration: none;
+      cursor: pointer; transition: all .2s; border-left: 2px solid transparent;
+      background: none; border-top: none; border-right: none; border-bottom: none;
+      width: 100%; text-align: left;
+    }
+    .nav-item:hover { color: var(--g100); background: rgba(255,255,255,.03); }
+    .nav-item.active { color: var(--g100); border-left-color: var(--red); background: rgba(231,76,60,.06); }
+    .nav-item .icon { width: 16px; text-align: center; flex-shrink: 0; }
+    .nav-item .badge {
+      margin-left: auto; background: var(--red); color: white;
+      border-radius: 100px; font-size: .65rem; font-weight: 700;
+      padding: .1rem .45rem; min-width: 18px; text-align: center;
+    }
+    .sidebar-bottom { padding: 1.25rem 1.5rem; border-top: 1px solid var(--border); }
+    .btn-signout {
+      width: 100%; background: none; border: 1px solid var(--border); border-radius: 6px;
+      padding: .6rem 1rem; font-family: 'DM Sans', sans-serif; font-size: .82rem;
+      color: var(--g500); cursor: pointer; transition: all .2s;
+    }
+    .btn-signout:hover { border-color: var(--red); color: var(--red); }
+
+    /* TOPBAR */
+    .topbar {
+      grid-column: 2; display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem; border-bottom: 1px solid var(--border);
+      background: rgba(6,6,6,.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 10;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1rem; }
+    .topbar-title { font-size: 1rem; font-weight: 600; color: var(--g100); }
+    .topbar-date { font-size: .82rem; color: var(--g500); }
+    .btn-invite {
+      display: flex; align-items: center; gap: .5rem; padding: .55rem 1.1rem;
+      background: var(--red); border: none; border-radius: 8px; color: white;
+      font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .btn-invite:hover { background: var(--red-d); }
+
+    /* MAIN */
+    .main { grid-column: 2; padding: 2rem; }
+
+    /* STATS ROW */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;
+    }
+    .stat-label { font-size: .72rem; color: var(--g500); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem; }
+    .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: .04em; line-height: 1; color: var(--g100); }
+    .stat-sub { font-size: .78rem; color: var(--g500); margin-top: .3rem; }
+
+    /* CLIENT TABLE */
+    .table-wrap {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 2rem;
+    }
+    .table-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .table-header h2 { font-size: 1rem; font-weight: 700; }
+    .search-input {
+      background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+      padding: .5rem .85rem; font-family: 'DM Sans', sans-serif; font-size: .85rem;
+      color: var(--g100); outline: none; width: 220px; transition: border-color .2s;
+    }
+    .search-input:focus { border-color: var(--red); }
+    .search-input::placeholder { color: var(--g700); }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      text-align: left; padding: .85rem 1.5rem; font-size: .72rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--g500);
+      border-bottom: 1px solid var(--border);
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; cursor: pointer; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,.02); }
+    td { padding: .9rem 1.5rem; font-size: .88rem; color: var(--g300); vertical-align: middle; }
+    td.name { color: var(--g100); font-weight: 500; }
+    .phase-dot {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
+    }
+    .phase-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .phase-dot.p1::before { background: var(--red); }
+    .phase-dot.p2::before { background: var(--teal); }
+    .phase-dot.p3::before { background: var(--gold); }
+    .phase-dot.p1 { color: var(--red); }
+    .phase-dot.p2 { color: var(--teal); }
+    .phase-dot.p3 { color: var(--gold); }
+    .action-btn {
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      border-radius: 6px; padding: .35rem .75rem; font-size: .78rem;
+      color: var(--g300); cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: all .2s;
+    }
+    .action-btn:hover { border-color: var(--red); color: var(--red); background: rgba(231,76,60,.06); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75);
+      backdrop-filter: blur(4px); z-index: 200; align-items: center; justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; width: 100%; max-width: 520px; max-height: 90vh;
+      overflow-y: auto; position: relative;
+    }
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: .04em;
+      margin-bottom: 1.5rem;
+    }
+    .modal-close {
+      position: absolute; top: 1.25rem; right: 1.25rem; background: none;
+      border: none; color: var(--g500); font-size: 1.3rem; cursor: pointer;
+    }
+    .modal-close:hover { color: var(--g100); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block; font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--g500); margin-bottom: .4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: var(--card2); border: 1px solid var(--border);
+      border-radius: 8px; padding: .75rem 1rem; font-family: 'DM Sans', sans-serif;
+      font-size: .9rem; color: var(--g100); outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--red); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--card2); }
+    .btn-primary {
+      width: 100%; background: var(--red); border: none; border-radius: 8px;
+      padding: .85rem; font-family: 'DM Sans', sans-serif; font-size: .95rem;
+      font-weight: 700; color: white; cursor: pointer; transition: background .2s; margin-top: .5rem;
+    }
+    .btn-primary:hover { background: var(--red-d); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-secondary {
+      width: 100%; background: none; border: 1px solid var(--border); border-radius: 8px;
+      padding: .75rem; font-family: 'DM Sans', sans-serif; font-size: .88rem;
+      color: var(--g500); cursor: pointer; transition: all .2s; margin-top: .5rem;
+    }
+    .btn-secondary:hover { border-color: var(--g500); color: var(--g300); }
+    .success-msg {
+      display: none; background: rgba(78,205,196,.1); border: 1px solid rgba(78,205,196,.25);
+      border-radius: 8px; padding: .75rem 1rem; font-size: .85rem; color: var(--teal); margin-top: .75rem;
+    }
+    .success-msg.show { display: block; }
+    .error-msg {
+      display: none; background: rgba(231,76,60,.1); border: 1px solid rgba(231,76,60,.3);
+      border-radius: 8px; padding: .75rem 1rem; font-size: .85rem; color: #ff6b6b; margin-top: .75rem;
+    }
+    .error-msg.show { display: block; }
+
+    /* CLIENT DETAIL in modal */
+    .note-item {
+      background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+      padding: 1rem; margin-bottom: .75rem;
+    }
+    .note-meta { font-size: .72rem; color: var(--g500); margin-bottom: .35rem; text-transform: uppercase; letter-spacing: .06em; }
+    .note-title-d { font-size: .92rem; font-weight: 600; margin-bottom: .35rem; }
+    .note-body { font-size: .85rem; color: var(--g300); line-height: 1.6; white-space: pre-wrap; }
+    .section-divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+    .tab-row { display: flex; gap: .5rem; margin-bottom: 1.25rem; }
+    .tab-btn {
+      padding: .45rem .9rem; border-radius: 6px; font-size: .82rem; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border); background: none;
+      color: var(--g500); font-family: 'DM Sans', sans-serif; transition: all .2s;
+    }
+    .tab-btn.active { background: rgba(231,76,60,.1); border-color: rgba(231,76,60,.3); color: var(--red); }
+
+    /* LOADING */
+    .loading-wrap { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
+    .loading-spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--red); border-radius: 50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .empty { text-align: center; padding: 2rem; color: var(--g500); font-size: .88rem; }
+
+    @media (max-width: 900px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      body { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .topbar, .main { grid-column: 1; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <a href="../index.html" class="sidebar-logo">RE<span>B</span>ORN</a>
+  <div class="admin-badge">⚡ Admin Panel</div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Management</div>
+    <button class="nav-item active" onclick="showView('clients')" id="nav-clients">
+      <span class="icon">👤</span> Clients
+      <span class="badge" id="clientCountBadge">0</span>
+    </button>
+    <button class="nav-item" onclick="showView('invite')" id="nav-invite">
+      <span class="icon">✉</span> Invite Client
+    </button>
+    <div class="nav-section" style="margin-top:.5rem">Site</div>
+    <a class="nav-item" href="../index.html" target="_blank">
+      <span class="icon">↗</span> View Website
+    </a>
+  </nav>
+  <div class="sidebar-bottom">
+    <button class="btn-signout" onclick="signOut()">Sign Out</button>
+  </div>
+</aside>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-title" id="topbarTitle">Clients</div>
+    <div class="topbar-date" id="topbarDate"></div>
+  </div>
+  <button class="btn-invite" onclick="openInviteModal()">+ Invite Client</button>
+</div>
+
+<!-- MAIN -->
+<main class="main" id="mainContent">
+  <div class="loading-wrap"><div class="loading-spinner"></div></div>
+</main>
+
+<!-- ── MODAL: CLIENT DETAIL ── -->
+<div class="modal-overlay" id="clientModal">
+  <div class="modal" id="clientModalContent"></div>
+</div>
+
+<!-- ── MODAL: INVITE ── -->
+<div class="modal-overlay" id="inviteModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('inviteModal')">✕</button>
+    <div class="modal-title">Invite New Client</div>
+    <form id="inviteForm">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="inviteName" placeholder="Max Mustermann" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="inviteEmail" placeholder="client@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Starting Phase</label>
+        <select id="invitePhase">
+          <option value="1">Phase 1 — DESTROY</option>
+          <option value="2">Phase 2 — UNDERSTANDING</option>
+          <option value="3">Phase 3 — CREATION</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Clean Days Start (optional)</label>
+        <input type="date" id="inviteCleanDate">
+      </div>
+      <button type="submit" class="btn-primary" id="inviteBtn">Send Invitation Email</button>
+      <div class="success-msg" id="inviteSuccess">✓ Invitation sent! The client will receive an email to set their password.</div>
+      <div class="error-msg" id="inviteError"></div>
+    </form>
+    <p style="font-size:.78rem;color:var(--g700);margin-top:1rem;line-height:1.5;">
+      Supabase will send the client a magic link to set their password. After that, they can log in at rebornmethod.com/member/login.html
+    </p>
+  </div>
+</div>
+
+<!-- ── MODAL: ADD NOTE ── -->
+<div class="modal-overlay" id="noteModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('noteModal')">✕</button>
+    <div class="modal-title">Add Session Note</div>
+    <form id="noteForm">
+      <input type="hidden" id="noteClientId">
+      <div class="form-group">
+        <label>Session Date</label>
+        <input type="date" id="noteDate" required>
+      </div>
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="noteTitle" placeholder="Session 3 — Trigger Mapping" required>
+      </div>
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea id="noteContent" rows="6" placeholder="Key insights from this session..." required></textarea>
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:.75rem">
+        <input type="checkbox" id="notePinned" style="width:auto;margin:0">
+        <label for="notePinned" style="margin:0;text-transform:none;font-size:.88rem;color:var(--g300);cursor:pointer;">Pin this note (shows first in dashboard)</label>
+      </div>
+      <button type="submit" class="btn-primary" id="noteBtn">Save Note</button>
+      <div class="success-msg" id="noteSuccess">✓ Note saved successfully.</div>
+      <div class="error-msg" id="noteError"></div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+  let clients = [];
+  let selectedClient = null;
+
+  // ── INIT ──
+  (async () => {
+    const auth = await requireAuth(true);
+    if (!auth) return;
+
+    document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+    document.getElementById('noteDate').value = new Date().toISOString().split('T')[0];
+
+    await loadClients();
+    renderClientsView();
+  })();
+
+  // ── LOAD CLIENTS ──
+  async function loadClients() {
+    const { data } = await db.from('profiles').select('*').eq('is_admin', false).order('created_at', { ascending: false });
+    clients = data || [];
+    document.getElementById('clientCountBadge').textContent = clients.length;
+  }
+
+  // ── VIEWS ──
+  function showView(id) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('nav-' + id)?.classList.add('active');
+    const titles = { clients: 'Clients', invite: 'Invite Client' };
+    document.getElementById('topbarTitle').textContent = titles[id] || '';
+    if (id === 'clients') renderClientsView();
+    else if (id === 'invite') openInviteModal();
+  }
+
+  // ── CLIENTS VIEW ──
+  function renderClientsView() {
+    const phaseNames = { 1: 'DESTROY', 2: 'UNDERSTANDING', 3: 'CREATION' };
+    const main = document.getElementById('mainContent');
+
+    // Stats
+    const phase1 = clients.filter(c => c.phase === 1).length;
+    const phase2 = clients.filter(c => c.phase === 2).length;
+    const phase3 = clients.filter(c => c.phase === 3).length;
+
+    main.innerHTML = `
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total Clients</div>
+          <div class="stat-value">${clients.length}</div>
+          <div class="stat-sub">active members</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" style="color:var(--red)">Phase 1</div>
+          <div class="stat-value" style="color:var(--red)">${phase1}</div>
+          <div class="stat-sub">DESTROY</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" style="color:var(--teal)">Phase 2</div>
+          <div class="stat-value" style="color:var(--teal)">${phase2}</div>
+          <div class="stat-sub">UNDERSTANDING</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label" style="color:var(--gold)">Phase 3</div>
+          <div class="stat-value" style="color:var(--gold)">${phase3}</div>
+          <div class="stat-sub">CREATION</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-header">
+          <h2>All Clients</h2>
+          <input type="text" class="search-input" placeholder="Search clients..." oninput="filterClients(this.value)">
+        </div>
+        ${clients.length === 0 ? '<div class="empty">No clients yet. Invite your first client.</div>' : `
+        <table>
+          <thead><tr>
+            <th>Name</th>
+            <th>Phase</th>
+            <th>Clean Days</th>
+            <th>Member Since</th>
+            <th></th>
+          </tr></thead>
+          <tbody id="clientsTableBody">
+            ${clients.map(c => clientRow(c)).join('')}
+          </tbody>
+        </table>`}
+      </div>`;
+  }
+
+  function clientRow(c) {
+    const phaseNames = { 1: 'DESTROY', 2: 'UNDERSTANDING', 3: 'CREATION' };
+    const cleanDays = c.clean_days_start ? Math.max(0, Math.floor((Date.now() - new Date(c.clean_days_start)) / 86400000)) : '—';
+    return `
+      <tr onclick="openClientDetail('${c.id}')">
+        <td class="name">${c.full_name}</td>
+        <td><span class="phase-dot p${c.phase}">${phaseNames[c.phase] || 'DESTROY'}</span></td>
+        <td>${cleanDays}${typeof cleanDays === 'number' ? ' days' : ''}</td>
+        <td>${new Date(c.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+        <td><button class="action-btn" onclick="event.stopPropagation();openNoteModal('${c.id}','${c.full_name}')">+ Note</button></td>
+      </tr>`;
+  }
+
+  function filterClients(q) {
+    const filtered = clients.filter(c => c.full_name.toLowerCase().includes(q.toLowerCase()));
+    const tbody = document.getElementById('clientsTableBody');
+    if (tbody) tbody.innerHTML = filtered.map(c => clientRow(c)).join('') || '<tr><td colspan="5" class="empty">No results.</td></tr>';
+  }
+
+  // ── CLIENT DETAIL MODAL ──
+  async function openClientDetail(clientId) {
+    selectedClient = clients.find(c => c.id === clientId);
+    if (!selectedClient) return;
+
+    const modal = document.getElementById('clientModalContent');
+    modal.innerHTML = `<div class="loading-wrap" style="min-height:200px"><div class="loading-spinner"></div></div>`;
+    document.getElementById('clientModal').classList.add('show');
+
+    const { data: notes } = await db.from('session_notes')
+      .select('*').eq('client_id', clientId)
+      .order('is_pinned', { ascending: false }).order('created_at', { ascending: false });
+
+    const phaseNames = { 1: 'DESTROY', 2: 'UNDERSTANDING', 3: 'CREATION' };
+    const cleanDays = selectedClient.clean_days_start
+      ? Math.max(0, Math.floor((Date.now() - new Date(selectedClient.clean_days_start)) / 86400000))
+      : null;
+
+    modal.innerHTML = `
+      <button class="modal-close" onclick="closeModal('clientModal')">✕</button>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+        <div>
+          <div style="font-size:.72rem;color:var(--g500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Client</div>
+          <div class="modal-title" style="margin:0">${selectedClient.full_name}</div>
+        </div>
+        <span class="phase-dot p${selectedClient.phase}" style="font-size:.85rem">${phaseNames[selectedClient.phase]}</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem">
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.85rem;text-align:center">
+          <div style="font-size:.65rem;color:var(--g500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Clean Days</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--red)">${cleanDays ?? '—'}</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.85rem;text-align:center">
+          <div style="font-size:.65rem;color:var(--g500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Notes</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--teal)">${notes?.length || 0}</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:.85rem;text-align:center">
+          <div style="font-size:.65rem;color:var(--g500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Phase</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--gold)">${selectedClient.phase} / 3</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:.75rem;margin-bottom:1.5rem;flex-wrap:wrap">
+        <button class="action-btn" onclick="closeModal('clientModal');openNoteModal('${clientId}','${selectedClient.full_name}')">+ Add Note</button>
+        <select onchange="updateClientPhase('${clientId}',this.value)" style="background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:.35rem .75rem;font-size:.78rem;color:var(--g300);font-family:'DM Sans',sans-serif;cursor:pointer;outline:none">
+          <option value="">Move to Phase...</option>
+          <option value="1">→ Phase 1: DESTROY</option>
+          <option value="2">→ Phase 2: UNDERSTANDING</option>
+          <option value="3">→ Phase 3: CREATION</option>
+        </select>
+        <a href="mailto:${selectedClient.id}?subject=Mentoring%20Update" class="action-btn" style="text-decoration:none">✉ Email</a>
+      </div>
+
+      <hr class="section-divider">
+      <div style="font-size:.88rem;font-weight:700;margin-bottom:1rem">Session Notes (${notes?.length || 0})</div>
+      ${!notes || notes.length === 0
+        ? '<div class="empty" style="padding:1.5rem 0">No notes yet. Add one after your first session.</div>'
+        : notes.map(n => `
+          <div class="note-item">
+            <div class="note-meta">${new Date(n.session_date).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}${n.is_pinned ? ' · 📌 Pinned' : ''}</div>
+            <div class="note-title-d">${n.title}</div>
+            <div class="note-body">${n.content}</div>
+          </div>`).join('')}
+    `;
+  }
+
+  async function updateClientPhase(clientId, phase) {
+    if (!phase) return;
+    await db.from('profiles').update({ phase: parseInt(phase) }).eq('id', clientId);
+    await loadClients();
+    openClientDetail(clientId);
+  }
+
+  // ── INVITE MODAL ──
+  function openInviteModal() {
+    document.getElementById('inviteModal').classList.add('show');
+    document.getElementById('inviteSuccess').classList.remove('show');
+    document.getElementById('inviteError').classList.remove('show');
+    document.getElementById('inviteForm').reset();
+  }
+
+  document.getElementById('inviteForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('inviteBtn');
+    btn.disabled = true; btn.textContent = 'Sending...';
+
+    const name = document.getElementById('inviteName').value.trim();
+    const email = document.getElementById('inviteEmail').value.trim();
+    const phase = parseInt(document.getElementById('invitePhase').value);
+    const cleanDate = document.getElementById('inviteCleanDate').value || null;
+
+    // Invite via Supabase admin (creates user + sends magic link)
+    const { data, error } = await db.auth.admin?.inviteUserByEmail
+      ? await db.auth.admin.inviteUserByEmail(email, {
+          data: { full_name: name },
+          redirectTo: window.location.origin + '/member/login.html'
+        })
+      : { data: null, error: { message: 'Admin API not available from client. Use Supabase Dashboard → Auth → Users → Invite.' } };
+
+    if (error) {
+      // Fallback instructions
+      document.getElementById('inviteError').textContent =
+        '📋 Manual step: Go to Supabase Dashboard → Authentication → Users → Invite user → enter ' + email + '. Then update their profile below.';
+      document.getElementById('inviteError').classList.add('show');
+    } else {
+      // Create profile
+      if (data?.user) {
+        await db.from('profiles').insert({
+          id: data.user.id, full_name: name, phase, clean_days_start: cleanDate, is_admin: false
+        });
+      }
+      document.getElementById('inviteSuccess').classList.add('show');
+    }
+
+    btn.disabled = false; btn.textContent = 'Send Invitation Email';
+    await loadClients();
+  });
+
+  // ── NOTE MODAL ──
+  function openNoteModal(clientId, clientName) {
+    document.getElementById('noteClientId').value = clientId;
+    document.getElementById('noteModal').classList.add('show');
+    document.getElementById('noteSuccess').classList.remove('show');
+    document.getElementById('noteError').classList.remove('show');
+    document.getElementById('noteForm').reset();
+    document.getElementById('noteDate').value = new Date().toISOString().split('T')[0];
+    document.querySelector('#noteModal .modal-title').textContent = 'Note for ' + clientName;
+  }
+
+  document.getElementById('noteForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('noteBtn');
+    btn.disabled = true; btn.textContent = 'Saving...';
+
+    const { error } = await db.from('session_notes').insert({
+      client_id: document.getElementById('noteClientId').value,
+      title: document.getElementById('noteTitle').value,
+      content: document.getElementById('noteContent').value,
+      session_date: document.getElementById('noteDate').value,
+      is_pinned: document.getElementById('notePinned').checked
+    });
+
+    btn.disabled = false; btn.textContent = 'Save Note';
+    if (error) {
+      document.getElementById('noteError').textContent = error.message;
+      document.getElementById('noteError').classList.add('show');
+    } else {
+      document.getElementById('noteSuccess').classList.add('show');
+      setTimeout(() => closeModal('noteModal'), 1500);
+    }
+  });
+
+  // ── UTILS ──
+  function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+  document.querySelectorAll('.modal-overlay').forEach(o => {
+    o.addEventListener('click', (e) => { if (e.target === o) o.classList.remove('show'); });
+  });
+  async function signOut() { await db.auth.signOut(); window.location.href = '/member/login.html'; }
+</script>
+</body>
+</html>

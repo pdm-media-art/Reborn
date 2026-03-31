@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard — REBORN Method</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:  #060606;
+      --card:   #0f0f0f;
+      --card2:  #141414;
+      --border: rgba(255,255,255,.07);
+      --red:    #e74c3c;
+      --red-d:  #c0392b;
+      --teal:   #4ecdc4;
+      --gold:   #c9a84c;
+      --g100:   #f0f0f0;
+      --g300:   #aaaaaa;
+      --g500:   #555555;
+      --g700:   #222222;
+      --sidebar: 240px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--g100);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--sidebar) 1fr;
+      grid-template-rows: auto 1fr;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      grid-row: 1 / -1;
+      background: var(--card);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-logo {
+      padding: 1.75rem 1.5rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .08em;
+      text-decoration: none;
+      color: var(--g100);
+      display: block;
+    }
+    .sidebar-logo span { color: var(--red); }
+
+    .sidebar-user {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-user .name {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--g100);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sidebar-user .role {
+      font-size: .72rem;
+      color: var(--g500);
+      margin-top: .15rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 1rem 0;
+    }
+    .nav-section {
+      padding: .5rem 1.5rem .25rem;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--g700);
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .65rem 1.5rem;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--g500);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .2s;
+      border-left: 2px solid transparent;
+      background: none;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      width: 100%;
+      text-align: left;
+    }
+    .nav-item:hover { color: var(--g100); background: rgba(255,255,255,.03); }
+    .nav-item.active {
+      color: var(--g100);
+      border-left-color: var(--red);
+      background: rgba(231,76,60,.06);
+    }
+    .nav-item .icon { width: 16px; text-align: center; flex-shrink: 0; }
+
+    .sidebar-bottom {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .btn-signout {
+      width: 100%;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .6rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      color: var(--g500);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .btn-signout:hover { border-color: var(--red); color: var(--red); }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      grid-column: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(6,6,6,.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .topbar-title { font-size: 1rem; font-weight: 600; color: var(--g100); }
+    .topbar-date { font-size: .82rem; color: var(--g500); }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      grid-column: 2;
+      padding: 2rem;
+      max-width: 960px;
+    }
+
+    /* ── SECTIONS (tabs) ── */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── CLEAN DAYS HERO ── */
+    .clean-hero {
+      background: linear-gradient(135deg, rgba(231,76,60,.08) 0%, rgba(78,205,196,.04) 100%);
+      border: 1px solid rgba(231,76,60,.2);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .clean-hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(231,76,60,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .clean-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .5rem;
+    }
+    .clean-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 7rem);
+      line-height: 1;
+      color: var(--g100);
+      letter-spacing: .02em;
+    }
+    .clean-unit {
+      font-size: 1rem;
+      color: var(--g500);
+      margin-top: .25rem;
+    }
+    .clean-message {
+      font-size: .95rem;
+      color: var(--g300);
+      margin-top: .75rem;
+      font-style: italic;
+    }
+    .clean-milestone {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      min-width: 160px;
+    }
+    .clean-milestone .next-label {
+      font-size: .7rem;
+      color: var(--g500);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .5rem;
+    }
+    .clean-milestone .next-days {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .clean-milestone .next-desc {
+      font-size: .78rem;
+      color: var(--g500);
+      margin-top: .35rem;
+    }
+    .clean-progress {
+      width: 100%;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-top: .75rem;
+      overflow: hidden;
+    }
+    .clean-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red), var(--teal));
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* ── PHASE CARD ── */
+    .phase-card {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .phase-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .phase-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem .85rem;
+      border-radius: 100px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .phase-badge.p1 { background: rgba(231,76,60,.12); border: 1px solid rgba(231,76,60,.25); color: var(--red); }
+    .phase-badge.p2 { background: rgba(78,205,196,.1); border: 1px solid rgba(78,205,196,.22); color: var(--teal); }
+    .phase-badge.p3 { background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.22); color: var(--gold); }
+    .phase-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .04em;
+    }
+    .phase-title.p1 { color: var(--red); }
+    .phase-title.p2 { color: var(--teal); }
+    .phase-title.p3 { color: var(--gold); }
+    .phase-desc { font-size: .9rem; color: var(--g500); line-height: 1.6; }
+    .phase-steps {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .phase-step {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .88rem;
+      color: var(--g300);
+    }
+    .phase-step-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--g700);
+      flex-shrink: 0;
+    }
+    .phase-step.done .phase-step-dot { background: var(--teal); }
+    .phase-step.done { color: var(--g500); text-decoration: line-through; }
+
+    /* ── 2-COL GRID ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.75rem; }
+
+    /* ── NOTES ── */
+    .notes-list { display: flex; flex-direction: column; gap: .85rem; }
+    .note-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      position: relative;
+    }
+    .note-card.pinned { border-color: rgba(201,168,76,.3); }
+    .note-card.pinned::before {
+      content: '📌';
+      position: absolute;
+      top: .85rem; right: 1rem;
+      font-size: .85rem;
+    }
+    .note-date { font-size: .72rem; color: var(--g500); margin-bottom: .4rem; text-transform: uppercase; letter-spacing: .06em; }
+    .note-title { font-size: .95rem; font-weight: 600; margin-bottom: .5rem; }
+    .note-content { font-size: .88rem; color: var(--g300); line-height: 1.7; white-space: pre-wrap; }
+
+    /* ── RESOURCES ── */
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .resource-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .resource-card:hover { border-color: rgba(231,76,60,.3); transform: translateY(-2px); }
+    .resource-icon { font-size: 2rem; }
+    .resource-type-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: .2rem .65rem;
+      border-radius: 100px;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.04);
+      color: var(--g500);
+      width: fit-content;
+    }
+    .resource-title { font-size: .95rem; font-weight: 600; line-height: 1.3; }
+    .resource-desc { font-size: .82rem; color: var(--g500); line-height: 1.5; flex: 1; }
+    .resource-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .6rem 1rem;
+      background: rgba(231,76,60,.1);
+      border: 1px solid rgba(231,76,60,.2);
+      border-radius: 6px;
+      color: var(--red);
+      font-size: .82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .resource-btn:hover { background: rgba(231,76,60,.18); }
+
+    /* ── NEXT SESSION ── */
+    .session-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .session-card h3 {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: 1rem;
+    }
+    .session-empty {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: var(--g500);
+      font-size: .88rem;
+    }
+    .contact-patrick {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .7rem 1.2rem;
+      background: var(--red);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: background .2s;
+      margin-top: 1rem;
+      width: 100%;
+    }
+    .contact-patrick:hover { background: var(--red-d); }
+
+    /* ── SECTION HEADERS ── */
+    .section-h {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+    .section-h h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty { text-align: center; padding: 3rem 1rem; color: var(--g500); font-size: .9rem; }
+    .empty .empty-icon { font-size: 2.5rem; margin-bottom: .75rem; opacity: .4; }
+
+    /* ── LOADING ── */
+    .loading-wrap { display: flex; align-items: center; justify-content: center; min-height: 60vh; }
+    .loading-spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── MOBILE ── */
+    .mobile-header {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 1rem 1.5rem;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: .08em; color: var(--g100); text-decoration: none; }
+    .mobile-logo span { color: var(--red); }
+    .hamburger { background: none; border: none; color: var(--g300); font-size: 1.4rem; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      body { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr; }
+      .mobile-header { display: flex; }
+      .sidebar {
+        position: fixed; left: -100%; top: 0; width: 260px; height: 100%;
+        z-index: 100; transition: left .3s ease;
+      }
+      .sidebar.open { left: 0; }
+      .sidebar-overlay {
+        display: none; position: fixed; inset: 0;
+        background: rgba(0,0,0,.6); z-index: 99;
+      }
+      .sidebar-overlay.show { display: block; }
+      .topbar, .main { grid-column: 1; }
+      .two-col { grid-template-columns: 1fr; }
+      .clean-hero { grid-template-columns: 1fr; }
+      .main { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- MOBILE HEADER -->
+<div class="mobile-header">
+  <a href="../index.html" class="mobile-logo">RE<span>B</span>ORN</a>
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <a href="../index.html" class="sidebar-logo">RE<span>B</span>ORN</a>
+
+  <div class="sidebar-user">
+    <div class="name" id="sidebarName">Loading...</div>
+    <div class="role">Member</div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-section">Overview</div>
+    <button class="nav-item active" onclick="showSection('home')" id="nav-home">
+      <span class="icon">⬡</span> Dashboard
+    </button>
+    <button class="nav-item" onclick="showSection('notes')" id="nav-notes">
+      <span class="icon">✎</span> Session Notes
+    </button>
+    <div class="nav-section" style="margin-top:.5rem">Resources</div>
+    <button class="nav-item" onclick="showSection('resources')" id="nav-resources">
+      <span class="icon">↓</span> Downloads
+    </button>
+    <div class="nav-section" style="margin-top:.5rem">Support</div>
+    <a class="nav-item" href="mailto:rebornmethod.patrick@gmail.com?subject=Mentoring%20Question">
+      <span class="icon">✉</span> Contact Patrick
+    </a>
+    <a class="nav-item" href="../index.html#coaching">
+      <span class="icon">↗</span> Back to Website
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <button class="btn-signout" onclick="signOut()">Sign Out</button>
+  </div>
+</aside>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-title" id="topbarTitle">Dashboard</div>
+  <div class="topbar-date" id="topbarDate"></div>
+</div>
+
+<!-- MAIN -->
+<main class="main" id="mainContent">
+  <div class="loading-wrap" id="loadingWrap">
+    <div class="loading-spinner"></div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+  let currentProfile = null;
+
+  // ── INIT ──
+  (async () => {
+    const auth = await requireAuth(false);
+    if (!auth) return;
+
+    currentProfile = auth.profile;
+    document.getElementById('sidebarName').textContent = currentProfile.full_name || auth.session.user.email;
+
+    // Date
+    document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    document.getElementById('loadingWrap').remove();
+    renderHome();
+  })();
+
+  // ── NAVIGATION ──
+  function showSection(id) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('nav-' + id)?.classList.add('active');
+
+    const titles = { home: 'Dashboard', notes: 'Session Notes', resources: 'Downloads' };
+    document.getElementById('topbarTitle').textContent = titles[id] || 'Dashboard';
+
+    const main = document.getElementById('mainContent');
+    main.innerHTML = '<div class="loading-wrap"><div class="loading-spinner"></div></div>';
+
+    if (id === 'home') renderHome();
+    else if (id === 'notes') renderNotes();
+    else if (id === 'resources') renderResources();
+
+    closeSidebar();
+  }
+
+  // ── HOME ──
+  function renderHome() {
+    const cleanDays = calcCleanDays(currentProfile.clean_days_start);
+    const { nextMilestone, progress, message } = getMilestoneData(cleanDays);
+    const phaseInfo = getPhaseInfo(currentProfile.phase || 1);
+
+    document.getElementById('mainContent').innerHTML = `
+      <!-- CLEAN DAYS HERO -->
+      <div class="clean-hero">
+        <div>
+          <div class="clean-label">Days of Freedom</div>
+          <div class="clean-number">${cleanDays}</div>
+          <div class="clean-unit">days clean</div>
+          <div class="clean-message">"${message}"</div>
+          <div class="clean-progress" style="margin-top:1rem">
+            <div class="clean-progress-bar" style="width:${progress}%"></div>
+          </div>
+        </div>
+        <div class="clean-milestone">
+          <div class="next-label">Next milestone</div>
+          <div class="next-days">${nextMilestone}</div>
+          <div class="next-desc">days</div>
+        </div>
+      </div>
+
+      <!-- PHASE -->
+      <div class="phase-card">
+        <div class="phase-card-header">
+          <div>
+            <div class="phase-badge ${phaseInfo.cls}">${phaseInfo.label}</div>
+            <div class="phase-title ${phaseInfo.cls}" style="margin-top:.5rem">${phaseInfo.name}</div>
+          </div>
+          <a href="../${phaseInfo.url}" target="_blank" style="font-size:.8rem;color:var(--g500);text-decoration:none;">
+            Read Guide →
+          </a>
+        </div>
+        <p class="phase-desc">${phaseInfo.desc}</p>
+        <div class="phase-steps">
+          ${phaseInfo.steps.map((s, i) => `
+            <div class="phase-step ${i < phaseInfo.done ? 'done' : ''}">
+              <span class="phase-step-dot"></span>${s}
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- 2-COL -->
+      <div class="two-col">
+        <!-- LATEST NOTE -->
+        <div>
+          <div class="section-h">
+            <h2>Latest from Patrick</h2>
+            <button onclick="showSection('notes')" style="background:none;border:none;color:var(--g500);font-size:.82rem;cursor:pointer;font-family:inherit;">All notes →</button>
+          </div>
+          <div id="latestNoteWrap"></div>
+        </div>
+
+        <!-- NEXT SESSION -->
+        <div>
+          <div class="section-h"><h2>Support</h2></div>
+          <div class="session-card">
+            <h3>Direct Line to Patrick</h3>
+            <p style="font-size:.88rem;color:var(--g500);line-height:1.6;">
+              Questions between sessions? Feeling the urge? Reach out — Patrick responds within 24 hours.
+            </p>
+            <a href="mailto:rebornmethod.patrick@gmail.com?subject=Mentoring%20Support&body=Hi%20Patrick,%0A%0AI%20need%20support%20with:%0A%0A" class="contact-patrick">✉ Message Patrick</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESOURCES PREVIEW -->
+      <div class="section-h" style="margin-top:.5rem">
+        <h2>Your Resources</h2>
+        <button onclick="showSection('resources')" style="background:none;border:none;color:var(--g500);font-size:.82rem;cursor:pointer;font-family:inherit;">All downloads →</button>
+      </div>
+      <div class="resources-grid" id="resourcesPreview"></div>
+    `;
+
+    loadLatestNote();
+    loadResourcesPreview();
+  }
+
+  async function loadLatestNote() {
+    const { data } = await db.from('session_notes')
+      .select('*')
+      .eq('client_id', currentProfile.id)
+      .order('created_at', { ascending: false })
+      .limit(1);
+
+    const wrap = document.getElementById('latestNoteWrap');
+    if (!wrap) return;
+
+    if (!data || data.length === 0) {
+      wrap.innerHTML = `<div class="note-card"><p style="font-size:.88rem;color:var(--g500);">Patrick hasn't added notes yet. They'll appear here after your first session.</p></div>`;
+      return;
+    }
+    const n = data[0];
+    wrap.innerHTML = `
+      <div class="note-card ${n.is_pinned ? 'pinned' : ''}">
+        <div class="note-date">${formatDate(n.session_date)}</div>
+        <div class="note-title">${n.title}</div>
+        <div class="note-content">${truncate(n.content, 160)}</div>
+      </div>`;
+  }
+
+  async function loadResourcesPreview() {
+    const { data } = await db.from('resources').select('*').eq('is_global', true).limit(3);
+    const wrap = document.getElementById('resourcesPreview');
+    if (!wrap) return;
+    if (!data || data.length === 0) { wrap.innerHTML = '<p style="color:var(--g500);font-size:.88rem;">Resources will appear here.</p>'; return; }
+    wrap.innerHTML = data.map(r => resourceCard(r)).join('');
+  }
+
+  // ── NOTES ──
+  async function renderNotes() {
+    const main = document.getElementById('mainContent');
+    const { data } = await db.from('session_notes')
+      .select('*')
+      .eq('client_id', currentProfile.id)
+      .order('is_pinned', { ascending: false })
+      .order('created_at', { ascending: false });
+
+    if (!data || data.length === 0) {
+      main.innerHTML = `<div class="empty"><div class="empty-icon">✎</div><p>No session notes yet.<br>They'll appear here after your sessions with Patrick.</p></div>`;
+      return;
+    }
+    main.innerHTML = `<div class="notes-list">${data.map(n => `
+      <div class="note-card ${n.is_pinned ? 'pinned' : ''}">
+        <div class="note-date">${formatDate(n.session_date)}</div>
+        <div class="note-title">${n.title}</div>
+        <div class="note-content">${n.content}</div>
+      </div>`).join('')}</div>`;
+  }
+
+  // ── RESOURCES ──
+  async function renderResources() {
+    const main = document.getElementById('mainContent');
+    const { data } = await db.from('resources').select('*').eq('is_global', true).order('phase');
+    if (!data || data.length === 0) {
+      main.innerHTML = `<div class="empty"><div class="empty-icon">↓</div><p>Resources will appear here.</p></div>`;
+      return;
+    }
+    main.innerHTML = `<div class="resources-grid">${data.map(r => resourceCard(r)).join('')}</div>`;
+  }
+
+  function resourceCard(r) {
+    const icons = { journal: '📓', workbook: '📋', guide: '📖' };
+    const phaseColors = { 1: 'var(--red)', 2: 'var(--teal)', 3: 'var(--gold)' };
+    return `
+      <div class="resource-card">
+        <div class="resource-icon">${icons[r.resource_type] || '📄'}</div>
+        <span class="resource-type-badge">${r.resource_type}${r.phase ? ` · Phase ${r.phase}` : ''}</span>
+        <div class="resource-title">${r.title}</div>
+        <div class="resource-desc">${r.description || ''}</div>
+        <a href="resources/${r.file_name}" target="_blank" class="resource-btn">
+          ↓ Open &amp; Print as PDF
+        </a>
+      </div>`;
+  }
+
+  // ── HELPERS ──
+  function calcCleanDays(startDate) {
+    if (!startDate) return 0;
+    const start = new Date(startDate);
+    const now = new Date();
+    return Math.max(0, Math.floor((now - start) / 86400000));
+  }
+
+  function getMilestoneData(days) {
+    const milestones = [7, 14, 21, 30, 60, 90, 180, 365];
+    const next = milestones.find(m => m > days) || 365;
+    const prev = milestones.filter(m => m <= days).pop() || 0;
+    const progress = Math.min(100, Math.round(((days - prev) / (next - prev)) * 100));
+
+    const messages = {
+      0: "Every journey begins with a single day.",
+      7: "One week. Your brain is already changing.",
+      14: "Two weeks of clarity. Keep going.",
+      21: "21 days — the rewiring is real.",
+      30: "30 days. This is who you are now.",
+      60: "Two months. Most men never get here.",
+      90: "90 days. The dopamine system is healing.",
+      180: "Half a year free. Extraordinary.",
+      365: "A full year. You are the proof it's possible."
+    };
+    const closest = Object.keys(messages).reverse().find(k => days >= parseInt(k));
+    return { nextMilestone: next, progress, message: messages[closest] };
+  }
+
+  function getPhaseInfo(phase) {
+    const phases = {
+      1: {
+        cls: 'p1', label: 'Phase 1 of 3', name: 'DESTROY',
+        url: 'destroy-porn-addiction.html',
+        desc: 'Break the cycle. Understand why you relapse — and stop it. This is the hardest phase and the most important.',
+        steps: ['Understand your relapse pattern', 'Map your personal triggers', 'Survive the first 30 days', 'Break the shame spiral'],
+        done: 0
+      },
+      2: {
+        cls: 'p2', label: 'Phase 2 of 3', name: 'UNDERSTANDING',
+        url: 'understanding-porn-addiction.html',
+        desc: 'Go to the root. Discover the neuroscience and childhood wounds behind your addiction.',
+        steps: ['Understand the dopamine system', 'Find your Addiction Birthday', 'Process the root wound', 'Rewire the identity link'],
+        done: 1
+      },
+      3: {
+        cls: 'p3', label: 'Phase 3 of 3', name: 'CREATION',
+        url: 'creation-new-identity.html',
+        desc: 'Build the man you were meant to be. Identity, purpose, and relationships beyond addiction.',
+        steps: ['Define The Split — who you are becoming', 'Build your new identity anchors', 'Repair key relationships', 'Live your authentic masculinity'],
+        done: 2
+      }
+    };
+    return phases[phase] || phases[1];
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function truncate(str, max) {
+    return str.length > max ? str.slice(0, max) + '...' : str;
+  }
+
+  async function signOut() {
+    await db.auth.signOut();
+    window.location.href = '/member/login.html';
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  }
+</script>
+</body>
+</html>

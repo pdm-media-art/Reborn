@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigger Map Workbook — REBORN Method</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../../favicon.png">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #060606;
+      --card:   #0f0f0f;
+      --border: rgba(255,255,255,.08);
+      --red:    #e74c3c;
+      --teal:   #4ecdc4;
+      --gold:   #c9a84c;
+      --g100:   #f0f0f0;
+      --g300:   #aaaaaa;
+      --g500:   #555555;
+      --g700:   #222222;
+    }
+
+    body {
+      background: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--g100);
+      padding: 2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: .7rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 100;
+      transition: background .2s;
+    }
+    .print-btn:hover { background: #c0392b; }
+
+    /* COVER */
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4rem;
+      margin-bottom: 4rem;
+    }
+    .cover-tag {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .cover h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      letter-spacing: .04em;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .cover h1 span { color: var(--teal); }
+    .cover-sub {
+      font-size: 1.1rem;
+      color: var(--g300);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .cover-instructions {
+      background: rgba(78,205,196,.06);
+      border: 1px solid rgba(78,205,196,.2);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 560px;
+    }
+    .cover-instructions h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: .08em;
+      color: var(--teal);
+      margin-bottom: .75rem;
+    }
+    .cover-instructions ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .cover-instructions li {
+      font-size: .88rem;
+      color: var(--g300);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .cover-instructions li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: .8rem;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 4rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(78,205,196,.1);
+      border: 1px solid rgba(78,205,196,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .05em;
+      color: var(--g100);
+    }
+    .section-header p {
+      font-size: .82rem;
+      color: var(--g500);
+      margin-top: .2rem;
+    }
+
+    /* Insight box */
+    .insight {
+      background: rgba(78,205,196,.04);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: .88rem;
+      color: var(--g300);
+      line-height: 1.6;
+    }
+    .insight strong { color: var(--teal); }
+
+    /* CATEGORY GRID */
+    .trigger-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .trigger-cat {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: rgba(255,255,255,.01);
+    }
+    .trigger-cat h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      color: var(--gold);
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .trigger-cat .examples {
+      font-size: .78rem;
+      color: var(--g500);
+      margin-bottom: .75rem;
+      font-style: italic;
+    }
+    .write-lines {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .write-line {
+      height: 1px;
+      background: var(--border);
+      position: relative;
+    }
+    .write-line::after {
+      content: '';
+      display: block;
+      height: 24px;
+    }
+
+    /* DOT BOX */
+    .dot-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .dot-box label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .75rem;
+    }
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 18px 18px;
+      height: 120px;
+      border-radius: 6px;
+    }
+
+    /* TRIGGER MAP — visual grid */
+    .map-container {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .map-axis-label {
+      text-align: center;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      padding: .5rem;
+      background: rgba(255,255,255,.02);
+    }
+    .map-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+    .map-row-label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: .75rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      border-right: 1px solid var(--border);
+      background: rgba(255,255,255,.01);
+    }
+    .map-cell {
+      padding: .75rem;
+      border-right: 1px solid var(--border);
+      min-height: 80px;
+      vertical-align: top;
+    }
+    .map-cell:last-child { border-right: none; }
+    .map-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: .6rem;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.03);
+      border-right: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+    }
+    .map-col-header:last-child { border-right: none; }
+    .map-col-header.time { color: var(--teal); }
+    .map-col-header.place { color: var(--gold); }
+    .map-col-header.emotion { color: var(--red); }
+
+    /* URGE CHAIN */
+    .chain-step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+    }
+    .chain-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(231,76,60,.08);
+      border: 1px solid rgba(231,76,60,.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .chain-body label {
+      display: block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .5rem;
+    }
+    .chain-input {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      width: 100%;
+      min-height: 50px;
+    }
+    .chain-arrow {
+      text-align: center;
+      color: var(--g700);
+      font-size: 1.2rem;
+      margin: .25rem 0 .25rem 1.25rem;
+    }
+
+    /* INTERRUPT STRATEGIES */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .strategy-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: rgba(255,255,255,.01);
+    }
+    .strategy-card h4 {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .75rem;
+    }
+    .strategy-card .desc {
+      font-size: .8rem;
+      color: var(--g500);
+      margin-bottom: .75rem;
+      line-height: 1.5;
+    }
+
+    /* WEEKLY TRACKER */
+    .week-tracker {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+    .day-col {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .day-label {
+      text-align: center;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--g500);
+      padding-bottom: .4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .day-slot {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .72rem;
+      color: var(--g700);
+    }
+    .slot-label {
+      font-size: .65rem;
+      text-align: center;
+      color: var(--g700);
+    }
+
+    /* COMMITMENT */
+    .commitment-box {
+      background: rgba(231,76,60,.04);
+      border: 1px solid rgba(231,76,60,.2);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .commitment-box h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: .06em;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+    .commitment-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .commitment-field label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .5rem;
+    }
+    .commitment-line {
+      height: 1px;
+      background: rgba(255,255,255,.15);
+      margin-top: 1.5rem;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      @page { margin: 1.5cm; size: A4; }
+      .print-btn { display: none !important; }
+      body { background: white; color: #111; padding: 0; max-width: none; }
+      :root {
+        --black:  white;
+        --card:   #f5f5f5;
+        --border: #ddd;
+        --g100:   #111;
+        --g300:   #444;
+        --g500:   #666;
+        --g700:   #999;
+      }
+      .cover { page-break-after: always; min-height: auto; padding-bottom: 2rem; margin-bottom: 2rem; }
+      .section { page-break-inside: avoid; }
+      .map-container { page-break-inside: avoid; }
+      .dot-grid { background-image: radial-gradient(circle, #ccc 1px, transparent 1px); background-size: 18px 18px; }
+      .insight { border-left: 3px solid #999; background: #f9f9f9; }
+      .commitment-box { background: #fff8f8; border-color: #ddd; }
+      .trigger-cat { border-color: #ddd; background: #fafafa; }
+      .strategy-card { border-color: #ddd; background: #fafafa; }
+      .day-slot { background: #f0f0f0; border-color: #ddd; }
+      .map-cell { background: white; }
+      .chain-input { background: #f5f5f5; border-color: #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">REBORN Method — Phase 1: DESTROY</div>
+  <h1>Trigger Map<br><span>Workbook</span></h1>
+  <p class="cover-sub">
+    You can't fight what you can't see. This workbook helps you map every trigger that leads to unwanted behavior — the times, places, emotions, and thought patterns that fuel the urge. Once you can see the full chain, you can break it.
+  </p>
+
+  <div class="cover-instructions">
+    <h3>How to Use This Workbook</h3>
+    <ul>
+      <li>Work through all sections in order — they build on each other</li>
+      <li>Be brutally honest — no one sees this but you and Patrick</li>
+      <li>Fill it out after a urge or relapse while it's still fresh</li>
+      <li>Review it with Patrick in your next session</li>
+      <li>The goal is awareness, not shame — every map brings you closer to free</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION 1: YOUR TRIGGER CATEGORIES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <h2>Your Trigger Categories</h2>
+      <p>What situations consistently lead to urges? Write them in the boxes below.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>The Dopamine Trap:</strong> Your brain has wired a direct highway from certain situations to the craving. The highway was built through thousands of repetitions. You can't delete the highway — but you can build a detour. That starts with knowing exactly where the on-ramps are.
+  </div>
+
+  <div class="trigger-categories">
+    <div class="trigger-cat">
+      <h4>⏰ Times & Routines</h4>
+      <p class="examples">e.g., late at night, after work, weekend mornings, lunch break alone</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trigger-cat">
+      <h4>📍 Places & Devices</h4>
+      <p class="examples">e.g., bedroom with phone, bathroom, laptop alone at home, hotel rooms</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trigger-cat">
+      <h4>😔 Emotional States</h4>
+      <p class="examples">e.g., boredom, loneliness, stress, rejection, anxiety, feeling "numb"</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trigger-cat">
+      <h4>💭 Thought Patterns</h4>
+      <p class="examples">e.g., "just once," "I deserve this," "no one will know," "tomorrow I'll stop"</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trigger-cat">
+      <h4>👥 Social Situations</h4>
+      <p class="examples">e.g., after a fight, when feeling left out, after social events, isolation</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="trigger-cat">
+      <h4>🌐 Digital Triggers</h4>
+      <p class="examples">e.g., certain apps, Instagram, YouTube rabbit holes, late-night scrolling</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-box">
+    <label>Your #1 trigger right now — describe it in detail</label>
+    <div class="dot-grid"></div>
+  </div>
+</div>
+
+<!-- SECTION 2: THE TRIGGER MAP (Visual Grid) -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div>
+      <h2>The Trigger Map Grid</h2>
+      <p>Cross-reference your top triggers across time, place, and emotion. Fill the cells with your notes.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Pattern Recognition:</strong> Most relapses don't happen randomly. They happen at specific intersections — a certain time of day, in a certain place, when feeling a certain way. This grid reveals the hotspots.
+  </div>
+
+  <div class="map-container">
+    <div style="display: grid; grid-template-columns: 80px 1fr 1fr 1fr;">
+      <div class="map-axis-label" style="border-right: 1px solid var(--border); background: rgba(255,255,255,.02);"></div>
+      <div class="map-col-header time">TIME OF DAY</div>
+      <div class="map-col-header place">PLACE / DEVICE</div>
+      <div class="map-col-header emotion">EMOTION</div>
+    </div>
+    <div class="map-row">
+      <div class="map-row-label">MORNING</div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+    </div>
+    <div class="map-row">
+      <div class="map-row-label">AFTERNOON</div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+    </div>
+    <div class="map-row">
+      <div class="map-row-label">EVENING</div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+    </div>
+    <div class="map-row">
+      <div class="map-row-label">LATE NIGHT</div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+      <div class="map-cell"></div>
+    </div>
+  </div>
+
+  <div class="dot-box">
+    <label>Looking at the grid — what's the most dangerous combination for you?</label>
+    <div class="dot-grid"></div>
+  </div>
+</div>
+
+<!-- SECTION 3: THE URGE CHAIN -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div>
+      <h2>The Urge Chain</h2>
+      <p>Map the sequence of events that leads to the behavior — step by step.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>The Chain Has Weak Links:</strong> Between trigger and behavior, there's always a chain of small steps. Each step is an opportunity to intervene. Most men try to fight the urge at the end of the chain — that's the hardest point. Break it early.
+  </div>
+
+  <div class="chain-step">
+    <div class="chain-num">1</div>
+    <div class="chain-body">
+      <label>The Trigger Event (what happened first?)</label>
+      <div class="chain-input"></div>
+    </div>
+  </div>
+  <div class="chain-arrow">↓</div>
+
+  <div class="chain-step">
+    <div class="chain-num">2</div>
+    <div class="chain-body">
+      <label>The Emotion (what did you feel?)</label>
+      <div class="chain-input"></div>
+    </div>
+  </div>
+  <div class="chain-arrow">↓</div>
+
+  <div class="chain-step">
+    <div class="chain-num">3</div>
+    <div class="chain-body">
+      <label>The Thought (what did you tell yourself?)</label>
+      <div class="chain-input"></div>
+    </div>
+  </div>
+  <div class="chain-arrow">↓</div>
+
+  <div class="chain-step">
+    <div class="chain-num">4</div>
+    <div class="chain-body">
+      <label>The Setup (what did you do to position yourself?)</label>
+      <div class="chain-input"></div>
+    </div>
+  </div>
+  <div class="chain-arrow">↓</div>
+
+  <div class="chain-step">
+    <div class="chain-num">5</div>
+    <div class="chain-body">
+      <label>The Point of No Return (when did it feel inevitable?)</label>
+      <div class="chain-input"></div>
+    </div>
+  </div>
+  <div class="chain-arrow">↓</div>
+
+  <div class="chain-step">
+    <div class="chain-num">6</div>
+    <div class="chain-body">
+      <label>The Behavior (what happened)</label>
+      <div class="chain-input" style="border-color: rgba(231,76,60,.3);"></div>
+    </div>
+  </div>
+
+  <div class="dot-box" style="margin-top: 1.5rem;">
+    <label>Which link in the chain is the earliest / easiest place to intervene?</label>
+    <div class="dot-grid"></div>
+  </div>
+</div>
+
+<!-- SECTION 4: YOUR INTERRUPT STRATEGIES -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div>
+      <h2>Your Interrupt Strategies</h2>
+      <p>For each type of trigger, define your personal interrupt. Make it specific — vague plans fail.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Replace, Don't Just Resist:</strong> Willpower is a limited resource. The brain needs to go somewhere when a trigger fires. Pre-load the destination so you don't have to think in the moment.
+  </div>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <h4>For Late Night Urges</h4>
+      <p class="desc">The most common trigger window. What's your exact protocol when the urge hits after 10pm?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h4>For Emotional Triggers</h4>
+      <p class="desc">When you're lonely, stressed, or rejected — what do you do instead of turning to the screen?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h4>For Boredom / Emptiness</h4>
+      <p class="desc">Boredom is a trigger for many. What's the immediate go-to that costs nothing and fills the void?</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h4>For "Just Once" Thoughts</h4>
+      <p class="desc">Write a counter-statement you've pre-written and memorized for when this thought appears.</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h4>The Physical Interrupt</h4>
+      <p class="desc">A physical action (cold shower, 20 pushups, walk outside) that breaks the neurological pattern.</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h4>The Accountability Move</h4>
+      <p class="desc">Who do you contact and what do you say? Write the exact message you'd send Patrick or your accountability person.</p>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: WEEKLY URGE TRACKER -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div>
+      <h2>Weekly Urge Tracker</h2>
+      <p>Track urges and wins over 7 days. Mark: U = Urge noticed, W = Won the battle, R = Relapse</p>
+    </div>
+  </div>
+
+  <div class="week-tracker">
+    <div class="day-col">
+      <div class="day-label">Mon</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Tue</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Wed</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Thu</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Fri</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Sat</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+    <div class="day-col">
+      <div class="day-label">Sun</div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="day-slot"></div>
+      <div class="slot-label">AM / PM / NIGHT</div>
+    </div>
+  </div>
+
+  <div class="dot-box">
+    <label>End of week review — what did you learn about your patterns this week?</label>
+    <div class="dot-grid" style="height: 100px;"></div>
+  </div>
+</div>
+
+<!-- SECTION 6: MY COMMITMENT -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div>
+      <h2>My Commitment</h2>
+      <p>Write it down. Make it real. Sign it.</p>
+    </div>
+  </div>
+
+  <div class="commitment-box">
+    <h3>This Is My Commitment</h3>
+
+    <div class="dot-box" style="background: rgba(255,255,255,.02); margin-bottom: 1.5rem;">
+      <label>I commit to interrupting my urge chain at this specific point:</label>
+      <div class="dot-grid"></div>
+    </div>
+
+    <div class="dot-box" style="background: rgba(255,255,255,.02); margin-bottom: 1.5rem;">
+      <label>My strongest "why" — the life I'm building instead:</label>
+      <div class="dot-grid"></div>
+    </div>
+
+    <div class="commitment-row">
+      <div class="commitment-field">
+        <label>My Name</label>
+        <div class="commitment-line"></div>
+      </div>
+      <div class="commitment-field">
+        <label>Date</label>
+        <div class="commitment-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top: 1.5rem; border-left-color: var(--gold); background: rgba(201,168,76,.04);">
+    <strong style="color: var(--gold);">Remember:</strong> You're not fighting an enemy — you're rewiring a brain that was doing what brains do: seeking reward. The wiring can change. That's not philosophy. That's neuroscience. You are not your past behavior. You are what you do next.
+  </div>
+</div>
+
+</body>
+</html>

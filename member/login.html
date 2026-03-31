@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Login — REBORN Method</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #060606;
+      --card:    #0f0f0f;
+      --border:  rgba(255,255,255,.07);
+      --red:     #e74c3c;
+      --red-d:   #c0392b;
+      --teal:    #4ecdc4;
+      --gold:    #c9a84c;
+      --g100:    #f0f0f0;
+      --g300:    #aaaaaa;
+      --g500:    #555555;
+      --g700:    #222222;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--g100);
+    }
+
+    /* Background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(231,76,60,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 100%, rgba(78,205,196,.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* LEFT PANEL — branding */
+    .brand-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 3rem;
+      border-right: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(231,76,60,.05) 0%, transparent 50%);
+    }
+
+    .brand-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: .1em;
+      color: var(--g100);
+      text-decoration: none;
+    }
+    .brand-logo span { color: var(--red); }
+
+    .brand-quote {
+      max-width: 420px;
+    }
+    .brand-quote blockquote {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: .04em;
+      line-height: 1.2;
+      color: var(--g100);
+      margin-bottom: 1.5rem;
+    }
+    .brand-quote blockquote em { color: var(--red); font-style: normal; }
+    .brand-quote p {
+      font-size: .9rem;
+      color: var(--g500);
+      line-height: 1.7;
+    }
+
+    .brand-phases {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .phase-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.02);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+    .phase-pill.p1 { border-color: rgba(231,76,60,.3); color: var(--red); }
+    .phase-pill.p2 { border-color: rgba(78,205,196,.25); color: var(--teal); }
+    .phase-pill.p3 { border-color: rgba(201,168,76,.25); color: var(--gold); }
+    .phase-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+    /* RIGHT PANEL — login form */
+    .form-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 2rem;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-header {
+      margin-bottom: 2.5rem;
+    }
+    .login-header .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: .75rem;
+    }
+    .login-header .tag::before {
+      content: '';
+      width: 18px;
+      height: 2px;
+      background: var(--red);
+    }
+    .login-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: .04em;
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .login-header p {
+      font-size: .9rem;
+      color: var(--g500);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--g500);
+      margin-bottom: .5rem;
+    }
+    .form-group input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .85rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      color: var(--g100);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input:focus { border-color: var(--red); }
+    .form-group input::placeholder { color: var(--g700); }
+
+    .btn-login {
+      width: 100%;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      margin-top: .5rem;
+      position: relative;
+    }
+    .btn-login:hover { background: var(--red-d); transform: translateY(-1px); }
+    .btn-login:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .btn-login .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      position: absolute;
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .btn-login.loading .spinner { display: block; }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+    .error-msg {
+      display: none;
+      background: rgba(231,76,60,.1);
+      border: 1px solid rgba(231,76,60,.3);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      font-size: .85rem;
+      color: #ff6b6b;
+      margin-top: 1rem;
+    }
+    .error-msg.show { display: block; }
+
+    .forgot-link {
+      display: block;
+      text-align: center;
+      margin-top: 1.25rem;
+      font-size: .82rem;
+      color: var(--g500);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .forgot-link:hover { color: var(--g300); }
+
+    .login-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .login-footer p {
+      font-size: .78rem;
+      color: var(--g700);
+      line-height: 1.6;
+    }
+    .login-footer a { color: var(--g500); text-decoration: none; }
+    .login-footer a:hover { color: var(--g300); }
+
+    /* Forgot password mode */
+    .reset-sent {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .reset-sent .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .reset-sent h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: .04em; margin-bottom: .5rem; }
+    .reset-sent p { font-size: .9rem; color: var(--g500); }
+
+    @media (max-width: 768px) {
+      .page { grid-template-columns: 1fr; }
+      .brand-panel { display: none; }
+      .form-panel { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LEFT: Branding -->
+  <div class="brand-panel">
+    <a href="../index.html" class="brand-logo">RE<span>B</span>ORN</a>
+
+    <div class="brand-quote">
+      <blockquote>
+        The man you are<br>becoming is worth<br>
+        <em>every hard day.</em>
+      </blockquote>
+      <p>This is your private space. The work you do here stays here. Patrick built this for the men who are serious about change.</p>
+    </div>
+
+    <div class="brand-phases">
+      <div class="phase-pill p1"><span class="phase-dot"></span> Phase 1 — Destroy</div>
+      <div class="phase-pill p2"><span class="phase-dot"></span> Phase 2 — Understanding</div>
+      <div class="phase-pill p3"><span class="phase-dot"></span> Phase 3 — Creation</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="form-panel">
+    <div class="login-box">
+
+      <div class="login-header">
+        <div class="tag">Member Access</div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to your private member area.</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group" id="passwordGroup">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-login" id="submitBtn">
+          Sign In
+          <span class="spinner"></span>
+        </button>
+        <div class="error-msg" id="errorMsg"></div>
+      </form>
+
+      <a href="#" class="forgot-link" id="forgotLink">Forgot your password?</a>
+
+      <!-- Reset sent confirmation -->
+      <div class="reset-sent" id="resetSent">
+        <div class="icon">📬</div>
+        <h3>Check Your Email</h3>
+        <p>We sent a password reset link to your email address.</p>
+      </div>
+
+      <div class="login-footer">
+        <p>
+          No account? You'll receive an invitation from Patrick.<br>
+          Questions? <a href="mailto:rebornmethod.patrick@gmail.com">rebornmethod.patrick@gmail.com</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+  let forgotMode = false;
+
+  // Check if already logged in
+  (async () => {
+    const session = await getSession();
+    if (session) {
+      const profile = await getProfile(session.user.id);
+      if (profile) {
+        window.location.href = profile.is_admin ? '/member/admin.html' : '/member/dashboard.html';
+      }
+    }
+  })();
+
+  document.getElementById('forgotLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    forgotMode = !forgotMode;
+    const pwGroup = document.getElementById('passwordGroup');
+    const submitBtn = document.getElementById('submitBtn');
+    const link = document.getElementById('forgotLink');
+    if (forgotMode) {
+      pwGroup.style.display = 'none';
+      submitBtn.textContent = 'Send Reset Link';
+      link.textContent = '← Back to login';
+      document.getElementById('errorMsg').classList.remove('show');
+    } else {
+      pwGroup.style.display = '';
+      submitBtn.innerHTML = 'Sign In <span class="spinner"></span>';
+      link.textContent = 'Forgot your password?';
+    }
+  });
+
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const btn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('errorMsg');
+
+    btn.disabled = true;
+    btn.classList.add('loading');
+    errorMsg.classList.remove('show');
+
+    if (forgotMode) {
+      const { error } = await db.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + '/member/login.html'
+      });
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      if (error) {
+        errorMsg.textContent = error.message;
+        errorMsg.classList.add('show');
+      } else {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('forgotLink').style.display = 'none';
+        document.getElementById('resetSent').style.display = 'block';
+      }
+      return;
+    }
+
+    const { data, error } = await db.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      errorMsg.textContent = 'Invalid email or password. Please try again.';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    const profile = await getProfile(data.user.id);
+    window.location.href = profile?.is_admin ? '/member/admin.html' : '/member/dashboard.html';
+  });
+</script>
+</body>
+</html>
