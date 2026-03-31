@@ -615,7 +615,7 @@
   document.querySelectorAll('.modal-overlay').forEach(o => {
     o.addEventListener('click', (e) => { if (e.target === o) o.classList.remove('show'); });
   });
-  async function signOut() { await db.auth.signOut(); window.location.href = '/member/login.html'; }
+  async function signOut() { await db.auth.signOut(); window.location.href = 'login.html'; }
 </script>
 </body>
 </html>
