@@ -1,3 +1,61 @@
+# ============================================================
+# rebornmethod.com — robots.txt
+# Last updated: 2026-04-03
+# ============================================================
+
+# ── AI / Generative Engine Crawlers — explicitly allowed ──
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /member/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /member/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /member/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /member/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /member/
+
+User-agent: cohere-ai
+Allow: /
+Disallow: /member/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /member/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /member/
+
+# ── Standard Search Crawlers ──
+User-agent: Googlebot
+Allow: /
+Disallow: /member/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /member/
+
+User-agent: Slurp
+Allow: /
+Disallow: /member/
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /member/
+
+# ── All others ──
 User-agent: *
 Allow: /
+Disallow: /member/
+
 Sitemap: https://rebornmethod.com/sitemap.xml
