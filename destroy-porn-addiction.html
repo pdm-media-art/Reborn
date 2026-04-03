@@ -87,13 +87,7 @@ section{padding:4rem 0}
 .article-card p{font-size:.88rem;color:var(--gray-600);margin-bottom:1rem;line-height:1.5}
 .read-link{font-size:.85rem;color:var(--red);text-decoration:none;font-weight:600;transition:color .3s}
 .read-link:hover{color:var(--red-dark)}
-/* LEAD MAGNET */
-.lead-magnet-section{padding:4rem 0;background:linear-gradient(135deg,#0a0a0a 0%,#0e0505 100%);border-top:1px solid rgba(231,76,60,.12);border-bottom:1px solid rgba(231,76,60,.12)}
-.lead-magnet-box{max-width:700px;margin:0 auto;padding:0 1.5rem;text-align:center}
-.lead-magnet-box h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:.75rem}
 .lead-magnet-box p{color:var(--gray-400);margin-bottom:2rem}
-.privacy-note{font-size:.78rem;color:var(--gray-600);margin-top:1rem}
-.privacy-note a{color:var(--gray-400);text-decoration:none}
 /* CTA CARDS */
 .cta-section{padding:5rem 0}
 .cta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:900px;margin:0 auto;padding:0 1.5rem}
@@ -303,20 +297,10 @@ footer a:hover{color:var(--gray-100)}
         </div>
     </div>
 
-    <!-- LEAD MAGNET -->
-    <section class="lead-magnet-section">
-        <div class="lead-magnet-box reveal">
-            <h2>Download The Dopamine Trap Guide</h2>
-            <p>The free visual guide that explains the 6-step cycle keeping you trapped.</p>
-            <p class="privacy-note">Get the free guide and weekly recovery insights. Unsubscribe anytime. <a href="privacy-policy.html">Privacy Policy</a></p>
-    </footer>
-
     <script>
     document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>document.querySelector('nav').classList.remove('open'))});
     const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     </script>
-<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-<form action="https://app.kit.com/forms/9282351/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9282351" data-uid="b11688ab0f" data-format="modal" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: rgb(0, 0, 0); border-radius: 4px;"><div class="formkit-background" style="opacity: 0;"></div><div data-style="minimal"><div class="formkit-header" data-element="header" style="color: rgb(77, 77, 77); font-size: 27px; font-weight: 700;"><h2>Stop fighting your brain alone.</h2></div><div class="formkit-subheader" data-element="subheader" style="color: rgb(104, 104, 104); font-size: 18px;"><p>Get the neuro-protocol and start the 5-day recovery series to find the root cause of your addiction.</p></div><ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul><div data-element="fields" data-stacked="false" class="seva-fields formkit-fields"><div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div><button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(190, 22, 25); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span class="">Subscribe</span></button></div><div class="formkit-guarantee" data-element="guarantee" style="color: rgb(77, 77, 77); font-size: 13px; font-weight: 400;">We won't send you spam. Unsubscribe at any time.</div><div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="light" target="_blank" rel="nofollow">Built with Kit</a></div></div></form>
 </body>
 </html>
