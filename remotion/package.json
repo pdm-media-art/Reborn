@@ -1,0 +1,21 @@
+{
+  "name": "reborn-remotion",
+  "version": "1.0.0",
+  "description": "Remotion video project for Reborn",
+  "scripts": {
+    "start": "npx remotion studio",
+    "build": "npx remotion render",
+    "render": "npx remotion render HelloWorld out/HelloWorld.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.291",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.291"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.0.0"
+  }
+}
